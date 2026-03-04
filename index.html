@@ -1,12 +1,81 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HSBso</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HSBso</title>
+        <style>
+            body { margin: 0; font-family: sans-serif; background: #121212; color: white; }
 
-</head>
-<body>
-    <p>aşlkdjfal</p>
-</body>
+            .section {
+            width: 100%;
+            min-height: 100vh; /* Her bölüm ekranın tamamını kaplar */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid #333;
+    }
+
+            .header-footer { min-height: 10vh; background: #1a1a1a; }
+
+                /* Buton Konteynırı */
+            .button-container {
+                gap: 40px; /* Butonlar arası boşluk */
+                height: 100vh; /* Bu bölüm ekranın tamamı */
+            }
+
+    /* Özel Buton Tasarımı */
+            .custom-button {
+                width: 200px; /* Yatay genişlik */
+                height: 400px; /* Dikey uzunluk (yatayın 2 katı) */
+                border-radius: 30px; /* Yuvarlak köşeler */
+                cursor: pointer;
+                background-size: cover;
+                background-position: center;
+                transition: all 0.4s ease; /* Hover geçişi yumuşaklığı */
+                display: flex;
+                align-items: flex-end;
+                justify-content: center;
+                padding-bottom: 20px;
+                border: 3px solid transparent;
+    }
+
+            /* Resim Yolları (Buraya kendi resim linklerini koyabilirsin) */
+            .btn-1 { background-image: url('https://via.placeholder.com'); }
+            .btn-2 { background-image: url('https://via.placeholder.com'); }
+
+            /* HOVER EFEKTİ */
+            .custom-button:hover {
+                transform: scale(1.05) translateY(-10px); /* Büyüme ve hafif yukarı kalkma */
+                box-shadow: 0 20px 40px rgba(0,0,0,0.6); /* Gölge efekti */
+                border-color: #3498db; /* Kenarlık parlaması */
+}
+
+
+        </style>
+    </head>
+    <body>
+    <!-- Üst Yazı -->
+    <header class="section header-footer">Üst Yazı / Logo Alanı</header>
+
+<!-- 1. Bölüm: Senin İstediğin Butonlar -->
+    <div class="section button-container">
+        <div class="custom-button btn-1">
+            <span>Resim 1 Alt Metni</span>
+        </div>
+        <div class="custom-button btn-2">
+            <span>Resim 2 Alt Metni</span>
+        </div>
+    </div>
+
+    <!-- Diğer 4 Bölüm (Boş Taslaklar) -->
+    <div class="section gray">Bölüm 2</div>
+    <div class="section dark">Bölüm 3</div>
+    <div class="section gray">Bölüm 4</div>
+    <div class="section dark">Bölüm 5</div>
+
+    <!-- Alt Yazı -->
+    <footer class="section header-footer">Alt Yazı / İletişim</footer>
+
+    </body>
 </html>
