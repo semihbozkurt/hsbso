@@ -5,7 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>HSBso</title>
         <style>
-            body { margin: 0; font-family: sans-serif; background: #121212; color: white; }
+            body { margin: 0; font-family: sans-serif; background: #121212; color: white;
+                overflow-x: hidden; /* Sağa doğru kaymayı (scroll) tamamen kapatır */
+             }
 
             .section {
             width: 100%;
@@ -17,11 +19,16 @@
     }
 
             .header-footer {
-                            display: flex;
+                min-height: 60px;
+                height: 60px;
+                display: flex;
+                top: 0;
+                width: 100%;
+                box-sizing: border-box;
                 justify-content: space-between;
                 padding: 0 50px;
-                position: relative;
-                z-index: 100;
+                position: fixed;
+                z-index: 1000;
             }
 
             /* Hamburger Çizgileri */
@@ -43,16 +50,17 @@
             /* Menü Tasarımı (Kapalıyken) */
             .nav-menu {
                 position: absolute;
-                top: 100%;
+                top: 60px;
                 right: -100%; /* Ekranın sağında gizli */
                 background: rgba(26, 26, 26, 0.95);
-                width: 250px;
+                width: 200px;
                 height: auto;
                 display: flex;
                 flex-direction: column;
                 padding: 20px;
                 transition: 0.5s;
                 border-radius: 0 0 0 20px;
+                box-shadow: -5px 5px 15px rgba(0,0,0,0.5);
             }
 
             /* Menü Açıldığında (JS ile bu sınıfı ekleyeceğiz) */
