@@ -16,7 +16,68 @@
             border-bottom: 2px solid rgba(24, 131, 40, 0.1);
     }
 
-            .header-footer { min-height: 10vh; background: #1a1a1a; }
+            .header-footer {
+                            display: flex;
+                justify-content: space-between;
+                padding: 0 50px;
+                position: relative;
+                z-index: 100;
+            }
+
+            /* Hamburger Çizgileri */
+            .hamburger {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                cursor: pointer;
+                z-index: 101;
+            }
+
+            .hamburger span {
+                width: 30px;
+                height: 3px;
+                background-color: white;
+                transition: 0.3s;
+            }
+
+            /* Menü Tasarımı (Kapalıyken) */
+            .nav-menu {
+                position: absolute;
+                top: 100%;
+                right: -100%; /* Ekranın sağında gizli */
+                background: rgba(26, 26, 26, 0.95);
+                width: 250px;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                padding: 20px;
+                transition: 0.5s;
+                border-radius: 0 0 0 20px;
+            }
+
+            /* Menü Açıldığında (JS ile bu sınıfı ekleyeceğiz) */
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-menu a {
+                color: white;
+                text-decoration: none;
+                padding: 15px;
+                border-bottom: 1px solid #333;
+                transition: 0.3s;
+            }
+
+            .nav-menu a:hover {
+                color: #3498db;
+                padding-left: 25px;
+            }
+
+            /* Hamburger X Şekline Dönüşsün */
+            .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
 
                 /* Buton Konteynırı */
             .button-container {
@@ -56,7 +117,25 @@
     </head>
     <body>
     <!-- Üst Yazı -->
-    <header class="section header-footer">Üst Yazı / Logo Alanı</header>
+        <header class="section header-footer">
+            <div class="logo">Logon</div>
+    
+    <!-- Hamburger Simgesi -->
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        
+            <!-- Menü Linkleri -->
+            <nav class="nav-menu" id="nav-menu">
+                <a href="index.html">Ana Sayfa</a>
+                <a href="sayfa1.html">Projeler</a>
+                <a href="#">Hakkımda</a>
+                <a href="#">İletişim</a>
+            </nav>
+        </header>
+
 
     <div class="section gray">Bölüm 2</div>
     <div class="section dark">Bölüm 3</div>
@@ -79,6 +158,18 @@
 
     <!-- Alt Yazı -->
     <footer class="section header-footer">Alt Yazı / İletişim</footer>
+
+        <script>
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+        
+            hamburger.addEventListener('click', () => {
+            // Tıklandığında 'active' sınıfını ekle veya çıkar (toggle)
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            });
+
+        </script>
 
     </body>
 </html>
