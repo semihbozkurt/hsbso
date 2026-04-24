@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Elementleri seç
     const mapElement = document.getElementById('map-container');
-    const viewport = document.getElementById('map-viewport');
 
     // 2. Kontrol Et: Element gerçekten var mı?
     if (!mapElement) {
@@ -26,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 4. Mouse Wheel Zoom
-    viewport.addEventListener('wheel', (event) => {
+    mapElement.addEventListener('wheel', (event) => {
         if (event.ctrlKey || event.metaKey) {
             event.preventDefault();
         }
@@ -36,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 5. Tıklama Olayları
     const regions = document.querySelectorAll('#svg1 path');
     const panel = document.getElementById('info-panel');
+    var inf= document.getElementById('infbox')
 
     regions.forEach(region => {
         region.addEventListener('click', (e) => {
@@ -43,6 +43,16 @@ document.addEventListener('DOMContentLoaded', () => {
             panel.classList.add('open');
             // Tıklanan bölgeye odaklan
             pz.zoom(2, { animate: true, focal: e });
-        });
+            if (region.id==='kaplumada'){
+                inf.innerHTML= "<h1>Kaplumbağa Adası</h1> <p>Kaplumbağa adası aslında dünya üzerinde sürekli yüzen dev bir kaplumbağadır.</p>"};
+            if (region.id==='Kraken'){
+                inf.innerHTML= "<h1>Kraken</h1> <p>Bu bölgelerde gezen dev bir ahtapot. kimisi orada kraken ve leviathan adında iki farklı ahtapot olduğunu söylüyor. ama dokunaçları sayacak kadar uzun duran kimse hayatta kalamadı.</p>"};
+
+            });
+    });
+    const closebtn = document.getElementById('close-panel');
+    closebtn.addEventListener('click', (e) => {
+        panel.classList.remove('open');
+        inf.innerHTML = "";
     });
 });

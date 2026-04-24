@@ -59,7 +59,7 @@
 
 /* UI Panel on the right */
 #info-panel {
-    position: fixed;
+    position: absolute;
     right: -33%; /* Hidden by default */
     top: 0;
     width: 33%;
