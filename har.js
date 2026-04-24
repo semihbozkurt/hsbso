@@ -41,8 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
         region.addEventListener('click', (e) => {
             console.log("Tıklandı:", region.id);
             panel.classList.add('open');
-            // Tıklanan bölgeye odaklan
-            pz.zoom(2, { animate: true, focal: e });
             if (region.id==='kaplumada'){
                 inf.innerHTML= "<h1>Kaplumbağa Adası</h1> <p>Kaplumbağa adası aslında dünya üzerinde sürekli yüzen dev bir kaplumbağadır.</p>"};
             if (region.id==='Kraken'){
