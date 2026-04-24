@@ -18,6 +18,8 @@
     position: relative !important; /* This is the boss. Layers stay inside this. */
     width: 1123px;      /* Use your exact Inkscape width */
     height: 794px;     /* Use your exact Inkscape height */
+    display: block;
+    line-height: 0; /* Resimlerin altındaki 3-4 piksellik hayalet boşluğu siler */
 }
 
 .map-layer {
