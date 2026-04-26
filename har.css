@@ -101,6 +101,12 @@
     font-family: "Georgia", serif;
     color: #3e2f1c;
 }
+#info-panel h3 h2 h1 h4 h5 h6{
+    text-align: center;
+}
+#info-panel p{
+    text-align: justify;
+}
 
 #info-panel.open {
     right: 16.9px;
