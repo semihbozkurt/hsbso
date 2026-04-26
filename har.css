@@ -101,10 +101,10 @@
     font-family: "Georgia", serif;
     color: #3e2f1c;
 }
-#info-panel h3 h2 h1 h4 h5 h6{
+#infbox h3, #infbox h2, #infbox h1, #infbox h4, #infbox h5, #infbox h6{
     text-align: center;
 }
-#info-panel p{
+#infbox,p{
     text-align: justify;
 }
 
