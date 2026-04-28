@@ -204,6 +204,7 @@
 #pusulası{
     z-index:3;
     opacity: 0.6;
+    mix-blend-mode: multiply;
 }
 
 #svg2 {
