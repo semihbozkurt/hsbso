@@ -195,14 +195,14 @@
     z-index: 1; /* Bottom layer */
 }
 
-#Haritakarbojya {
+#haritakarbojya {
     z-index: 2; /* Middle layer */
-    opacity: 0.9; /* So you can see the parchment through it */
+    opacity: 2; /* So you can see the parchment through it */
     mix-blend-mode: multiply; /* Blends it like ink into the paper */
 }
 
 #pusulası{
-    z-index:2.5;
+    z-index:3;
     opacity: 0.6;
 }
 
@@ -211,7 +211,7 @@
     height: 100%;
     position: absolute;
     background: transparent !important;
-    z-index: 3; /* Top layer (The one you click on) */
+    z-index: 4; /* Top layer (The one you click on) */
     pointer-events: none; /* Allows clicks to pass through the empty space of the SVG */
 }
 

@@ -42,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
     pz.pan(0, 0); 
     }, 10);
 
-    setTimeout(()=> {pzk.pan(0,0);},10);
 
     // 4. Mouse Wheel Zoom
     mapElement.parentElement.addEventListener('wheel', (event) => {
@@ -63,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const panel = document.getElementById('info-panel');
     var inf= document.getElementById('infbox')
 
+    const viewK = document.getElementById('map-viewportk');
     const regionsK = document.querySelectorAll('#svg2 path');
     const panelK = document.getElementById('info-panelk');
     var infK= document.getElementById('infboxk')
@@ -75,7 +75,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             panel.classList.add('open');
 
-            
+            if (region.id==='Karbojya'){
+                mapElement.parentElement.style.display= 'none';
+                mapK.style.display= 'block';
+                viewK.style.display= 'block';
+
+                setTimeout(()=> {pzk.pan(0,0);},10);
+            }
 
             if (region.id==='kaplumada'){
                 inf.innerHTML= "<h3>Kaplumbağa Adası</h3> <p>Kaplumbağa adası aslında dünya üzerinde sürekli yüzen dev bir kaplumbağadır.</p>"};
@@ -94,22 +100,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     panelK.addEventListener("mousedown", (e) => {e.stopPropagation()})
     panelK.addEventListener("pointerdown", (e) => {e.stopPropagation()})
-    regionsK.forEach(regionK => {
-        regionK.addEventListener('click', (e) => {
-            console.log("Tıklandı:", regionK.id);
-
-            panelK.classList.add('open');
-
+    
             
 
-            if (regionK.id==='kaplumada'){
-                infK.innerHTML= "<h3>Kaplumbağa Adası</h3> <p>Kaplumbağa adası aslında dünya üzerinde sürekli yüzen dev bir kaplumbağadır.</p>"};
-            if (regionK.id==='Kraken'){
-                infK.innerHTML= "<h1>Kraken</h1> <p>Bu bölgelerde gezen dev bir ahtapot. kimisi orada kraken ve leviathan adında iki farklı ahtapot olduğunu söylüyor. ama dokunaçları sayacak kadar uzun duran kimse hayatta kalamadı.</p>"};
-
-            });
-    });
-    const closebtnK = document.getElementById('close-panelK');
+            document.getElementById('baskent').addEventListener("click",()=>{infK.innerHTML= "<h3>Başkent Nanarka</h3> <p>Karbojyanın başkenti</p>"; panelK.classList.add('open');});
+                
+            document.getElementById('batak').addEventListener("click",()=>{infK.innerHTML= "<h1>Bataklık</h1> <p>Yakın bölgede yaşayanlar sevmesede altında değerli hazineler yatıyor.</p>"; panelK.classList.add('open');});
+                
+            document.getElementById('muk').addEventListener("click",()=>{infK.innerHTML= "<h1>DİKKAT!!!</h1> <p><b>Köpek balığı sörfü yapan mürekkep balıklarıyla</b> karşılaşmak istemiyorsanız uzak durun.<br> <small><small><small>Çizimi biz ekledik, biraz kötüyse kusura bakmayın. Ama yakından çok daha korkunç göründüğünü garenti edebiliriz.</small></small></small></p>"; panelK.classList.add('open');});
+            
+            
+    
+    const closebtnK = document.getElementById('close-panelk');
     closebtnK.addEventListener('click', (e) => {
         panelK.classList.remove('open');
         infK.innerHTML = "";
