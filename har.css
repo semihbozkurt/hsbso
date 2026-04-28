@@ -1,3 +1,4 @@
+/* #region dünya */
 /* The box that clips the map to the screen */
 #map-viewport {
     width: 100vw;
@@ -158,3 +159,164 @@
   border-radius: 6px;
   border: 2px solid #e8d8a8;
 }
+/* #endregion */
+
+
+/*#region K */
+#map-viewportk {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    display: none;
+    background-color: #1a1a1a; /* Dark background behind the parchment */
+    margin: 0px;
+    padding: 0;
+}
+
+/* The actual map container that we will zoom and drag */
+#map-containerk {
+    cursor: grab;
+    position: absolute; /* This is the boss. Layers stay inside this. */
+    display: none;
+    width: 1123px;      /* Use your exact Inkscape width */
+    height: 794px;
+    transform-origin: 0 0;
+    line-height: 0; /* Resimlerin altındaki 3-4 piksellik hayalet boşluğu siler */
+}
+
+#map-containerk:active{
+    cursor:grabbing;
+
+}
+
+
+#karboparsomen {
+    z-index: 1; /* Bottom layer */
+}
+
+#Haritakarbojya {
+    z-index: 2; /* Middle layer */
+    opacity: 0.9; /* So you can see the parchment through it */
+    mix-blend-mode: multiply; /* Blends it like ink into the paper */
+}
+
+#pusulası{
+    z-index:2.5;
+    opacity: 0.6;
+}
+
+#svg2 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: transparent !important;
+    z-index: 3; /* Top layer (The one you click on) */
+    pointer-events: none; /* Allows clicks to pass through the empty space of the SVG */
+}
+
+/* Make the SVG borders invisible but clickable */
+#svg2 path {
+    fill: rgba(255, 255, 255, 0) !important; /* Completely transparent */
+    stroke: none !important; /* No visible lines */
+    pointer-events: all !important; /* Still detects mouse clicks/hover! */
+    transition: fill 0.1s ease, fill-opacity 0.1s ease, mask-position 0.1s ease, -webkit-mask-position 0.1s ease;
+}
+#svg2 path.golden {
+    fill: url(#gold-gradient) !important;
+    fill-opacity: 0;
+    
+    /* Maskeyi 2 kat geniş yapıyoruz */
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 50%);
+    mask-image: linear-gradient(to right, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 50%);
+    
+    -webkit-mask-size: 200% 100%;
+    mask-size: 200% 100%;
+    
+    /* Başlangıçta maskenin şeffaf olan sağ yarısı ülkenin üstünde */
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+    
+    /* Animasyon hızını buradan ayarla (0.8s = 0.8 saniye) */
+    transition: mask-position 0.5s ease, -webkit-mask-position 0.5s ease, fill-opacity 0.3s ease;
+}
+
+#svg2 path.golden:hover {
+    fill-opacity: 1;
+    
+    /* Üzerine gelince maskeyi sola çekiyoruz, böylece siyah (görünür) kısım sağa doğru kayıyor */
+    -webkit-mask-position: 0% 0;
+    mask-position: 0% 0;
+}
+
+
+#close-panelk {
+    background-color: #1a1a1a00;
+    border: #1a1a1a00;
+    cursor: pointer;
+}
+
+/* UI Panel on the right */
+#info-panelk {
+    box-sizing: border-box;
+    padding: 4px;
+    position: absolute;
+    right: -33%; /* Hidden by default */
+    top: 0;
+    width: 33%;
+    height: 100%;
+    background: #f4e4bc; /* Parchment-like color */
+    box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+    transition: right 0.5s ease;
+    z-index: 1000;
+    user-select: text;
+    cursor:default;
+    overflow-y: auto;
+    pointer-events: auto;
+    font-family: "Georgia", serif;
+    color: #3e2f1c;
+}
+#infboxk h3, #infboxk h2, #infboxk h1, #infboxk h4, #infboxk h5, #infboxk h6{
+    text-align: center;
+}
+#infboxk,p{
+    text-align: justify;
+}
+
+#info-panelk.open {
+    right: 16.9px;
+}
+
+@media (pointer: coarse) and (hover: none) {
+    #info-panelk{
+        right: 0 !important;
+    }
+}
+
+
+/* Hide scrollbar for Chrome/Safari but keep functionality */
+/* Genel scrollbar (Chrome, Edge, Safari) */
+#info-panelk::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Arka kanal (track) */
+#info-panelk::-webkit-scrollbar-track {
+  background: #e8d8a8; /* parşömen rengi */
+}
+
+/* Scrollbar'ın kendisi */
+#info-panelk::-webkit-scrollbar-thumb{
+  background:#7a5c3a00;
+}
+
+#info-panelk::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    #a3835b,
+    #7a5c3a
+  );
+  border-radius: 6px;
+  border: 2px solid #e8d8a8;
+}
+/*#endregion*/

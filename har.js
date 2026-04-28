@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Elementleri seç
     const mapElement = document.getElementById('map-container');
+    const mapK = document.getElementById('map-containerk')
 
     // 2. Kontrol Et: Element gerçekten var mı?
     if (!mapElement) {
@@ -26,10 +27,22 @@ document.addEventListener('DOMContentLoaded', () => {
         startY: 0, // Haritanın başlangıç Y pozisyonu
         startScale: 1, // Başlangıç büyüklüğü
     });
+    const pzk = PanzoomLib(mapK, {
+        maxScale: 5,
+        minScale: 0.01,
+        step: 0.3,
+        contain: 'outside',
+        canvas: true, // SVG ve Resim katmanları için daha kararlı çalışır
+        startX: 0, // Haritanın başlangıç X pozisyonu
+        startY: 0, // Haritanın başlangıç Y pozisyonu
+        startScale: 1, // Başlangıç büyüklüğü
+    });
 
     setTimeout(() => {// Haritayı merkeze yerleştir
     pz.pan(0, 0); 
     }, 10);
+
+    setTimeout(()=> {pzk.pan(0,0);},10);
 
     // 4. Mouse Wheel Zoom
     mapElement.parentElement.addEventListener('wheel', (event) => {
@@ -38,11 +51,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         pz.zoomWithWheel(event);
     }, { passive: false });
+    mapK.parentElement.addEventListener('wheel', (event) => {
+        if (event.ctrlKey || event.metaKey) {
+            event.preventDefault();
+        }
+        pzk.zoomWithWheel(event);
+    }, { passive: false });
 
     // 5. Tıklama Olayları
     const regions = document.querySelectorAll('#svg1 path');
     const panel = document.getElementById('info-panel');
     var inf= document.getElementById('infbox')
+
+    const regionsK = document.querySelectorAll('#svg2 path');
+    const panelK = document.getElementById('info-panelk');
+    var infK= document.getElementById('infboxk')
    
     panel.addEventListener("mousedown", (e) => {e.stopPropagation()})
     panel.addEventListener("pointerdown", (e) => {e.stopPropagation()})
@@ -66,4 +89,31 @@ document.addEventListener('DOMContentLoaded', () => {
         panel.classList.remove('open');
         inf.innerHTML = "";
     });
+
+    //#region tıklama olayları K
+
+    panelK.addEventListener("mousedown", (e) => {e.stopPropagation()})
+    panelK.addEventListener("pointerdown", (e) => {e.stopPropagation()})
+    regionsK.forEach(regionK => {
+        regionK.addEventListener('click', (e) => {
+            console.log("Tıklandı:", regionK.id);
+
+            panelK.classList.add('open');
+
+            
+
+            if (regionK.id==='kaplumada'){
+                infK.innerHTML= "<h3>Kaplumbağa Adası</h3> <p>Kaplumbağa adası aslında dünya üzerinde sürekli yüzen dev bir kaplumbağadır.</p>"};
+            if (regionK.id==='Kraken'){
+                infK.innerHTML= "<h1>Kraken</h1> <p>Bu bölgelerde gezen dev bir ahtapot. kimisi orada kraken ve leviathan adında iki farklı ahtapot olduğunu söylüyor. ama dokunaçları sayacak kadar uzun duran kimse hayatta kalamadı.</p>"};
+
+            });
+    });
+    const closebtnK = document.getElementById('close-panelK');
+    closebtnK.addEventListener('click', (e) => {
+        panelK.classList.remove('open');
+        infK.innerHTML = "";
+    });
+
+    //#endregion
 });
