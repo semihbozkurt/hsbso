@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 mapK.style.display= 'block';
                 viewK.style.display= 'block';
 
-                setTimeout(()=> {pzk.pan(0,0);},10);
+                setTimeout(()=> {pzk.pan(0,0); pzk.zoom(0.5)},10);
             }
 
             if (region.id==='kaplumada'){
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 panel.classList.remove('open')
             }
 
-            document.getElementById('baskent').addEventListener("click",()=>{infK.innerHTML= "<h3>Başkent Nanarka</h3> <p>Karbojyanın başkenti</p>"; panelK.classList.add('open');});
+            document.getElementById('baskent').addEventListener("click",()=>{infK.innerHTML= "<h3>Başkent Nakra</h3> <p>Karbojyanın başkenti</p>"; panelK.classList.add('open');});
                 
             document.getElementById('batak').addEventListener("click",()=>{infK.innerHTML= "<h1>Bataklık</h1> <p>Yakın bölgede yaşayanlar sevmesede altında değerli hazineler yatıyor.</p>"; panelK.classList.add('open');});
                 
