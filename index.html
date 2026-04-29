@@ -19,6 +19,9 @@
                 overflow-x: hidden; /* Sağa doğru kaymayı (scroll) tamamen kapatır */
              }
 
+            #ld-mode{background-position: center; background-size: cover; background-image: url('dark-mode.svg');}
+            .Lmd{background-image: url('light-mode.svg') !important;}
+
             .section {
             width: 100%;
             min-height: 100vh; /* Her bölüm ekranın tamamını kaplar */
@@ -173,14 +176,19 @@
                 </a>
                 <div class="logo">HSB Seyr Okyanusu</div>
             </div>
-    
-    <!-- Hamburger Simgesi -->
-            <div class="hamburger" id="hamburger">
+            
+            <div style="display: flex; gap: 25px; align-items: center;">
+
+                <button id="ld-mode" style="border: none; border-radius: 50%; width: 20px; height: 20px;"></button>
+
+                <!-- Hamburger Simgesi -->
+                <div class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
+                </div>
             </div>
-        
+
             <!-- Menü Linkleri -->
             <nav class="nav-menu" id="nav-menu">
                 <a href="index.html">Ana Sayfa</a>
@@ -373,6 +381,10 @@
     <!-- Alt Yazı -->
     <footer class="header-footer">Alt Yazı / İletişim</footer>
     </div>
+    <!--light mode script-->
+        <script>
+            document.getElementById('ld-mode').addEventListener('click',function(){this.classList.toggle('Lmd'); if(this.classList.contains('Lmd')){document.body.style.background='#FDF6E3'; document.body.style.color='#1E1E1E'} else{document.body.style.background=''; document.body.style.color=''} });
+        </script>
     <!--hamburger script:-->
         <script>
             const hamburger = document.getElementById('hamburger');
