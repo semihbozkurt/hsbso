@@ -101,7 +101,12 @@ document.addEventListener('DOMContentLoaded', () => {
     panelK.addEventListener("mousedown", (e) => {e.stopPropagation()})
     panelK.addEventListener("pointerdown", (e) => {e.stopPropagation()})
     
-            
+            document.getElementById('backtoD').onclick=function(){
+                mapElement.parentElement.style.display= 'block';
+                mapK.style.display= 'none';
+                viewK.style.display= 'none';
+                panel.classList.remove('open')
+            }
 
             document.getElementById('baskent').addEventListener("click",()=>{infK.innerHTML= "<h3>Başkent Nanarka</h3> <p>Karbojyanın başkenti</p>"; panelK.classList.add('open');});
                 
