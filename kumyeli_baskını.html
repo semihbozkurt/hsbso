@@ -3,6 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <link rel="icon" type="image/png" href="favicon-removebg-preview.png">
+        <style>
+            body{background-color:#FDF6E3 ; color:#1E1E1E ;}
+            #modeBtn{background-position: center; background-size: cover; background-image: url('light-mode.svg');border: none; border-radius: 50%; width: 20px; height: 20px;position: absolute;top: 20px; right: 20px;}
+            .Lmd{background-image: url('dark-mode.svg') !important;}
+        </style>
     </head>
     <body>
     
@@ -36,6 +41,10 @@
 
 
         </p>
+        <button id="modeBtn"></button>
 
     </body>
+    <script>
+            document.getElementById('modeBtn').addEventListener('click',function(){this.classList.toggle('Lmd'); if(this.classList.contains('Lmd')){document.body.style.background='#121212'; document.body.style.color='#FDF6E3'} else{document.body.style.background=''; document.body.style.color=''} });
+    </script>
 </html>

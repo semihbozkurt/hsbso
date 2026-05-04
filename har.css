@@ -340,3 +340,49 @@
 }
 
 /*#endregion*/
+
+/* #region ölçek */
+.hareketli{
+    position: absolute;
+    user-select: none;
+    z-index: 1000;
+    touch-action: none;
+    background-image: url('ölçek.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform-origin: center;
+}
+
+.döndüren {
+    width: 4px;
+    height: 4px;
+    color: green;
+    border: none;
+    background: none;
+}
+
+.Ö-tuşlar{
+    width: 16px;
+    height: 5px;
+    position: absolute;
+    right: 50%;
+    top: -13px;
+    display: flex;
+    gap: 7px;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+}
+
+.Ö-silicu{
+    width: 5px;
+    height: 5px;
+    border:none;
+    color: red;
+    background: none;
+}
+
+
+
+/*#endregion*/

@@ -123,4 +123,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     //#endregion
+
+    //#region ölçek (FINAL ÇALIŞAN)
+    const ölçek = document.getElementById('NM')
+    ölçek.addEventListener('click',function(){
+        const kopya = document.createElement('div');
+        kopya.classList.add('hareketli');
+        kopya.style.position='absolute';
+        kopya.style.top=30+'px';
+        kopya.style.right=70+'px';
+        kopya.innerHTML="<div class='Ö-tuşlar'><button class='Ö-silicu'>x</button><button class='döndüren'>o</button></div>";
+        mapK.appendChild(kopya);
+        
+
+        window.addEventListener('mousemove', (e) => {
+        kopya.style.position = 'absolute';
+        kopya.style.left = e.clientX + 'px';
+        kopya.style.top = e.clientY + 'px';
+    
+    })
+    })
+
+
+
+
+    //#endregion
 });
