@@ -34,6 +34,9 @@
     width: 100%;
     height: 100%;
     object-fit: contain; /* Resimlerin yamulmasını engeller */
+    -webkit-user-drag: none; /*resimler hareket etmesin*/
+    user-select: none; /*resimler hareket etmesin*/
+    pointer-events: none; /*resimler hareket etmesin*/
 }
 
 #parsomen-img {
@@ -343,15 +346,15 @@
 
 /* #region ölçek */
 .hareketli{
+    width: 125px;
+    height: 20px;
     position: absolute;
     user-select: none;
     z-index: 1000;
-    touch-action: none;
     background-image: url('ölçek.png');
     background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    transform-origin: center;
+    background-size: 100% 100%;
+    font-size: 5px;
 }
 
 .döndüren {

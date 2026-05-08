@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         minScale: 0.01,
         step: 0.3,
         contain: 'outside',
+        excludeClass: 'hareketli',
         canvas: true, // SVG ve Resim katmanları için daha kararlı çalışır
         startX: 0, // Haritanın başlangıç X pozisyonu
         startY: 0, // Haritanın başlangıç Y pozisyonu
@@ -124,28 +125,58 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //#endregion
 
-    //#region ölçek (FINAL ÇALIŞAN)
+    //#region ölçek
+    
     const ölçek = document.getElementById('NM')
     ölçek.addEventListener('click',function(){
         const kopya = document.createElement('div');
         kopya.classList.add('hareketli');
         kopya.style.position='absolute';
-        kopya.style.top=30+'px';
-        kopya.style.right=70+'px';
+        kopya.style.top=300+'px';
+        kopya.style.left=800+'px';
         kopya.innerHTML="<div class='Ö-tuşlar'><button class='Ö-silicu'>x</button><button class='döndüren'>o</button></div>";
         mapK.appendChild(kopya);
-        
 
-        window.addEventListener('mousemove', (e) => {
+        const silBtn = kopya.querySelector('.Ö-silicu');
+    silBtn.addEventListener('click', function(e) {
+        e.stopPropagation(); // Sürükleme olayını tetiklemesin diye
+        kopya.remove();      // Elementi tamamen siler
+    });
+
+        
+        kopya.addEventListener('pointerdown',function(e){
+
+        if (e.target.tagName === 'BUTTON') return;
+
+        kopya.setPointerCapture(e.pointerId);
+        function harekettir(ev){
         kopya.style.position = 'absolute';
-        kopya.style.left = e.clientX + 'px';
-        kopya.style.top = e.clientY + 'px';
+        kopya.style.left = ev.clientX + 'px';
+        kopya.style.top = ev.clientY + 'px';
+        }
+
+        function bırak() {
+            window.removeEventListener('pointermove', harekettir);
+            window.removeEventListener('pointerup', bırak);
+        }
+
+        e.stopPropagation();
+        console.log('aaaaaaaa');
+        window.addEventListener('pointermove',harekettir);
+        window.addEventListener('pointerup',bırak)
+
+        
+    })
+        
     
-    })
-    })
+        
+})
+
+
 
 
 
 
     //#endregion
-});
+
+})
