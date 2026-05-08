@@ -39,9 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         startScale: 1, // Başlangıç büyüklüğü
     });
 
-    setTimeout(() => {// Haritayı merkeze yerleştir
-    pz.pan(0, 0); 
-    }, 10);
+    setTimeout(()=> {pz.pan(0,0); pz.zoom(0.5)},10); //haritayı ortala
 
 
     // 4. Mouse Wheel Zoom
