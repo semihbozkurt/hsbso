@@ -125,58 +125,118 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //#endregion
 
-    //#region ölçek
-    
-    const ölçek = document.getElementById('NM')
-    ölçek.addEventListener('click',function(){
-        const kopya = document.createElement('div');
-        kopya.classList.add('hareketli');
-        kopya.style.position='absolute';
-        kopya.style.top=300+'px';
-        kopya.style.left=800+'px';
-        kopya.innerHTML="<div class='Ö-tuşlar'><button class='Ö-silicu'>x</button><button class='döndüren'>o</button></div>";
-        mapK.appendChild(kopya);
+//#region ölçek sistemi
 
-        const silBtn = kopya.querySelector('.Ö-silicu');
-    silBtn.addEventListener('click', function(e) {
-        e.stopPropagation(); // Sürükleme olayını tetiklemesin diye
-        kopya.remove();      // Elementi tamamen siler
+const ölçek = document.getElementById('NM');
+
+ölçek.addEventListener('click', function () {
+
+    const kopya = document.createElement('div');
+    kopya.classList.add('hareketli');
+
+    kopya.style.position = 'absolute';
+    kopya.style.top = '300px';
+    kopya.style.left = '800px';
+
+    kopya.style.transform = 'translate(0px, 0px) rotate(0deg)';
+
+    kopya.innerHTML = `
+        <div class="Ö-tuşlar">
+            <button class="Ö-silicu">x</button>
+            <button class="döndüren">o</button>
+        </div>
+    `;
+
+    mapK.appendChild(kopya);
+
+    // =========================
+    // STATE
+    // =========================
+    let posX = 0;
+    let posY = 0;
+    let angle = 0;
+
+    let dragging = false;
+    let rotating = false;
+
+    // =========================
+    // SİLME
+    // =========================
+    const silBtn = kopya.querySelector('.Ö-silicu');
+
+    silBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        kopya.remove();
     });
 
-        
-        kopya.addEventListener('pointerdown',function(e){
+    // =========================
+    // DRAG
+    // =========================
+    kopya.addEventListener('pointerdown', function (e) {
 
         if (e.target.tagName === 'BUTTON') return;
 
+        dragging = true;
+
         kopya.setPointerCapture(e.pointerId);
-        function harekettir(ev){
-        kopya.style.position = 'absolute';
-        kopya.style.left = ev.clientX + 'px';
-        kopya.style.top = ev.clientY + 'px';
+
+        function move(ev) {
+
+            if (!dragging) return;
+
+            kopya.style.cursor='none';
+
+            posX += ev.movementX;
+            posY += ev.movementY;
+
+            kopya.style.transform =
+                `translate(${posX}px, ${posY}px) rotate(${angle}deg)`;
         }
 
-        function bırak() {
-            window.removeEventListener('pointermove', harekettir);
-            window.removeEventListener('pointerup', bırak);
+        function up() {
+            dragging = false;
+            kopya.style.cursor="grab"
+            window.removeEventListener('pointermove', move);
+            window.removeEventListener('pointerup', up);
         }
+
+        window.addEventListener('pointermove', move);
+        window.addEventListener('pointerup', up);
+    });
+
+    // =========================
+    // ROTATE
+    // =========================
+    const rotBtn = kopya.querySelector('.döndüren');
+
+    rotBtn.addEventListener('pointerdown', function (e) {
 
         e.stopPropagation();
-        console.log('aaaaaaaa');
-        window.addEventListener('pointermove',harekettir);
-        window.addEventListener('pointerup',bırak)
 
-        
-    })
-        
-    
-        
-})
+        rotating = true;
 
+        function rotate(ev) {
 
+            if (!rotating) return;
 
+            angle += ev.movementX * 0.5;
 
+            kopya.style.transform =
+                `translate(${posX}px, ${posY}px) rotate(${angle}deg)`;
+        }
 
+        function up() {
+            rotating = false;
 
-    //#endregion
+            window.removeEventListener('pointermove', rotate);
+            window.removeEventListener('pointerup', up);
+        }
 
+        window.addEventListener('pointermove', rotate);
+        window.addEventListener('pointerup', up);
+    });
+
+});
+
+//#endregion
 })
