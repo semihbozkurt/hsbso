@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
             document.getElementById('batak').addEventListener("click",()=>{infK.innerHTML= "<h1>Bataklık</h1> <p>Yakın bölgede yaşayanlar sevmesede altında değerli hazineler yatıyor.</p>"; panelK.classList.add('open');});
                 
-            document.getElementById('muk').addEventListener("click",()=>{infK.innerHTML= "<h1>DİKKAT!!!</h1> <p><b>Köpek balığı sörfü yapan mürekkep balıklarıyla</b> karşılaşmak istemiyorsanız uzak durun.<br> <small><small><small>Çizimi biz ekledik, biraz kötüyse kusura bakmayın. Ama yakından çok daha korkunç göründüğünü garenti edebiliriz.</small></small></small></p>"; panelK.classList.add('open');});
+            document.getElementById('muk').addEventListener("click",()=>{infK.innerHTML= "<h1>DİKKAT!!!</h1> <p><b>Köpek balığı sörfü yapan mürekkep balıklarıyla</b> karşılaşmak istemiyorsanız uzak durun.<br> <small><small><small><small>Çizimi biz ekledik, biraz kötüyse kusura bakmayın. Ama yakından çok daha korkunç göründüğünü garanti edebiliriz.</small></small></small></small></p>"; panelK.classList.add('open');});
             
             
     
