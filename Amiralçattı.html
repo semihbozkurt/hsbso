@@ -6,30 +6,22 @@
 <title>Amiral Çattı</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
-:root{
-  --oc:#07111f;--om:#0f2040;--ol:#1a3a5c;
-  --gd:#c9a84c;--gl:#e8c96a;--gdark:#7a5a18;
-  --pa:#f5e6c8;--pd:#d4b896;
-  --rd:#c0392b;--rl:#e74c3c;--gr:#27ae60;--grl:#2ecc71;
-  --ms:#4a6fa5;--grid:rgba(201,168,76,.22);
-}
+:root{--oc:#07111f;--om:#0f2040;--gd:#c9a84c;--gl:#e8c96a;--gdark:#7a5a18;--pa:#f5e6c8;--pd:#d4b896;--rd:#c0392b;--rl:#e74c3c;--gr:#27ae60;--grl:#2ecc71;--ms:#4a6fa5;--grid:rgba(201,168,76,.22);}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Crimson Text',serif;background:var(--oc);color:var(--pa);min-height:100vh;overflow-x:hidden;}
 .screen{display:none;}.screen.active{display:flex;flex-direction:column;align-items:center;min-height:100vh;}
 .cn{font-family:'Cinzel',serif;}
 .btn{padding:.65rem 1.7rem;border:2px solid var(--gdark);background:transparent;color:var(--gd);font-family:'Cinzel',serif;font-size:.88rem;font-weight:600;letter-spacing:.1em;cursor:pointer;transition:all .2s;border-radius:8px;}
 .btn:hover{background:rgba(201,168,76,.15);border-color:var(--gd);color:var(--gl);transform:translateY(-1px);}
-.btn:active{transform:translateY(0);}
 .btn.prim{background:var(--gdark);color:#0a0500;border-color:var(--gd);}.btn.prim:hover{background:var(--gd);}
 .btn.dng{border-color:var(--rd);color:var(--rl);}.btn.dng:hover{background:rgba(192,57,43,.2);}
-.btn.sm{padding:.38rem .85rem;font-size:.73rem;}
-.btn:disabled{opacity:.3;cursor:not-allowed;transform:none;}
-.ab{padding:.38rem .75rem;border:1px solid var(--gdark);background:transparent;color:var(--pa);font-family:'Cinzel',serif;font-size:.68rem;cursor:pointer;border-radius:6px;transition:all .2s;letter-spacing:.04em;}
+.btn.sm{padding:.38rem .85rem;font-size:.73rem;}.btn:disabled{opacity:.3;cursor:not-allowed;transform:none;}
+.ab{padding:.38rem .75rem;border:1px solid var(--gdark);background:transparent;color:var(--pa);font-family:'Cinzel',serif;font-size:.68rem;cursor:pointer;border-radius:6px;transition:all .2s;}
 .ab:hover:not(:disabled){background:rgba(201,168,76,.15);border-color:var(--gd);}
 .ab.act{background:rgba(201,168,76,.22);border-color:var(--gd);color:var(--gd);}
 .ab:disabled{opacity:.3;cursor:not-allowed;}
 .ab.sp{border-color:#7c3aed;color:#c4b5fd;}.ab.sp:hover:not(:disabled){background:rgba(124,58,237,.15);}
-.ab.wind-pick{border-color:#60a5fa;color:#93c5fd;font-size:.8rem;padding:.5rem .9rem;}
+.ab.wp{border-color:#60a5fa;color:#93c5fd;font-size:.82rem;padding:.5rem .95rem;}
 .modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;z-index:9000;}
 .modal-ov.open{display:flex;}
 .mbox{background:var(--om);border:2px solid var(--gdark);border-radius:14px;padding:1.8rem;max-width:380px;width:92%;text-align:center;}
@@ -50,7 +42,6 @@ body{font-family:'Crimson Text',serif;background:var(--oc);color:var(--pa);min-h
 .ob.sel{background:var(--gdark);color:#0a0500;border-color:var(--gd);}
 .ob:hover:not(.sel){border-color:var(--gd);color:var(--gd);}
 select{background:var(--om);border:1px solid var(--gdark);color:var(--pa);padding:.28rem .55rem;border-radius:6px;font-family:'Crimson Text',serif;font-size:.88rem;}
-/* ── TCG CARDS ── */
 #screen-ship-select{background:var(--oc);padding:1.4rem;gap:.75rem;}
 .tcg-section{width:100%;max-width:760px;}
 .tcg-rl{font-family:'Cinzel',serif;font-size:.92rem;color:var(--gd);margin-bottom:.65rem;padding-bottom:.32rem;border-bottom:1px solid var(--grid);letter-spacing:.08em;}
@@ -65,26 +56,23 @@ select{background:var(--om);border:1px solid var(--gdark);color:var(--pa);paddin
 .tcgc::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.08) 0%,transparent 50%,rgba(0,0,0,.2) 100%);pointer-events:none;}
 .tcg-hdr{display:flex;justify-content:space-between;align-items:center;padding:6px 8px 3px;font-family:'Cinzel',serif;font-size:.68rem;color:var(--gl);}
 .tcg-hp{background:rgba(0,0,0,.3);padding:1px 5px;border-radius:10px;font-size:.6rem;}
-.tcg-art{width:100%;height:105px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.tcg-art{width:100%;height:105px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
 .tcg-art-k{background:radial-gradient(ellipse at 50% 70%,#1a4a30 0%,#0a2010 100%);}
 .tcg-art-kad{background:radial-gradient(ellipse at 50% 70%,#0a2060 0%,#050f30 100%);}
 .tcg-art-t{background:radial-gradient(ellipse at 50% 70%,#3a1a08 0%,#1a0800 100%);}
 .tcg-badges{margin:3px 8px 0;display:flex;gap:3px;flex-wrap:wrap;}
 .tcgb{padding:1px 5px;border-radius:8px;font-size:.56rem;font-family:'Cinzel',serif;}
-.ba{background:rgba(192,57,43,.5);color:#f8b4b4;border:1px solid var(--rd);}
-.bm{background:rgba(39,174,96,.4);color:#a8f0b8;border:1px solid var(--gr);}
+.ba{background:rgba(192,57,43,.5);color:#f8b4b4;border:1px solid var(--rd);}.bm{background:rgba(39,174,96,.4);color:#a8f0b8;border:1px solid var(--gr);}
 .tcg-name{padding:4px 8px 1px;font-family:'Cinzel',serif;font-size:.85rem;color:var(--gl);font-weight:600;}
 .tcg-desc{padding:2px 8px 4px;font-size:.68rem;color:var(--pd);font-style:italic;line-height:1.25;}
 .tcg-stat{padding:2px 8px 6px;font-size:.6rem;color:var(--pd);}
 .tcg-chk{position:absolute;top:5px;right:5px;background:var(--gd);color:#0a0500;border-radius:50%;width:17px;height:17px;display:none;align-items:center;justify-content:center;font-size:.62rem;font-weight:bold;}
 .tcgc.sel .tcg-chk{display:flex;}
-/* ── PLACEMENT ── */
 #screen-placement{background:var(--oc);padding:1.4rem;gap:.75rem;align-items:center;}
 .plbl{font-family:'Cinzel',serif;font-size:1.35rem;color:var(--gd);}
 canvas.board{border:2px solid var(--gdark);display:block;}
 canvas.board.cl{cursor:crosshair;}canvas.board.pk{cursor:pointer;}
 .sli{padding:.38rem .62rem;border-radius:6px;cursor:pointer;margin-bottom:.25rem;border:1px solid;font-family:'Cinzel',serif;font-size:.75rem;transition:all .2s;}
-/* ── GAME ── */
 #screen-game{background:var(--oc);padding:.75rem;gap:.32rem;align-items:center;}
 .ghdr{display:flex;justify-content:space-between;align-items:center;width:100%;max-width:1000px;padding:.25rem 0;}
 .gtitle{font-family:'Cinzel',serif;font-size:1.05rem;color:var(--gd);}
@@ -101,31 +89,25 @@ canvas.board.cl{cursor:crosshair;}canvas.board.pk{cursor:pointer;}
 .sbar{display:flex;gap:1.1rem;justify-content:center;flex-wrap:wrap;}
 .snum{font-family:'Cinzel',serif;font-size:1.15rem;color:var(--gd);}
 .slbl2{font-size:.68rem;color:var(--pd);}
-/* ── PASS ── */
 #screen-pass{background:linear-gradient(135deg,#d4a830 0%,#8a6a18 40%,#d4a830 100%);justify-content:center;cursor:pointer;position:relative;overflow:hidden;}
 #screen-pass::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Ccircle cx='20' cy='20' r='1.5' fill='rgba(0,0,0,0.07)'/%3E%3C/svg%3E") repeat;pointer-events:none;}
 .pass-inner{text-align:center;position:relative;padding:2rem;pointer-events:none;}
 .pass-icon{font-size:4rem;margin-bottom:1rem;display:block;}
-.pass-ttl{font-family:'Cinzel',serif;font-size:1.9rem;color:#0a0500;text-shadow:0 1px 3px rgba(0,0,0,.2);margin-bottom:.45rem;}
+.pass-ttl{font-family:'Cinzel',serif;font-size:1.9rem;color:#0a0500;margin-bottom:.45rem;}
 .pass-sub{font-family:'Crimson Text',serif;font-style:italic;color:#3d2800;font-size:1.1rem;margin-bottom:2rem;}
 .pass-click{font-family:'Cinzel',serif;font-size:.88rem;color:rgba(10,5,0,.55);border:2px solid rgba(10,5,0,.25);padding:.5rem 1.3rem;border-radius:20px;display:inline-block;animation:pu 2s infinite;}
 @keyframes pu{0%,100%{opacity:.5;}50%{opacity:1;}}
-/* ── WIN ── */
 #screen-win{background:radial-gradient(ellipse at center,#1a3a5c 0%,#040a16 100%);justify-content:center;gap:1.4rem;}
-.wttl{font-family:'Cinzel',serif;font-size:2.4rem;color:var(--gd);text-align:center;text-shadow:0 0 40px rgba(201,168,76,.5);}
-/* ── FLOATING ── */
+.wttl{font-family:'Cinzel',serif;font-size:2.4rem;color:var(--gd);text-align:center;}
 .fbtns{position:fixed;top:10px;right:10px;display:none;flex-direction:column;gap:5px;z-index:500;}
 .fbtns.show{display:flex;}
 .fbtn{width:36px;height:36px;border-radius:50%;border:1px solid var(--gdark);background:rgba(15,32,64,.9);color:var(--gd);font-size:.95rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;backdrop-filter:blur(4px);}
-.fbtn:hover{background:rgba(201,168,76,.2);border-color:var(--gd);}
-.gpanel{position:fixed;top:54px;right:10px;background:var(--om);border:1px solid var(--gdark);border-radius:10px;padding:.9rem;width:210px;z-index:490;display:none;backdrop-filter:blur(4px);}
-.gpanel.open{display:block;}
-.gpttl{font-family:'Cinzel',serif;font-size:.8rem;color:var(--gd);margin-bottom:.65rem;border-bottom:1px solid var(--grid);padding-bottom:.28rem;}
+.fbtn:hover{background:rgba(201,168,76,.2);}
+.gpanel,.mpanel{position:fixed;top:54px;right:10px;background:var(--om);border:1px solid var(--gdark);border-radius:10px;padding:.9rem;width:210px;z-index:490;display:none;backdrop-filter:blur(4px);}
+.gpanel.open,.mpanel.open{display:block;}
+.gpttl,.mpttl{font-family:'Cinzel',serif;font-size:.8rem;color:var(--gd);margin-bottom:.65rem;border-bottom:1px solid var(--grid);padding-bottom:.28rem;}
 .gprow{display:flex;align-items:center;justify-content:space-between;margin-bottom:.65rem;font-size:.8rem;gap:.45rem;}
 .gprow input[type=range]{flex:1;accent-color:var(--gd);}
-.mpanel{position:fixed;top:54px;right:10px;background:var(--om);border:1px solid var(--gdark);border-radius:10px;padding:.9rem;width:210px;z-index:490;display:none;backdrop-filter:blur(4px);}
-.mpanel.open{display:block;}
-.mpttl{font-family:'Cinzel',serif;font-size:.8rem;color:var(--gd);margin-bottom:.65rem;border-bottom:1px solid var(--grid);padding-bottom:.28rem;}
 .mptr{display:flex;align-items:center;padding:.35rem .45rem;border-radius:6px;cursor:pointer;font-size:.75rem;color:var(--pd);transition:all .2s;border:1px solid transparent;margin-bottom:.25rem;}
 .mptr:hover{background:rgba(201,168,76,.1);border-color:var(--gdark);color:var(--pa);}
 .mptr.playing{background:rgba(201,168,76,.15);border-color:var(--gd);color:var(--gd);}
@@ -133,38 +115,26 @@ canvas.board.cl{cursor:crosshair;}canvas.board.pk{cursor:pointer;}
 .ytwrap.open{display:block;}
 .ytbar{display:flex;align-items:center;justify-content:space-between;padding:3px 7px;background:rgba(0,0,0,.3);}
 .ytbar span{font-family:'Cinzel',serif;font-size:.6rem;color:var(--gdark);}
-.ytbar button{background:none;border:none;color:var(--pd);cursor:pointer;font-size:.88rem;padding:0 2px;}
+.ytbar button{background:none;border:none;color:var(--pd);cursor:pointer;font-size:.88rem;}
 #yt-frame{width:215px;height:121px;border:none;display:block;}
 .tleg{display:flex;gap:.65rem;flex-wrap:wrap;justify-content:center;font-size:.68rem;color:var(--pd);}
 .tlegi{display:flex;align-items:center;gap:.28rem;}
 .tlegdot{width:11px;height:11px;border-radius:3px;}
-/* wind picker */
-.wind-picker-area{display:flex;flex-direction:column;align-items:center;gap:.35rem;}
-.wind-dir-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.28rem;}
-.wind-dir-grid .wind-pick{font-size:.95rem;padding:.55rem;}
-/* trireme ram visual */
-@keyframes ramPulse{0%,100%{opacity:.2;}50%{opacity:.5;}}
+.wind-area{display:flex;flex-direction:column;align-items:center;gap:.35rem;}
+.wind-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.28rem;}
+.duel-scroll{max-width:100%;overflow-x:auto;padding-bottom:4px;}
 @media(max-width:600px){canvas.board{max-width:44vw;max-height:44vw;}.tcgc{width:138px;min-height:215px;}.tcg-art{height:85px;}}
 </style>
 </head>
 <body>
-
-<div class="modal-ov" id="modal-ov">
-  <div class="mbox">
-    <div class="mttl" id="mttl"></div>
-    <div class="mmsg" id="mmsg"></div>
-    <div class="mbtns" id="mbtns"></div>
-  </div>
-</div>
-
-<!-- FLOATING -->
+<div class="modal-ov" id="modal-ov"><div class="mbox"><div class="mttl" id="mttl"></div><div class="mmsg" id="mmsg"></div><div class="mbtns" id="mbtns"></div></div></div>
 <div class="fbtns" id="fbtns">
-  <button class="fbtn" title="Oyun Ayarları" onclick="toggleGP()">⚙</button>
+  <button class="fbtn" title="Ayarlar" onclick="toggleGP()">⚙</button>
   <button class="fbtn" title="Müzik" onclick="toggleMP()">🎵</button>
 </div>
 <div class="gpanel" id="gpanel">
   <div class="gpttl">⚙ Oyun Ayarları</div>
-  <div class="gprow"><span>🔊 Ses</span><input type="range" min="0" max="100" value="70" id="vol-sl" oninput="setVol(this.value)"><span id="vol-val">70</span></div>
+  <div class="gprow"><span>🔊 Ses</span><input type="range" min="0" max="100" value="70" id="vol-sl" oninput="document.getElementById('vol-val').textContent=this.value"><span id="vol-val">70</span></div>
   <div class="gprow"><span>Robot Tahtası</span><button class="ab" id="btn-shr" onclick="toggleShowR()">Gizli</button></div>
 </div>
 <div class="mpanel" id="mpanel">
@@ -181,8 +151,7 @@ canvas.board.cl{cursor:crosshair;}canvas.board.pk{cursor:pointer;}
 <div id="screen-menu" class="screen active">
   <div style="margin-bottom:3rem;position:relative">
     <span style="color:var(--gdark);font-size:2.4rem;display:block;text-align:center;margin-bottom:.3rem">⚓</span>
-    <div class="mttlbig">AMİRAL ÇATTI</div>
-    <div class="msub">Taktiksel Deniz Savaşı</div>
+    <div class="mttlbig">AMİRAL ÇATTI</div><div class="msub">Taktiksel Deniz Savaşı</div>
   </div>
   <div style="display:flex;flex-direction:column;gap:.9rem;width:255px;position:relative">
     <button class="btn prim" onclick="startNewGame()">⚔ Yeni Oyun</button>
@@ -196,55 +165,17 @@ canvas.board.cl{cursor:crosshair;}canvas.board.pk{cursor:pointer;}
   <div class="cn" style="font-size:1.75rem;color:var(--gd)">⚙ Ayarlar</div>
   <div class="scard">
     <div class="sttl">Oyun Modu</div>
-    <div class="srow"><span class="slbl">Rakip</span>
-      <div class="og">
-        <button class="ob sel" onclick="setSetting('mode','2player',this)">2 Oyuncu</button>
-        <button class="ob" onclick="setSetting('mode','robot',this)">Robota Karşı</button>
-      </div>
-    </div>
-    <div class="srow" id="row-diff"><span class="slbl">Robot Zorluğu</span>
-      <div class="og">
-        <button class="ob" onclick="setSetting('diff','easy',this)">Kolay</button>
-        <button class="ob sel" onclick="setSetting('diff','medium',this)">Orta</button>
-        <button class="ob" onclick="setSetting('diff','hard',this)">Zor</button>
-      </div>
-    </div>
-    <div class="srow" id="row-pers"><span class="slbl">Robot Kişiliği</span>
-      <div class="og">
-        <button class="ob sel" onclick="setSetting('persona','pirate',this)">🏴‍☠️ Korsan</button>
-        <button class="ob" onclick="setSetting('persona','admiral',this)">🎖 Amiral</button>
-        <button class="ob" onclick="setSetting('persona','crazy',this)">🌀 Çılgın</button>
-      </div>
-    </div>
+    <div class="srow"><span class="slbl">Rakip</span><div class="og"><button class="ob sel" onclick="setSetting('mode','2player',this)">2 Oyuncu</button><button class="ob" onclick="setSetting('mode','robot',this)">Robota Karşı</button></div></div>
+    <div class="srow" id="row-diff"><span class="slbl">Robot Zorluğu</span><div class="og"><button class="ob" onclick="setSetting('diff','easy',this)">Kolay</button><button class="ob sel" onclick="setSetting('diff','medium',this)">Orta</button><button class="ob" onclick="setSetting('diff','hard',this)">Zor</button></div></div>
+    <div class="srow" id="row-pers"><span class="slbl">Robot Kişiliği</span><div class="og"><button class="ob sel" onclick="setSetting('persona','pirate',this)">🏴‍☠️ Korsan</button><button class="ob" onclick="setSetting('persona','admiral',this)">🎖 Amiral</button><button class="ob" onclick="setSetting('persona','crazy',this)">🌀 Çılgın</button></div></div>
   </div>
   <div class="scard">
     <div class="sttl">Tahta & Harita</div>
-    <div class="srow"><span class="slbl">Tahta Boyutu</span>
-      <div class="og">
-        <button class="ob" onclick="setSetting('N',5,this)">5×5</button>
-        <button class="ob" onclick="setSetting('N',6,this)">6×6</button>
-        <button class="ob sel" onclick="setSetting('N',8,this)">8×8</button>
-        <button class="ob" onclick="setSetting('N',10,this)">10×10</button>
-      </div>
-    </div>
-    <div class="srow"><span class="slbl">Harita Modu</span>
-      <div class="og">
-        <button class="ob sel" onclick="setSetting('map','classic',this)">Klasik</button>
-        <button class="ob" onclick="setSetting('map','rocky',this)">Kayalık</button>
-        <button class="ob" onclick="setSetting('map','shallow',this)">Sığ Sular</button>
-        <button class="ob" onclick="setSetting('map','foggy',this)">Sisli</button>
-      </div>
-    </div>
-    <div class="srow"><span class="slbl">Robot Tahtasını Göster</span>
-      <div class="og">
-        <button class="ob" onclick="setSetting('showR',true,this)">Evet</button>
-        <button class="ob sel" onclick="setSetting('showR',false,this)">Hayır</button>
-      </div>
-    </div>
+    <div class="srow"><span class="slbl">Tahta Boyutu</span><div class="og"><button class="ob" onclick="setSetting('N',5,this)">5×5</button><button class="ob" onclick="setSetting('N',6,this)">6×6</button><button class="ob sel" onclick="setSetting('N',8,this)">8×8</button><button class="ob" onclick="setSetting('N',10,this)">10×10</button></div></div>
+    <div class="srow"><span class="slbl">Harita Modu</span><div class="og"><button class="ob sel" onclick="setSetting('map','classic',this)">Klasik</button><button class="ob" onclick="setSetting('map','rocky',this)">Kayalık</button><button class="ob" onclick="setSetting('map','shallow',this)">Sığ Sular</button><button class="ob" onclick="setSetting('map','foggy',this)">Sisli</button></div></div>
+    <div class="srow"><span class="slbl">Robot Tahtasını Göster</span><div class="og"><button class="ob" onclick="setSetting('showR',true,this)">Evet</button><button class="ob sel" onclick="setSetting('showR',false,this)">Hayır</button></div></div>
   </div>
-  <div style="display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center">
-    <button class="btn prim" onclick="showScreen('screen-menu')">← Geri</button>
-  </div>
+  <div style="display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center"><button class="btn prim" onclick="showScreen('screen-menu')">← Geri</button></div>
   <div style="height:2rem"></div>
 </div>
 
@@ -264,17 +195,14 @@ canvas.board.cl{cursor:crosshair;}canvas.board.pk{cursor:pointer;}
 <!-- PLACEMENT -->
 <div id="screen-placement" class="screen">
   <div class="plbl" id="plbl">Oyuncu 1 — Gemi Yerleştir</div>
-  <div style="color:var(--pd);font-style:italic;font-size:.78rem">Listeden gemi seç → tahtada tıkla &nbsp;|&nbsp; R = döndür</div>
+  <div style="color:var(--pd);font-style:italic;font-size:.78rem">Listeden gemi seç → tahtada tıkla | R = döndür</div>
   <div style="display:flex;gap:.38rem;flex-wrap:wrap;justify-content:center">
     <button class="ab" onclick="rotatePl()">↻ Döndür (R)</button>
     <button class="ab" onclick="autoPlace()">🎲 Otomatik</button>
     <button class="btn prim sm" id="btn-done" onclick="donePlacement()" disabled>Hazır →</button>
   </div>
   <div style="display:flex;gap:.85rem;flex-wrap:wrap;justify-content:center;align-items:flex-start">
-    <div>
-      <div class="blbl" style="text-align:center;margin-bottom:.28rem">TAHTANIZ</div>
-      <canvas id="cv-place" class="board cl"></canvas>
-    </div>
+    <div><div class="blbl" style="text-align:center;margin-bottom:.28rem">TAHTANIZ</div><canvas id="cv-place" class="board cl"></canvas></div>
     <div style="display:flex;flex-direction:column;gap:.22rem;padding-top:1.25rem;min-width:125px">
       <div class="cn" style="font-size:.72rem;color:var(--gd);margin-bottom:.22rem">GEMİLER</div>
       <div id="ship-list"></div>
@@ -300,7 +228,7 @@ canvas.board.cl{cursor:crosshair;}canvas.board.pk{cursor:pointer;}
     <div class="tind" id="tind">Oyuncu 1'in Turu</div>
     <button class="btn sm dng" onclick="quitGame()">✕ Çıkış</button>
   </div>
-  <div class="dban" id="dban">⚔ DÜELLO MODU — Eylem seç, gemiyi seç, saldır!</div>
+  <div class="dban" id="dban">⚔ DÜELLO MODU — Kendi gemini tıkla, silahını ateşle!</div>
   <div class="sbar">
     <div style="text-align:center"><div class="snum" id="sc0">0</div><div class="slbl2" id="scl0">OYUNCU 1</div></div>
     <div style="font-size:.9rem;color:var(--gdark);padding-top:.28rem">vs</div>
@@ -311,8 +239,8 @@ canvas.board.cl{cursor:crosshair;}canvas.board.pk{cursor:pointer;}
     <div class="bw"><div class="blbl" id="blbl1">DÜŞMAN SULARI</div><canvas id="cv1" class="board cl"></canvas></div>
   </div>
   <div id="duel-area" style="display:none;flex-direction:column;align-items:center;gap:.32rem">
-    <div class="blbl">BİRLEŞİK SAVAŞ ALANI</div>
-    <canvas id="cv-duel" class="board cl"></canvas>
+    <div class="blbl">BİRLEŞİK SAVAŞ ALANI — Gemini tıkla: silahı ateşler!</div>
+    <div class="duel-scroll"><canvas id="cv-duel" class="board cl"></canvas></div>
   </div>
   <div class="tleg" id="tleg" style="margin:.22rem 0"></div>
   <div class="abar" id="abar"></div>
@@ -332,321 +260,210 @@ canvas.board.cl{cursor:crosshair;}canvas.board.pk{cursor:pointer;}
 </div>
 
 <script>
-// ════════════════════════════════════════════════════════
-//  SHIP IMAGE URLS
-//  Kart görseli ve oyun tahtası görseli ayrı ayrı
-// ════════════════════════════════════════════════════════
-const SHIP_IMGS = {
-  // TCG kartında görünen resimler
-  kalyon_card:   '', // <-- BURAYA KALYON KART RESMİ URL'Sİ (önerilen: 148×105px)
-  kadirga_card:  '', // <-- BURAYA KADIRGA KART RESMİ URL'Sİ
-  trireme_card:  '', // <-- BURAYA TRİREME KART RESMİ URL'Sİ
-
-  // Oyun tahtasında geminin üzerinde görünen resimler
-  kalyon_board:  '', // <-- BURAYA KALYON TAHTA RESMİ URL'Sİ (küçük, şeffaf arka plan)
-  kadirga_board: '', // <-- BURAYA KADIRGA TAHTA RESMİ URL'Sİ
-  trireme_board: '', // <-- BURAYA TRİREME TAHTA RESMİ URL'Sİ
+// ═══════════ IMAGE / MUSIC URLS ═══════════
+const SHIP_IMGS={
+  kalyon_card:'',   // <-- KALYON KART RESMİ URL
+  kadirga_card:'',  // <-- KADIRGA KART RESMİ URL
+  trireme_card:'',  // <-- TRİREME KART RESMİ URL
+  kalyon_board:'',  // <-- KALYON TAHTA RESMİ URL
+  kadirga_board:'', // <-- KADIRGA TAHTA RESMİ URL
+  trireme_board:'', // <-- TRİREME TAHTA RESMİ URL
 };
-
-// ════════════════════════════════════════════════════════
-//  MÜZİK PARÇALARI — YouTube embed URL'leri
-//  YouTube Paylaş → Yerıştır → iframe src URL'sini kopyalayın
-//  Örnek: 'https://www.youtube.com/embed/VIDEO_ID?autoplay=1'
-// ════════════════════════════════════════════════════════
-const MUSIC_TRACKS = [
-  { name:'🎵 Korsan Müziği 1',   url:'' }, // <-- YOUTUBE EMBED URL (1. Parça)
-  { name:'🎵 Korsan Müziği 2',   url:'' }, // <-- YOUTUBE EMBED URL (2. Parça)
-  { name:'🎵 Deniz Şarkısı',     url:'' }, // <-- YOUTUBE EMBED URL (3. Parça)
-  { name:'🎵 Savaş Davulu',      url:'' }, // <-- YOUTUBE EMBED URL (4. Parça)
-  { name:'🎵 Sea Shanty',        url:'' }, // <-- YOUTUBE EMBED URL (5. Parça)
+const MUSIC_TRACKS=[
+  {name:'🎵 Korsan Müziği 1',url:''},  // <-- YOUTUBE EMBED URL (1)
+  {name:'🎵 Korsan Müziği 2',url:''},  // <-- YOUTUBE EMBED URL (2)
+  {name:'🎵 Deniz Şarkısı',  url:''},  // <-- YOUTUBE EMBED URL (3)
+  {name:'🎵 Savaş Davulu',   url:''},  // <-- YOUTUBE EMBED URL (4)
+  {name:'🎵 Sea Shanty',     url:''},  // <-- YOUTUBE EMBED URL (5)
 ];
 
-// ════════════════════════════════════════════════════════
-//  DATA
-// ════════════════════════════════════════════════════════
+// ═══════════ DATA ═══════════
 const SHIPS={
-  kalyon: {name:'Kalyon', atkType:'broadside',canRev:false,hasSails:true,hasOars:false,
-    desc:'Sadece ileri, yanlardan top atar.',hpA:6,hpM:2,hpS:1,atkA:3,atkM:2,atkS:1},
-  kadirga:{name:'Kadırga',atkType:'front',   canRev:true, hasSails:true,hasOars:true,
-    desc:'İleri-geri, önden top atar.',hpA:6,hpM:2,hpS:1,atkA:2,atkM:2,atkS:1},
-  trireme:{name:'Trireme',atkType:'ram',     canRev:true, hasSails:true,hasOars:true,
-    desc:'Koçbaşı gemisi, çarparak saldırır.',hpA:6,hpM:2,hpS:1,atkA:1,atkM:1,atkS:1}
+  kalyon: {name:'Kalyon', atkType:'broadside',canRev:false,hasOars:false,desc:'Sadece ileri, yanlardan top atar.',hpA:6,hpM:2,hpS:1,atkA:3,atkM:2,atkS:1},
+  kadirga:{name:'Kadırga',atkType:'front',    canRev:true, hasOars:true, desc:'İleri-geri, önden top atar.',hpA:6,hpM:2,hpS:1,atkA:2,atkM:2,atkS:1},
+  trireme:{name:'Trireme',atkType:'ram',      canRev:true, hasOars:true, desc:'Koçbaşı, çarparak saldırır.',hpA:6,hpM:2,hpS:1,atkA:1,atkM:1,atkS:1}
 };
 const ROLES=['admiral','mid','small'];
 const RLBL={admiral:'Amiral Gemisi (3×2)',mid:'Orta Boy Gemi (1×2)',small:'Küçük Gemi (1×1)'};
-const CT={
-  kalyon: {cls:'tcg-k',  art:'tcg-art-k',   col:'#c9a84c',type:'⛵ Yelken'},
-  kadirga:{cls:'tcg-kad',art:'tcg-art-kad',  col:'#5b8dd9',type:'🚣 Kürek'},
-  trireme:{cls:'tcg-t',  art:'tcg-art-t',    col:'#c0602a',type:'🚤 Koçbaşı'}
-};
-const WIN_Q=['Denizler fethedilemez, sadece saygı duyulur.','Her fırtınanın bir sonu vardır.','Cesur kaptan cesaretini denizde ispat eder.','Gemi batabilir; denizcilik ruhu batmaz.'];
-const TC=[0,'rgba(100,65,30,.75)','rgba(74,138,106,.55)','rgba(30,90,75,.75)','rgba(140,140,200,.35)'];
-
+const CT={kalyon:{cls:'tcg-k',art:'tcg-art-k',col:'#c9a84c',type:'⛵ Yelken'},kadirga:{cls:'tcg-kad',art:'tcg-art-kad',col:'#5b8dd9',type:'🚣 Kürek'},trireme:{cls:'tcg-t',art:'tcg-art-t',col:'#c0602a',type:'🚤 Koçbaşı'}};
+const WIN_Q=['Denizler fethedilemez, sadece saygı duyulur.','Her fırtınanın bir sonu vardır.','Cesur kaptan cesaretini denizde ispat eder.'];
+// Terrain: 0=water 1=rock 2=shallow 3=very_shallow 4=fog
+// Fog is drawn via drawFogLayer (not in TC - TC[4] is just a placeholder)
+const TC=[0,'rgba(100,65,30,.75)','rgba(74,138,106,.55)','rgba(30,90,75,.75)','rgba(80,80,140,.12)'];
 const PERSONAS={
-  pirate:{name:'Korsan',icon:'🏴‍☠️',
-    lines:{attack:["Karadeniz'de gemilerin mi battı? Hahaha!","Toplar konuşur, kaptanım!","Hazineye giden yol senin batık geminizden geçer!"],
-      miss:["Kaçamazsın uzun süre!","Bir dahaki sefere!"],hit:["İSABET! KAHKAHA!","Toplarım asla yanılmaz!"],sink:["BATTI! Balıklar iyi yemek yiyecek!","Bir daha! Deniz benim!"]},
-    style:'aggressive',lineFreq:.5,thinkMs:220,duelStyle:'rush'},
-  admiral:{name:'Amiral',icon:'🎖',
-    lines:{attack:["Burası bizim sularımız.","Geri çekilin, kazanamazsınız.","Yangın emri."],
-      miss:["Bekliyorum...","Taktik gereği."],hit:["Öngörüldüğü gibi.","Taktik üstünlük teyit edildi."],sink:["Gemi batırıldı. Sonraki hedef.","Savaş bilimi doğrulandı."]},
-    style:'tactical',lineFreq:.15,thinkMs:1100,duelStyle:'strategic'},
-  crazy:{name:'Çılgın',icon:'🌀',
-    lines:{attack:["AHAHAHA!","Ben neredeyim???","Sabah 3'te kalktım ve buraya geldim!","Gemiler uçabilir mi?"],
-      miss:["Olmadı ama TAMAM!","Zaten hedef almıyordum!"],hit:["OLDU! NİYE OLDU?!","Tesadüf!"],sink:["BATTI! BEN DE ŞAŞIRDIM!","Rastgele tıklamak işe yarıyor!"]},
-    style:'random',lineFreq:.65,thinkMs:80,duelStyle:'chaotic'}
+  pirate:{name:'Korsan',icon:'🏴‍☠️',lines:{attack:["Karadeniz'de gemilerin mi battı?","Toplar konuşur!","Hazineye giden yol senin batık geminizden geçer!"],miss:["Kaçamazsın!"],hit:["İSABET! KAHKAHA!"],sink:["BATTI! Balıklar iyi yemek yiyecek!"]},style:'aggressive',lineFreq:.5,thinkMs:220,duelStyle:'rush'},
+  admiral:{name:'Amiral',icon:'🎖',lines:{attack:["Burası bizim sularımız.","Geri çekilin.","Yangın emri."],miss:["Bekliyorum..."],hit:["Öngörüldüğü gibi."],sink:["Gemi batırıldı."]},style:'tactical',lineFreq:.15,thinkMs:1100,duelStyle:'strategic'},
+  crazy:{name:'Çılgın',icon:'🌀',lines:{attack:["AHAHAHA!","Ben neredeyim?","Sabah 3'te kalktım!"],miss:["Olmadı ama TAMAM!"],hit:["OLDU! NİYE?!"],sink:["BATTI! BEN DE ŞAŞIRDIM!"]},style:'random',lineFreq:.65,thinkMs:80,duelStyle:'chaotic'}
 };
-
 let cfg={mode:'2player',diff:'medium',N:8,map:'classic',showR:false,persona:'pirate'};
 let G=null;
 let GS={selectingFor:1,p1Roles:null,p2Roles:null,roles:{admiral:null,mid:null,small:null}};
 
-// ════════════════════════════════════════════════════════
-//  IMAGE PRELOAD
-// ════════════════════════════════════════════════════════
+// ═══════════ IMAGE PRELOAD ═══════════
 const LI={};
-function preload(){
-  Object.entries(SHIP_IMGS).forEach(([k,url])=>{
-    if(!url)return;
-    const img=new Image();img.crossOrigin='anonymous';
-    img.onload=()=>{LI[k]=img;};img.src=url;
-  });
-}
+function preload(){Object.entries(SHIP_IMGS).forEach(([k,url])=>{if(!url)return;const img=new Image();img.crossOrigin='anonymous';img.onload=()=>{LI[k]=img;};img.src=url;});}
 preload();
-function getImg(key){return LI[key]||null;}
+function gImg(k){return LI[k]||null;}
 
-// ════════════════════════════════════════════════════════
-//  UTILS
-// ════════════════════════════════════════════════════════
-function showScreen(id){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  document.getElementById('fbtns').className='fbtns'+(id==='screen-game'?' show':'');
-}
-function setSetting(k,v,el){cfg[k]=v;if(el){el.closest('.og').querySelectorAll('.ob').forEach(b=>b.classList.remove('sel'));el.classList.add('sel');}
-  const ir=cfg.mode==='robot';document.getElementById('row-diff').style.opacity=ir?'1':'0.4';document.getElementById('row-pers').style.opacity=ir?'1':'0.4';}
+// ═══════════ UTILS ═══════════
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');document.getElementById('fbtns').className='fbtns'+(id==='screen-game'?' show':'');}
+function setSetting(k,v,el){cfg[k]=v;if(el){el.closest('.og').querySelectorAll('.ob').forEach(b=>b.classList.remove('sel'));el.classList.add('sel');}const ir=cfg.mode==='robot';document.getElementById('row-diff').style.opacity=ir?'1':'0.4';document.getElementById('row-pers').style.opacity=ir?'1':'0.4';}
 document.getElementById('row-diff').style.opacity='0.4';document.getElementById('row-pers').style.opacity='0.4';
-
 function showModal(t,m,btns){document.getElementById('mttl').textContent=t;document.getElementById('mmsg').textContent=m;const bc=document.getElementById('mbtns');bc.innerHTML='';btns.forEach(b=>{const el=document.createElement('button');el.className=b.cls||'btn';el.textContent=b.lbl;el.onclick=b.fn;bc.appendChild(el);});document.getElementById('modal-ov').classList.add('open');}
 function closeModal(){document.getElementById('modal-ov').classList.remove('open');}
 function quitGame(){showModal('Oyundan Çık','Ana menüye dönmek istiyor musunuz?',[{lbl:'Evet',cls:'btn dng',fn:()=>{closeModal();stopMusic();stopWA();showScreen('screen-menu');}},{lbl:'Hayır',cls:'btn',fn:closeModal}]);}
-
 function log(msg,cls=''){const el=document.getElementById('blog');const p=document.createElement('p');if(cls)p.className=cls;p.textContent=msg;el.appendChild(p);el.scrollTop=el.scrollHeight;}
 function setStatus(msg){document.getElementById('smsg').textContent=msg;}
-
-// ════════════════════════════════════════════════════════
-//  FLOATING PANELS
-// ════════════════════════════════════════════════════════
 function toggleGP(){document.getElementById('gpanel').classList.toggle('open');document.getElementById('mpanel').classList.remove('open');}
 function toggleMP(){document.getElementById('mpanel').classList.toggle('open');document.getElementById('gpanel').classList.remove('open');}
-function setVol(v){document.getElementById('vol-val').textContent=v;}
 function toggleShowR(){if(G){G.showR=!G.showR;document.getElementById('btn-shr').textContent=G.showR?'Görünür':'Gizli';drawBoards();}}
-
 let curTrack=-1;
 function renderTracks(){const el=document.getElementById('track-list');el.innerHTML='';MUSIC_TRACKS.forEach((tr,i)=>{const b=document.createElement('div');b.className='mptr'+(curTrack===i?' playing':'');b.textContent=tr.url?tr.name:tr.name+' (URL yok)';if(tr.url)b.onclick=()=>playTrack(i);el.appendChild(b);});}
 function playTrack(i){const tr=MUSIC_TRACKS[i];if(!tr||!tr.url){showModal('Müzik','YouTube URL girilmemiş.',[{lbl:'Tamam',fn:closeModal}]);return;}curTrack=i;let url=tr.url+(tr.url.includes('?')?'&':'?')+'autoplay=1';document.getElementById('yt-frame').src=url;document.getElementById('yt-name').textContent=tr.name;document.getElementById('ytwrap').classList.add('open');document.getElementById('mpanel').classList.remove('open');renderTracks();}
 function stopMusic(){curTrack=-1;document.getElementById('yt-frame').src='';document.getElementById('ytwrap').classList.remove('open');renderTracks();}
 renderTracks();
 
-// ════════════════════════════════════════════════════════
-//  SHIP GEOMETRY
-// ════════════════════════════════════════════════════════
-// dir 0=up,1=right,2=down,3=left ; long axis = movement direction
-// admiral: 3long×2wide → dir%2==0:{w:2,h:3}; dir%2==1:{w:3,h:2}
-// mid:     2long×1wide → dir%2==0:{w:1,h:2}; dir%2==1:{w:2,h:1}
-// small:   1×1
-function sDim(ship,dir){
-  const d=dir!==undefined?dir:ship.dir;
-  if(ship.size==='small')return{w:1,h:1};
-  if(ship.size==='mid')return d%2===0?{w:1,h:2}:{w:2,h:1};
-  return d%2===0?{w:2,h:3}:{w:3,h:2};
+// ═══════════ TOUCH-AWARE CELL HELPER ═══════════
+function getCell(e,cv){
+  const r=cv.getBoundingClientRect();
+  const cx=e.touches?e.touches[0].clientX:(e.changedTouches?e.changedTouches[0].clientX:e.clientX);
+  const cy2=e.touches?e.touches[0].clientY:(e.changedTouches?e.changedTouches[0].clientY:e.clientY);
+  const sx=cv.width/r.width,sy=cv.height/r.height;
+  return{x:Math.floor((cx-r.left)*sx/cv._c),y:Math.floor((cy2-r.top)*sy/cv._c)};
 }
+
+// ═══════════ GEOMETRY ═══════════
+function sDim(ship,dir){const d=dir!==undefined?dir:ship.dir;if(ship.size==='small')return{w:1,h:1};if(ship.size==='mid')return d%2===0?{w:1,h:2}:{w:2,h:1};return d%2===0?{w:2,h:3}:{w:3,h:2};}
 function sCells(ship,ox,oy,dir){const d=dir!==undefined?dir:ship.dir;const{w,h}=sDim(ship,d);const x=ox!==undefined?ox:ship.x,y=oy!==undefined?oy:ship.y;const a=[];for(let dy=0;dy<h;dy++)for(let dx=0;dx<w;dx++)a.push({x:x+dx,y:y+dy});return a;}
 function fwdV(dir){return[{dx:0,dy:-1},{dx:1,dy:0},{dx:0,dy:1},{dx:-1,dy:0}][dir];}
 function bkV(dir){const f=fwdV(dir);return{dx:-f.dx,dy:-f.dy};}
 function frontEdge(ship){const{w,h}=sDim(ship);const a=[];if(ship.dir===0){for(let x=0;x<w;x++)a.push({x:ship.x+x,y:ship.y});}else if(ship.dir===1){for(let y=0;y<h;y++)a.push({x:ship.x+w-1,y:ship.y+y});}else if(ship.dir===2){for(let x=0;x<w;x++)a.push({x:ship.x+x,y:ship.y+h-1});}else{for(let y=0;y<h;y++)a.push({x:ship.x,y:ship.y+y});}return a;}
-
 function occSet(players,exPi,exSi){const s=new Set();players.forEach((p,pi)=>p.ships.forEach((sh,si)=>{if(pi===exPi&&si===exSi||sh.sunk)return;sCells(sh,sh.x,sh.y).forEach(c=>s.add(c.x+','+c.y));}));return s;}
-
 function canPlace(ships,idx,x,y,dir,bW,bH){const s=ships[idx];const{w,h}=sDim(s,dir);if(x<0||y<0||x+w>bW||y+h>bH)return false;const occ=new Set();ships.forEach((o,i)=>{if(i!==idx&&o.placed)sCells(o,o.x,o.y).forEach(c=>occ.add(c.x+','+c.y));});return sCells(s,x,y,dir).every(c=>!occ.has(c.x+','+c.y));}
+function terrBlocked(ship,x,y,forPlace=false){return sCells(ship,x,y).some(c=>{const t=G.terrain[c.y]?.[c.x]||0;if(forPlace&&t===1)return true;if(t===3)return true;if(t===2&&ship.type==='kalyon')return true;return false;});}
+function canMoveStep(players,pi,si,fwd,bW,bH){const sh=players[pi].ships[si];if(!fwd&&!SHIPS[sh.type].canRev)return false;const v=fwd?fwdV(sh.dir):bkV(sh.dir);const{w,h}=sDim(sh);const nx=sh.x+v.dx,ny=sh.y+v.dy;if(nx<0||ny<0||nx+w>bW||ny+h>bH)return false;if(!G.duel&&terrBlocked(sh,nx,ny,false))return false;const occ=occSet(players,pi,si);return sCells(sh,nx,ny).every(c=>!occ.has(c.x+','+c.y));}
+function canRot(players,pi,si,nd,bW,bH){const sh=players[pi].ships[si];if(sh.rotCool>0)return false;const{w,h}=sDim(sh,nd);if(sh.x+w>bW||sh.y+h>bH)return false;const occ=occSet(players,pi,si);return sCells(sh,sh.x,sh.y,nd).every(c=>!occ.has(c.x+','+c.y));}
 
-function canMoveStep(players,pi,si,fwd,bW,bH){
-  const sh=players[pi].ships[si];
-  if(!fwd&&!SHIPS[sh.type].canRev)return false;
-  const v=fwd?fwdV(sh.dir):bkV(sh.dir);
-  const{w,h}=sDim(sh);
-  const nx=sh.x+v.dx,ny=sh.y+v.dy;
-  if(nx<0||ny<0||nx+w>bW||ny+h>bH)return false;
-  if(!G.duel&&terrBlocked(sh,nx,ny))return false;
-  const occ=occSet(players,pi,si);
-  return sCells(sh,nx,ny).every(c=>!occ.has(c.x+','+c.y));
-}
-function canRot(players,pi,si,nd,bW,bH){
-  const sh=players[pi].ships[si];
-  if(sh.rotCool>0)return false;
-  const{w,h}=sDim(sh,nd);
-  if(sh.x+w>bW||sh.y+h>bH)return false;
-  const occ=occSet(players,pi,si);
-  return sCells(sh,sh.x,sh.y,nd).every(c=>!occ.has(c.x+','+c.y));
-}
-
-// ════════════════════════════════════════════════════════
-//  TERRAIN
-// ════════════════════════════════════════════════════════
+// ═══════════ TERRAIN ═══════════
 function genTerrain(N,mode){
-  const T=Array.from({length:N},()=>new Array(N).fill(0));
-  if(mode==='classic')return T;
+  const T=Array.from({length:N},()=>new Array(N).fill(0));if(mode==='classic')return T;
   const r=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
   if(mode==='rocky'){for(let k=0;k<r(3,5);k++){const cx=r(1,N-2),cy=r(1,N-2);T[cy][cx]=1;if(Math.random()<.6&&cx+1<N)T[cy][cx+1]=1;if(Math.random()<.6&&cy+1<N)T[cy+1][cx]=1;}}
   else if(mode==='shallow'){for(let k=0;k<r(2,4);k++){const cx=r(0,N-1),cy=r(0,N-1),t=Math.random()<.3?3:2;T[cy][cx]=t;if(cx+1<N&&Math.random()<.5)T[cy][cx+1]=t;if(cy+1<N&&Math.random()<.5)T[cy+1][cx]=t;}}
-  else if(mode==='foggy'){for(let k=0;k<r(2,4);k++){const cx=r(0,N-3),cy=r(0,N-3),rw=r(2,3),rh=r(2,3);for(let dy=0;dy<rh;dy++)for(let dx=0;dx<rw;dx++)if(cy+dy<N&&cx+dx<N)T[cy+dy][cx+dx]=4;}}
+  else if(mode==='foggy'){for(let k=0;k<r(2,4);k++){const cx=r(0,N-3),cy=r(0,N-3),rw=r(2,4),rh=r(2,4);for(let dy=0;dy<rh;dy++)for(let dx=0;dx<rw;dx++)if(cy+dy<N&&cx+dx<N)T[cy+dy][cx+dx]=4;}}
   return T;
-}
-function terrBlocked(ship,x,y){
-  return sCells(ship,x,y).some(c=>{const t=G.terrain[c.y]?.[c.x]||0;return t===3||(t===2&&ship.type==='kalyon');});
 }
 function applyRockDmg(pi,si){
   const sh=G.players[pi].ships[si];
   sCells(sh,sh.x,sh.y).forEach(c=>{const t=G.terrain[c.y]?.[c.x]||0;if(t===1){const already=G.players[pi].hits.some(h=>h.x===c.x&&h.y===c.y&&h.rock);if(!already){G.players[pi].hits.push({x:c.x,y:c.y,turn:G.turn,rock:true});log(`⛰ ${SHIPS[sh.type].name} kayalığa çarptı! (${c.x+1},${c.y+1})`,'info');}}});
 }
 
-// ════════════════════════════════════════════════════════
-//  SAIL SYSTEM (for chain shot)
-// ════════════════════════════════════════════════════════
+// ═══════════ SAIL / WIND ═══════════
 function sailCount(ship){return{admiral:3,mid:2,small:1}[ship.size];}
-function sailsRemaining(ship){return Math.max(0,sailCount(ship)-(ship.brokenSails||0));}
-function windSpeed(ship,fwd){
+function sailsRem(ship){return Math.max(0,sailCount(ship)-(ship.brokenSails||0));}
+function canSailMove(ship){if(!SHIPS[ship.type].hasOars)return sailsRem(ship)>0;return true;}
+// Wind speed: Kalyon=3 cells, Kadırga/Trireme=2 cells when moving in wind direction
+function windSpd(ship,fwd){
   if(!fwd||!G.windTurns||G.windDir===null||ship.dir!==G.windDir)return 1;
   if(SHIPS[ship.type].hasOars){if(ship.sailDamaged)return 1;return 2;}
-  const rem=sailsRemaining(ship);if(rem<=0)return 0;return Math.min(rem,3);
-}
-function canSailMove(ship){
-  if(!SHIPS[ship.type].hasOars)return sailsRemaining(ship)>0;
-  return true; // oared ships can always move
+  const r=sailsRem(ship);if(r<=0)return 0;return Math.min(r,3);
 }
 
-// ════════════════════════════════════════════════════════
-//  TRIREME RAM ZONE
-// ════════════════════════════════════════════════════════
-function triremeRamZone(tri){
-  const fv=fwdV(tri.dir);const ramLen=tri.size==='admiral'?2:1;
-  const zone=[];
-  frontEdge(tri).forEach(fc=>{for(let r=1;r<=ramLen;r++)zone.push({x:fc.x+fv.dx*r,y:fc.y+fv.dy*r});});
-  return zone;
-}
+// ═══════════ TRIREME RAM ═══════════
+function triRamZone(tri){const fv=fwdV(tri.dir);const len=tri.size==='admiral'?2:1;const zone=[];frontEdge(tri).forEach(fc=>{for(let r=1;r<=len;r++)zone.push({x:fc.x+fv.dx*r,y:fc.y+fv.dy*r});});return zone;}
 function checkRams(){
-  G.players.forEach((p,pi)=>{
-    const opp=1-pi;
-    p.ships.forEach(tri=>{
-      if(tri.sunk||tri.type!=='trireme')return;
-      const zone=triremeRamZone(tri);
-      G.players[opp].ships.forEach(s=>{
-        if(s.sunk)return;
-        sCells(s,s.x,s.y).forEach(c=>{
-          if(zone.some(r=>r.x===c.x&&r.y===c.y)){
-            const already=G.players[opp].hits.some(h=>h.x===c.x&&h.y===c.y);
-            if(!already){
-              G.players[opp].hits.push({x:c.x,y:c.y,turn:G.turn,ram:true});
-              G.hits[pi]++;
-              log(`🚤 ${SHIPS[tri.type].name} koçbaşı çarptı! (${c.x+1},${c.y+1})`,'hit');
-              checkMidShrink(opp,s,c.x,c.y);
-              if(!s.sunk&&sCells(s,s.x,s.y).every(c2=>G.players[opp].hits.some(h=>h.x===c2.x&&h.y===c2.y))){s.sunk=true;log(`⚓ ${SHIPS[s.type].name} BATTI!`,'sink');checkWin();}
-            }
-          }
-        });
+  G.players.forEach((p,pi)=>{const opp=1-pi;
+    p.ships.forEach(tri=>{if(tri.sunk||tri.type!=='trireme')return;
+      const zone=triRamZone(tri);
+      G.players[opp].ships.forEach(s=>{if(s.sunk)return;
+        sCells(s,s.x,s.y).forEach(c=>{if(zone.some(r=>r.x===c.x&&r.y===c.y)){
+          const already=G.players[opp].hits.some(h=>h.x===c.x&&h.y===c.y);
+          if(!already){G.players[opp].hits.push({x:c.x,y:c.y,turn:G.turn,ram:true});G.hits[pi]++;log(`🚤 ${SHIPS[tri.type].name} koçbaşı çarptı! (${c.x+1},${c.y+1})`,'hit');
+            midShrink(opp,s,c.x,c.y);
+            if(!s.sunk&&sCells(s,s.x,s.y).every(c2=>G.players[opp].hits.some(h=>h.x===c2.x&&h.y===c2.y))){s.sunk=true;log(`⚓ ${SHIPS[s.type].name} BATTI!`,'sink');checkWin();}}
+        }});
       });
     });
   });
 }
-// Mid ship shrink: move to survivor cell
-function checkMidShrink(pi,ship,hx,hy){
+// Move hit markers that sit on a ship's cells when the ship moves
+function moveHitsWithShip(pi,si,dx,dy){
+  const ship=G.players[pi].ships[si];
+  const cs=new Set(sCells(ship,ship.x,ship.y).map(c=>c.x+','+c.y));
+  ['hits','chainHits'].forEach(arr=>{G.players[pi][arr].filter(h=>!h.preDuel&&!h.rock&&cs.has(h.x+','+h.y)).forEach(h=>{h.x+=dx;h.y+=dy;});});
+}
+function midShrink(pi,ship,hx,hy){
   if(ship.size==='mid'&&!ship.damaged){
     const cells=sCells(ship,ship.x,ship.y);
-    const survivor=cells.find(c=>!(c.x===hx&&c.y===hy));
+    const surv=cells.find(c=>!(c.x===hx&&c.y===hy));
     ship.damaged=true;ship.size='small';ship.w=1;ship.h=1;
-    if(survivor){ship.x=survivor.x;ship.y=survivor.y;}
-    log(`💥 ${SHIPS[ship.type].name} küçüldü — ${survivor?`(${ship.x+1},${ship.y+1})`:'bitti'}!`,'info');
+    if(surv){ship.x=surv.x;ship.y=surv.y;}
+    log(`💥 ${SHIPS[ship.type].name} küçüldü!`,'info');
   }
 }
 
-// ════════════════════════════════════════════════════════
-//  WIND ANIMATION
-// ════════════════════════════════════════════════════════
+// ═══════════ WIND ANIMATION ═══════════
 let _waf=0,_waT=null;
 function startWA(){if(_waT)return;_waT=setInterval(()=>{_waf++;if(G&&G.windTurns>0)drawBoards();else stopWA();},110);}
 function stopWA(){if(_waT){clearInterval(_waT);_waT=null;}_waf=0;}
-function drawWindOverlay(ctx,cell,N){
+function drawWindOverlay(ctx,cell,N,offX=0){
   if(!G||!G.windTurns||G.windDir===null)return;
   const arr=['↑','→','↓','←'][G.windDir];
-  const alpha=.15+.1*Math.sin(_waf*.45);
-  ctx.fillStyle=`rgba(120,200,255,${alpha})`;
-  ctx.font=`${cell*.42}px sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';
-  const phase=(_waf)%3;
-  for(let y=0;y<N;y++)for(let x=0;x<N;x++)if((x+y+phase)%3===0)ctx.fillText(arr,(x+.5)*cell,(y+.5)*cell);
+  const alpha=.14+.1*Math.sin(_waf*.45);
+  ctx.fillStyle=`rgba(120,200,255,${alpha})`;ctx.font=`${cell*.42}px sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';
+  const phase=_waf%3;
+  for(let y=0;y<N;y++)for(let x=0;x<N;x++)if((x+y+phase)%3===0)ctx.fillText(arr,(offX+x+.5)*cell,(y+.5)*cell);
+}
+// Fog overlay drawn LAST — solid cover over fog cells (no shape artifacts)
+function drawFogLayer(ctx,cell,N,offX=0){
+  if(G.map!=='foggy')return;
+  ctx.fillStyle='rgba(72,72,135,0.93)';
+  for(let y=0;y<N;y++)for(let x=0;x<N;x++)if(G.terrain[y]?.[x]===4)ctx.fillRect((offX+x)*cell,y*cell,cell,cell);
 }
 
-// ════════════════════════════════════════════════════════
-//  SHIP SELECT
-// ════════════════════════════════════════════════════════
+// ═══════════ SHIP SELECT ═══════════
 function startNewGame(){GS={selectingFor:1,p1Roles:null,p2Roles:null,roles:{admiral:null,mid:null,small:null}};renderRoles();showScreen('screen-ship-select');}
 function ssBack(){if(GS.selectingFor===1)showScreen('screen-settings');else{GS.selectingFor=1;GS.p1Roles=null;GS.roles={admiral:null,mid:null,small:null};renderRoles();}}
 function renderRoles(){
-  const isp2=GS.selectingFor===2;
-  document.getElementById('ss-ttl').textContent=`⚓ ${isp2?'Oyuncu 2':'Oyuncu 1'} — Gemi Rolleri`;
+  const isp2=GS.selectingFor===2;document.getElementById('ss-ttl').textContent=`⚓ ${isp2?'Oyuncu 2':'Oyuncu 1'} — Gemi Rolleri`;
   const c=document.getElementById('role-sections');c.innerHTML='';
-  ROLES.forEach(role=>{
-    const sec=document.createElement('div');sec.className='tcg-section';
-    const lbl=document.createElement('div');lbl.className='tcg-rl';lbl.textContent=RLBL[role];sec.appendChild(lbl);
+  ROLES.forEach(role=>{const sec=document.createElement('div');sec.className='tcg-section';const lbl=document.createElement('div');lbl.className='tcg-rl';lbl.textContent=RLBL[role];sec.appendChild(lbl);
     const row=document.createElement('div');row.className='tcg-row';
     Object.entries(SHIPS).forEach(([key,sh])=>{
-      const used=Object.entries(GS.roles).some(([r,v])=>r!==role&&v===key);
-      const isSel=GS.roles[role]===key;const th=CT[key];
-      const card=document.createElement('div');
-      card.className=`tcgc ${th.cls}${isSel?' sel':''}${used?' off':''}`;
-      const hp={admiral:sh.hpA,mid:sh.hpM,small:sh.hpS}[role];
-      const atk={admiral:sh.atkA,mid:sh.atkM,small:sh.atkS}[role];
+      const used=Object.entries(GS.roles).some(([r,v])=>r!==role&&v===key);const isSel=GS.roles[role]===key;const th=CT[key];
+      const card=document.createElement('div');card.className=`tcgc ${th.cls}${isSel?' sel':''}${used?' off':''}`;
+      const hp={admiral:sh.hpA,mid:sh.hpM,small:sh.hpS}[role];const atk={admiral:sh.atkA,mid:sh.atkM,small:sh.atkS}[role];
       const artDiv=document.createElement('div');artDiv.className=`tcg-art ${th.art}`;
-      const cardImg=getImg(key+'_card');
-      if(cardImg){const ci=document.createElement('img');ci.src=cardImg.src;ci.style.cssText='width:100%;height:100%;object-fit:contain;';artDiv.appendChild(ci);}
-      else{artDiv.textContent='';} // no placeholder art
-      card.innerHTML=`<div class="tcg-hdr"><span>${th.type}</span><span class="tcg-hp">HP ${hp*10}</span></div>`;
-      card.appendChild(artDiv);
-      card.innerHTML+=`<div class="tcg-badges"><span class="tcgb ba">ATK ${atk}</span><span class="tcgb bm">${SHIPS[key].canRev?'↕':'↑'}</span></div><div class="tcg-name">${sh.name}</div><div class="tcg-desc">${sh.desc}</div><div class="tcg-stat">🎯 ${sh.atkType==='broadside'?'Yan Top':sh.atkType==='front'?'Ön Top':'Koçbaşı'}</div><div class="tcg-chk">✓</div>`;
+      const ci=gImg(key+'_card');if(ci){const img=document.createElement('img');img.src=ci.src;img.style.cssText='width:100%;height:100%;object-fit:contain;';artDiv.appendChild(img);}
+      card.innerHTML=`<div class="tcg-hdr"><span>${th.type}</span><span class="tcg-hp">HP ${hp*10}</span></div>`;card.appendChild(artDiv);
+      card.innerHTML+=`<div class="tcg-badges"><span class="tcgb ba">ATK ${atk}</span><span class="tcgb bm">${sh.canRev?'↕':'↑'}</span></div><div class="tcg-name">${sh.name}</div><div class="tcg-desc">${sh.desc}</div><div class="tcg-stat">🎯 ${sh.atkType==='broadside'?'Yan Top':sh.atkType==='front'?'Ön Top':'Koçbaşı'}</div><div class="tcg-chk">✓</div>`;
       if(!used)card.onclick=()=>{GS.roles[role]=key;renderRoles();document.getElementById('btn-confirm').disabled=!ROLES.every(r=>GS.roles[r]);};
       row.appendChild(card);
-    });
-    sec.appendChild(row);c.appendChild(sec);
-  });
-  document.getElementById('btn-confirm').disabled=!ROLES.every(r=>GS.roles[r]);
+    });sec.appendChild(row);c.appendChild(sec);
+  });document.getElementById('btn-confirm').disabled=!ROLES.every(r=>GS.roles[r]);
 }
 function confirmRoles(){
   if(!ROLES.every(r=>GS.roles[r]))return;
-  if(GS.selectingFor===1){
-    GS.p1Roles={...GS.roles};
+  if(GS.selectingFor===1){GS.p1Roles={...GS.roles};
     if(cfg.mode==='2player'){GS.selectingFor=2;GS.roles={admiral:null,mid:null,small:null};GS._pn=()=>{renderRoles();showScreen('screen-ship-select');};showPass('OYUNCU 2','Oyuncu 1\'in rolleri gizlendi. Oyuncu 2 hazır olunca devam edin.');}
-    else{const keys=Object.keys(SHIPS);const sh=[...keys].sort(()=>Math.random()-.5);GS.p2Roles={admiral:sh[0],mid:sh[1],small:sh[2]};initGame();}
-  }else{GS.p2Roles={...GS.roles};initGame();}
+    else{const keys=Object.keys(SHIPS);const sh=[...keys].sort(()=>Math.random()-.5);GS.p2Roles={admiral:sh[0],mid:sh[1],small:sh[2]};initGame();}}
+  else{GS.p2Roles={...GS.roles};initGame();}
 }
 function initGame(){
   G={N:cfg.N,map:cfg.map,showR:cfg.showR,terrain:genTerrain(cfg.N,cfg.map),
     players:[null,null],turn:1,cp:0,duel:false,
-    windUsed:[false,false],windTurns:0,windDir:null,
-    chainUsed:[0,0],hits:[0,0],
-    action:'attack',selShip:null,
-    duelSelShip:null,duelAtk:false,
+    windCooldown:[0,0],windTurns:0,windDir:null,
+    chainUsed:[0,0],hits:[0,0],action:'attack',selShip:null,
+    duelChainPhase:false,duelChainShip:null,
     _hover:null,_passNext:null,_chainMode:false,
     _duelW:0,p1Roles:GS.p1Roles,p2Roles:GS.p2Roles,
-    _pickWind:false
-  };
+    _pickWind:false,_firing:false};
   startPlacement(1);
 }
 
-// ════════════════════════════════════════════════════════
-//  PLACEMENT
-// ════════════════════════════════════════════════════════
+// ═══════════ PLACEMENT ═══════════
 let PL={ships:[],selIdx:null,rot:0,hover:null,forP:1};
 function mkShips(roles){return ROLES.map(role=>({type:roles[role],size:role,w:role==='admiral'?2:1,h:role==='admiral'?3:role==='mid'?2:1,x:-1,y:-1,dir:0,placed:false,sunk:false,damaged:false,rotCool:0,brokenSails:0,sailDamaged:false}));}
-
 function startPlacement(pNum){
   const roles=pNum===1?G.p1Roles:G.p2Roles;
   PL={ships:mkShips(roles),selIdx:null,rot:0,hover:null,forP:pNum};
@@ -655,63 +472,40 @@ function startPlacement(pNum){
   updateShipList();showScreen('screen-placement');resizePl();drawPl();
 }
 function resizePl(){
-  const cv=document.getElementById('cv-place');
-  const sz=Math.min(375,window.innerWidth-175);const cell=Math.floor(sz/G.N);
+  const cv=document.getElementById('cv-place');const sz=Math.min(375,window.innerWidth-175);const cell=Math.floor(sz/G.N);
   cv.width=cell*G.N;cv.height=cell*G.N;cv._c=cell;
-  cv.onclick=onPlClick;
-  cv.onmousemove=e=>{const r=cv.getBoundingClientRect();PL.hover={x:Math.floor((e.clientX-r.left)/cell),y:Math.floor((e.clientY-r.top)/cell)};drawPl();};
+  function hdl(e){if(e.type==='touchstart')e.preventDefault();const{x,y}=getCell(e,cv);if(PL.selIdx===null)return;const s=PL.ships[PL.selIdx];if(terrBlocked(s,x,y,true)){document.getElementById('place-hint').textContent='Bu alana girilemez!';return;}if(canPlace(PL.ships,PL.selIdx,x,y,PL.rot,G.N,G.N)){s.x=x;s.y=y;s.dir=PL.rot;s.placed=true;PL.selIdx=null;updateShipList();document.getElementById('btn-done').disabled=!PL.ships.every(s2=>s2.placed);document.getElementById('place-hint').textContent='';drawPl();}}
+  cv.addEventListener('click',hdl);cv.addEventListener('touchstart',hdl,{passive:false});
+  cv.onmousemove=e=>{const r=cv.getBoundingClientRect();const sx=cv.width/r.width,sy=cv.height/r.height;PL.hover={x:Math.floor((e.clientX-r.left)*sx/cell),y:Math.floor((e.clientY-r.top)*sy/cell)};drawPl();};
   cv.onmouseleave=()=>{PL.hover=null;drawPl();};
 }
-function onPlClick(e){
-  if(PL.selIdx===null)return;
-  const cv=document.getElementById('cv-place');const cell=cv._c;
-  const r=cv.getBoundingClientRect();
-  const x=Math.floor((e.clientX-r.left)/cell),y=Math.floor((e.clientY-r.top)/cell);
-  const ship=PL.ships[PL.selIdx];
-  if(terrBlocked(ship,x,y)){document.getElementById('place-hint').textContent='Bu alana girilemez!';return;}
-  if(canPlace(PL.ships,PL.selIdx,x,y,PL.rot,G.N,G.N)){ship.x=x;ship.y=y;ship.dir=PL.rot;ship.placed=true;PL.selIdx=null;updateShipList();document.getElementById('btn-done').disabled=!PL.ships.every(s=>s.placed);document.getElementById('place-hint').textContent='';drawPl();}
-}
 function rotatePl(){PL.rot=(PL.rot+1)%4;drawPl();}
-function autoPlace(){PL.ships.forEach((s,i)=>{let ok=false,t=0;while(!ok&&t<600){const dir=Math.floor(Math.random()*4);const{w,h}=sDim(s,dir);const x=Math.floor(Math.random()*(G.N-w+1));const y=Math.floor(Math.random()*(G.N-h+1));if(!terrBlocked(s,x,y)&&canPlace(PL.ships,i,x,y,dir,G.N,G.N)){s.x=x;s.y=y;s.dir=dir;s.placed=true;ok=true;}t++;}});PL.selIdx=null;document.getElementById('btn-done').disabled=false;updateShipList();drawPl();}
+function autoPlace(){PL.ships.forEach((s,i)=>{let ok=false,t=0;while(!ok&&t<600){const dir=Math.floor(Math.random()*4);const{w,h}=sDim(s,dir);const x=Math.floor(Math.random()*(G.N-w+1));const y=Math.floor(Math.random()*(G.N-h+1));if(!terrBlocked(s,x,y,true)&&canPlace(PL.ships,i,x,y,dir,G.N,G.N)){s.x=x;s.y=y;s.dir=dir;s.placed=true;ok=true;}t++;}});PL.selIdx=null;document.getElementById('btn-done').disabled=false;updateShipList();drawPl();}
 function updateShipList(){
   const p=document.getElementById('ship-list');p.innerHTML='';
-  PL.ships.forEach((s,i)=>{
-    const st=SHIPS[s.type];const isSel=PL.selIdx===i,isP=s.placed;
-    const d=document.createElement('div');d.className='sli';
-    d.style.borderColor=isSel?'var(--gd)':isP?'var(--gr)':'var(--gdark)';
-    d.style.background=isSel?'rgba(201,168,76,.2)':isP?'rgba(39,174,96,.1)':'transparent';
-    d.style.color=isP?'var(--grl)':'var(--pa)';
-    const icons={kalyon:'⛵',kadirga:'🚣',trireme:'🚤'};
-    d.innerHTML=`${icons[s.type]} ${st.name}<br><span style="font-size:.66rem;font-style:italic;color:var(--pd)">${isP?'✔ Yerleştirildi':'Yerleştirilmedi'}</span>`;
-    d.onclick=()=>{if(isP){s.placed=false;document.getElementById('btn-done').disabled=true;}PL.selIdx=i;updateShipList();drawPl();};
-    p.appendChild(d);
-  });
+  PL.ships.forEach((s,i)=>{const st=SHIPS[s.type];const isSel=PL.selIdx===i,isP=s.placed;
+    const d=document.createElement('div');d.className='sli';d.style.borderColor=isSel?'var(--gd)':isP?'var(--gr)':'var(--gdark)';d.style.background=isSel?'rgba(201,168,76,.2)':isP?'rgba(39,174,96,.1)':'transparent';d.style.color=isP?'var(--grl)':'var(--pa)';
+    const icons={kalyon:'⛵',kadirga:'🚣',trireme:'🚤'};d.innerHTML=`${icons[s.type]} ${st.name}<br><span style="font-size:.66rem;font-style:italic;color:var(--pd)">${isP?'✔ Yerleştirildi':'Yerleştirilmedi'}</span>`;
+    d.onclick=()=>{if(isP){s.placed=false;document.getElementById('btn-done').disabled=true;}PL.selIdx=i;updateShipList();drawPl();};p.appendChild(d);});
 }
 function donePlacement(){
   const pData={ships:JSON.parse(JSON.stringify(PL.ships)),hits:[],misses:[],chainHits:[]};
   if(PL.forP===1){G.players[0]=pData;
     if(cfg.mode==='2player'){G._passNext=()=>startPlacement(2);showPass('OYUNCU 2','Oyuncu 1\'in gemileri gizlendi. Oyuncu 2 hazır olunca devam edin.');}
-    else{const rb=mkShips(G.p2Roles);rb.forEach((s,i)=>{let ok=false,t=0;while(!ok&&t<600){const dir=Math.floor(Math.random()*4);const{w,h}=sDim(s,dir);const x=Math.floor(Math.random()*(G.N-w+1));const y=Math.floor(Math.random()*(G.N-h+1));if(!terrBlocked(s,x,y)&&canPlace(rb,i,x,y,dir,G.N,G.N)){s.x=x;s.y=y;s.dir=dir;s.placed=true;ok=true;}t++;}});G.players[1]={ships:rb,hits:[],misses:[],chainHits:[]};startGame();}
-  }else{G.players[1]=pData;G._passNext=()=>startGame();showPass('SAVAŞ BAŞLIYOR','Oyuncu 1 hazır olunca devam edin.');}
+    else{const rb=mkShips(G.p2Roles);rb.forEach((s,i)=>{let ok=false,t=0;while(!ok&&t<600){const dir=Math.floor(Math.random()*4);const{w,h}=sDim(s,dir);const x=Math.floor(Math.random()*(G.N-w+1));const y=Math.floor(Math.random()*(G.N-h+1));if(!terrBlocked(s,x,y,true)&&canPlace(rb,i,x,y,dir,G.N,G.N)){s.x=x;s.y=y;s.dir=dir;s.placed=true;ok=true;}t++;}});G.players[1]={ships:rb,hits:[],misses:[],chainHits:[]};startGame();}}
+  else{G.players[1]=pData;G._passNext=()=>startGame();showPass('SAVAŞ BAŞLIYOR','Oyuncu 1 hazır olunca devam edin.');}
 }
 
-// ════════════════════════════════════════════════════════
-//  PASS
-// ════════════════════════════════════════════════════════
+// ═══════════ PASS ═══════════
 function showPass(who,sub){document.getElementById('pass-ttl').textContent=`${who}'İN SIRASI`;document.getElementById('pass-sub').textContent=sub;showScreen('screen-pass');}
-function continuePass(){
-  if(GS._pn){const fn=GS._pn;GS._pn=null;fn();return;}
-  if(G&&G._passNext){const fn=G._passNext;G._passNext=null;fn();}
-}
+function continuePass(){if(GS._pn){const fn=GS._pn;GS._pn=null;fn();return;}if(G&&G._passNext){const fn=G._passNext;G._passNext=null;fn();}}
 
-// ════════════════════════════════════════════════════════
-//  GAME START
-// ════════════════════════════════════════════════════════
+// ═══════════ GAME START ═══════════
 function startGame(){
   G.cp=0;G.turn=1;G.duel=false;G.action='attack';G.selShip=null;
-  G.hits=[0,0];G.windUsed=[false,false];G.windTurns=0;G.windDir=null;
-  G.chainUsed=[0,0];G.duelSelShip=null;G.duelAtk=false;G._hover=null;G._chainMode=false;G._pickWind=false;
-  G.showR=cfg.showR;
+  G.hits=[0,0];G.windCooldown=[0,0];G.windTurns=0;G.windDir=null;
+  G.chainUsed=[0,0];G.duelChainPhase=false;G.duelChainShip=null;
+  G._hover=null;G._chainMode=false;G._pickWind=false;G._firing=false;G.showR=cfg.showR;
   document.getElementById('normal-area').style.display='flex';
   document.getElementById('duel-area').style.display='none';
   document.getElementById('dban').className='dban';
@@ -723,119 +517,98 @@ function startGame(){
   log('⚓ Savaş başladı!','info');
   if(cfg.mode==='robot'&&G.cp===1)setTimeout(robotTurn,PERSONAS[cfg.persona].thinkMs);
 }
+let _normalCell=30; // cached normal board cell size
 function resizeGame(){
   const sz=Math.min(288,(window.innerWidth-75)/2);const cell=Math.floor(sz/G.N);
+  _normalCell=cell;
   ['cv0','cv1'].forEach(id=>{const cv=document.getElementById(id);cv.width=cell*G.N;cv.height=cell*G.N;cv._c=cell;});
-  document.getElementById('cv0').onclick=onMy;
-  const cv1=document.getElementById('cv1');cv1.onclick=onEnemy;
-  cv1.onmousemove=e=>{const r=cv1.getBoundingClientRect();G._hover={x:Math.floor((e.clientX-r.left)/cell),y:Math.floor((e.clientY-r.top)/cell)};if(!G.duel)drawBoards();};
+  const cv0=document.getElementById('cv0'),cv1=document.getElementById('cv1');
+  function hdlMy(e){if(e.type==='touchstart')e.preventDefault();if(G._firing)return;if(cfg.mode==='robot'&&G.cp===1)return;if(G.action!=='move'&&G.action!=='rotate')return;const{x,y}=getCell(e,cv0);onMyXY(x,y);}
+  function hdlEn(e){if(e.type==='touchstart')e.preventDefault();if(G._firing)return;if(G.duel)return;if(cfg.mode==='robot'&&G.cp===1)return;const{x,y}=getCell(e,cv1);onEnemyXY(x,y);}
+  cv0.addEventListener('click',hdlMy);cv0.addEventListener('touchstart',hdlMy,{passive:false});
+  cv1.addEventListener('click',hdlEn);cv1.addEventListener('touchstart',hdlEn,{passive:false});
+  cv1.onmousemove=e=>{const r=cv1.getBoundingClientRect();const sx=cv1.width/r.width,sy=cv1.height/r.height;G._hover={x:Math.floor((e.clientX-r.left)*sx/cell),y:Math.floor((e.clientY-r.top)*sy/cell)};if(!G.duel)drawBoards();};
   cv1.onmouseleave=()=>{G._hover=null;if(!G.duel)drawBoards();};
-  const dN=G.N*2;const dCell=Math.min(23,Math.floor((window.innerWidth-55)/dN));
-  const dc=document.getElementById('cv-duel');
-  dc.width=dN*dCell;dc.height=G.N*dCell;dc._c=dCell;
-  dc.onclick=onDuel;
-  dc.onmousemove=e=>{const r=dc.getBoundingClientRect();G._hover={x:Math.floor((e.clientX-r.left)/dCell),y:Math.floor((e.clientY-r.top)/dCell)};if(G.duel)drawDuel();};
+  // Duel canvas uses SAME cell size as normal boards (same readability)
+  const dN=G.N*2;const dc=document.getElementById('cv-duel');
+  dc.width=dN*cell;dc.height=G.N*cell;dc._c=cell;
+  function hdlDuel(e){if(e.type==='touchstart')e.preventDefault();if(G._firing)return;if(!G.duel)return;if(cfg.mode==='robot'&&G.cp===1)return;const{x,y}=getCell(e,dc);onDuelXY(x,y);}
+  dc.addEventListener('click',hdlDuel);dc.addEventListener('touchstart',hdlDuel,{passive:false});
+  dc.onmousemove=e=>{const r=dc.getBoundingClientRect();const sx=dc.width/r.width,sy=dc.height/r.height;G._hover={x:Math.floor((e.clientX-r.left)*sx/cell),y:Math.floor((e.clientY-r.top)*sy/cell)};if(G.duel)drawDuel();};
   dc.onmouseleave=()=>{G._hover=null;if(G.duel)drawDuel();};
   G._duelW=dN;
 }
 function renderTleg(){
   const el=document.getElementById('tleg');el.innerHTML='';if(G.map==='classic')return;
-  const items={rocky:[{c:'rgba(100,65,30,.75)',l:'Kayalık'}],shallow:[{c:'rgba(74,138,106,.55)',l:'Sığ (Kalyon giremez)'},{c:'rgba(30,90,75,.75)',l:'Çok Sığ'}],foggy:[{c:'rgba(140,140,200,.35)',l:'Sis'}]};
+  const items={rocky:[{c:'rgba(100,65,30,.75)',l:'Kayalık (hasar)'}],shallow:[{c:'rgba(74,138,106,.55)',l:'Sığ (Kalyon giremez)'},{c:'rgba(30,90,75,.75)',l:'Çok Sığ'}],foggy:[{c:'rgba(72,72,135,.93)',l:'Sis (Gemiler görünmez)'}]};
   (items[G.map]||[]).forEach(item=>{const d=document.createElement('div');d.className='tlegi';d.innerHTML=`<div class="tlegdot" style="background:${item.c}"></div>${item.l}`;el.appendChild(d);});
 }
 
-// ════════════════════════════════════════════════════════
-//  DRAW HELPERS
-// ════════════════════════════════════════════════════════
+// ═══════════ DRAW HELPERS ═══════════
 function drawGrid(ctx,cell,W,H,terrain){
   ctx.fillStyle='#07111f';ctx.fillRect(0,0,W*cell,H*cell);
-  if(terrain)for(let y=0;y<H;y++)for(let x=0;x<W;x++){const t=terrain[y]?.[x]||0;if(t){ctx.fillStyle=TC[t];ctx.fillRect(x*cell,y*cell,cell,cell);}}
+  if(terrain)for(let y=0;y<H;y++)for(let x=0;x<W;x++){const t=terrain[y]?.[x]||0;if(t&&t!==4){ctx.fillStyle=TC[t];ctx.fillRect(x*cell,y*cell,cell,cell);}}
   ctx.strokeStyle='rgba(201,168,76,.18)';ctx.lineWidth=.5;
   for(let i=0;i<=W;i++){ctx.beginPath();ctx.moveTo(i*cell,0);ctx.lineTo(i*cell,H*cell);ctx.stroke();}
   for(let i=0;i<=H;i++){ctx.beginPath();ctx.moveTo(0,i*cell);ctx.lineTo(W*cell,i*cell);ctx.stroke();}
 }
-function drawGridOff(ctx,cell,W,H,terrain,ox){
-  if(terrain)for(let y=0;y<H;y++)for(let x=0;x<W;x++){const t=terrain[y]?.[x%G.N]||0;if(t){ctx.fillStyle=TC[t];ctx.fillRect((ox+x)*cell,y*cell,cell,cell);}}
-  ctx.strokeStyle='rgba(201,168,76,.18)';ctx.lineWidth=.5;
-  for(let i=0;i<=W;i++){ctx.beginPath();ctx.moveTo((ox+i)*cell,0);ctx.lineTo((ox+i)*cell,H*cell);ctx.stroke();}
-  for(let i=0;i<=H;i++){ctx.beginPath();ctx.moveTo(ox*cell,i*cell);ctx.lineTo((ox+W)*cell,i*cell);ctx.stroke();}
-}
-
-// Draw ship: NO procedural shapes, just background + optional board image + direction arrow
-function drawShipOnCv(ctx,ship,cell,highlight,offX){
+// Draw ship: board image + direction arrow. Fog handled by drawFogLayer drawn after.
+function drawShipOnCv(ctx,ship,cell,highlight){
   if(ship.sunk)return;
-  const ox=offX||0;const{w,h}=sDim(ship);
-  const localX=G.duel&&ship.x>=G.N?ship.x-G.N:ship.x;
-  const inFog=!G.duel&&G.terrain[ship.y]?.[localX]===4;
-  if(inFog&&!highlight)return;
+  const{w,h}=sDim(ship);
   const bgC={kalyon:'#1e3a14',kadirga:'#1a2550',trireme:'#3a1a0a'};
   const bdC={kalyon:'#3a6628',kadirga:'#2838a0',trireme:'#8a4428'};
-  ctx.fillStyle=bgC[ship.type]||'#333';
-  ctx.strokeStyle=highlight?'#e8c96a':bdC[ship.type]||'#555';ctx.lineWidth=highlight?2.5:1.5;
-  ctx.beginPath();ctx.roundRect((ship.x+ox)*cell+2,ship.y*cell+2,w*cell-4,h*cell-4,4);ctx.fill();ctx.stroke();
-  // Board image (separate from card image)
-  const boardImg=getImg(ship.type+'_board');
-  if(boardImg){ctx.drawImage(boardImg,(ship.x+ox)*cell+3,ship.y*cell+3,w*cell-6,h*cell-6);}
-  // Direction arrow only
-  if(cell>=16){
-    const fv=fwdV(ship.dir);
-    const cx2=(ship.x+ox)*cell+w*cell/2,cy2=ship.y*cell+h*cell/2;
-    ctx.fillStyle='rgba(201,168,76,.75)';ctx.font=`bold ${Math.min(cell*.45,16)}px sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.fillStyle=bgC[ship.type]||'#333';ctx.strokeStyle=highlight?'#e8c96a':bdC[ship.type]||'#555';ctx.lineWidth=highlight?2.5:1.5;
+  ctx.beginPath();ctx.roundRect(ship.x*cell+2,ship.y*cell+2,w*cell-4,h*cell-4,4);ctx.fill();ctx.stroke();
+  const bi=gImg(ship.type+'_board');if(bi)ctx.drawImage(bi,ship.x*cell+3,ship.y*cell+3,w*cell-6,h*cell-6);
+  if(cell>=14){
+    const fv=fwdV(ship.dir);const cx2=ship.x*cell+w*cell/2,cy2=ship.y*cell+h*cell/2;
+    ctx.fillStyle='rgba(201,168,76,.82)';ctx.font=`bold ${Math.min(cell*.45,16)}px sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';
     ctx.fillText(['▲','▶','▼','◀'][ship.dir],cx2+fv.dx*cell*.3,cy2+fv.dy*cell*.3);
   }
-  // Sail damage indicator
-  if(ship.brokenSails>0||ship.sailDamaged){
-    ctx.fillStyle='rgba(245,158,11,.8)';ctx.font=`${Math.min(cell*.35,12)}px sans-serif`;ctx.textAlign='left';ctx.textBaseline='top';
-    ctx.fillText('⚡',(ship.x+ox)*cell+3,ship.y*cell+3);
+  if((ship.brokenSails||0)>0||ship.sailDamaged){ctx.fillStyle='rgba(245,158,11,.8)';ctx.font=`${Math.min(cell*.32,11)}px sans-serif`;ctx.textAlign='left';ctx.textBaseline='top';ctx.fillText('⚡',ship.x*cell+3,ship.y*cell+3);}
+  // Trireme ram zone
+  if(ship.type==='trireme'&&G.duel){
+    const zone=triRamZone(ship);const a=.1+.06*Math.sin(_waf*.5);
+    ctx.fillStyle=`rgba(192,57,43,${a})`;ctx.strokeStyle=`rgba(192,57,43,${a+.15})`;ctx.lineWidth=1;
+    zone.forEach(r=>{if(r.x>=0&&r.y>=0&&r.x<G._duelW&&r.y<G.N){ctx.beginPath();ctx.roundRect(r.x*cell+1,r.y*cell+1,cell-2,cell-2,3);ctx.fill();ctx.stroke();}});
   }
 }
-
+// Age-based colors: red(0)→blue(1)→green(2)→yellow/amber(3+) shows ship may have moved
+function hitColor(age){return age===0?'rgba(192,57,43,.88)':age===1?'rgba(41,128,185,.75)':age===2?'rgba(39,174,96,.7)':'rgba(200,160,30,.65)';}
 function drawHits(ctx,hits,misses,chainHits,cell){
-  (hits||[]).forEach(h=>{
-    const age=G.turn-(h.turn||0);
-    ctx.fillStyle=age===0?'rgba(192,57,43,.85)':age===1?'rgba(41,128,185,.7)':'rgba(26,102,136,.55)';
+  (hits||[]).filter(h=>!h.preDuel).forEach(h=>{
+    const tx=G.duel&&h.x>=G.N?h.x-G.N:h.x;if(G.terrain[h.y]?.[tx]===4)return;
+    const age=G.turn-(h.turn||0);ctx.fillStyle=hitColor(age);
     ctx.beginPath();ctx.arc((h.x+.5)*cell,(h.y+.5)*cell,cell*.3,0,Math.PI*2);ctx.fill();
-    ctx.fillStyle='#fff';ctx.font=`${cell*.3}px sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';
-    ctx.fillText('✕',(h.x+.5)*cell,(h.y+.5)*cell);
+    ctx.fillStyle='#fff';ctx.font=`${cell*.3}px sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('✕',(h.x+.5)*cell,(h.y+.5)*cell);
   });
-  (misses||[]).forEach(m=>{ctx.fillStyle='rgba(74,111,165,.42)';ctx.beginPath();ctx.arc((m.x+.5)*cell,(m.y+.5)*cell,cell*.17,0,Math.PI*2);ctx.fill();});
-  (chainHits||[]).forEach(h=>{
+  (misses||[]).filter(m=>!m.preDuel).forEach(m=>{
+    const tx=G.duel&&m.x>=G.N?m.x-G.N:m.x;if(G.terrain[m.y]?.[tx]===4)return;
+    ctx.fillStyle='rgba(74,111,165,.42)';ctx.beginPath();ctx.arc((m.x+.5)*cell,(m.y+.5)*cell,cell*.17,0,Math.PI*2);ctx.fill();
+  });
+  (chainHits||[]).filter(h=>!h.preDuel).forEach(h=>{
+    const tx=G.duel&&h.x>=G.N?h.x-G.N:h.x;if(G.terrain[h.y]?.[tx]===4)return;
     ctx.fillStyle='rgba(245,158,11,.75)';ctx.beginPath();ctx.arc((h.x+.5)*cell,(h.y+.5)*cell,cell*.28,0,Math.PI*2);ctx.fill();
     ctx.fillStyle='#0a0500';ctx.font=`${cell*.28}px sans-serif`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('⛓',(h.x+.5)*cell,(h.y+.5)*cell);
   });
 }
 
-// Draw Trireme ram zone indicator
-function drawRamZone(ctx,tri,cell,offX){
-  const ox=offX||0;const zone=triremeRamZone(tri);const f=_waf;
-  zone.forEach(r=>{
-    const alpha=.15+.08*Math.sin(f*.6);
-    ctx.fillStyle=`rgba(192,57,43,${alpha})`;
-    ctx.strokeStyle=`rgba(192,57,43,${alpha+.15})`;ctx.lineWidth=1;
-    ctx.beginPath();ctx.roundRect((r.x+ox)*cell+1,r.y*cell+1,cell-2,cell-2,3);ctx.fill();ctx.stroke();
-  });
-}
-
-// ════════════════════════════════════════════════════════
-//  DRAW NORMAL BOARDS  (fixed: cp.hits on my board, opp.hits on enemy)
-// ════════════════════════════════════════════════════════
+// ═══════════ DRAW NORMAL BOARDS ═══════════
+// Robot mode: always show p0 perspective (prevents robot ships showing briefly)
 function drawBoards(){
   if(G.duel){drawDuel();return;}
   const cv0=document.getElementById('cv0'),cv1=document.getElementById('cv1');if(!cv0._c)return;
-  const cell=cv0._c,N=G.N,cp=G.cp,opp=1-cp;
+  const cell=cv0._c,N=G.N;
+  const vCp=(cfg.mode==='robot')?0:G.cp,opp=1-vCp;
   const ctx0=cv0.getContext('2d'),ctx1=cv1.getContext('2d');
-  // MY BOARD: my ships + hits I received (cp.hits) + misses opp made on me (cp.misses)
+  // MY BOARD (cv0): my ships + hits I received (vCp.hits)
   drawGrid(ctx0,cell,N,N,G.terrain);
-  G.players[cp].ships.forEach((s,i)=>{
-    if(!s.sunk){drawShipOnCv(ctx0,s,cell,G.action!=='attack'&&G.selShip===i);}
-    if(!s.sunk&&s.type==='trireme')drawRamZone(ctx0,s,cell);
-  });
-  // Show hits received on my board: these are hits made by opp stored in opp's perspective
-  // G.players[cp].hits = hits that LANDED on cp's territory
-  drawHits(ctx0,G.players[cp].hits,G.players[cp].misses,G.players[cp].chainHits,cell);
+  G.players[vCp].ships.forEach((s,i)=>{if(!s.sunk)drawShipOnCv(ctx0,s,cell,G.action!=='attack'&&G.selShip===i);});
+  drawHits(ctx0,G.players[vCp].hits,G.players[vCp].misses,G.players[vCp].chainHits,cell);
   drawWindOverlay(ctx0,cell,N);
-
-  // ENEMY BOARD: enemy ships (if showR) + hits I made on enemy (opp.hits) + my misses (opp.misses)
+  drawFogLayer(ctx0,cell,N); // fog drawn LAST — solid cover
+  // ENEMY BOARD (cv1): my hits on enemy (opp.hits)
   drawGrid(ctx1,cell,N,N,G.terrain);
   if(G.showR)G.players[opp].ships.forEach(s=>{if(!s.sunk)drawShipOnCv(ctx1,s,cell,false);});
   drawHits(ctx1,G.players[opp].hits,G.players[opp].misses,G.players[opp].chainHits,cell);
@@ -843,47 +616,54 @@ function drawBoards(){
     const{x,y}=G._hover;ctx1.fillStyle='rgba(201,168,76,.2)';ctx1.strokeStyle='#c9a84c';ctx1.lineWidth=1.5;
     ctx1.beginPath();ctx1.roundRect(x*cell+1,y*cell+1,cell-2,cell-2,3);ctx1.fill();ctx1.stroke();
   }
+  drawFogLayer(ctx1,cell,N); // fog drawn LAST
 }
 
-// ════════════════════════════════════════════════════════
-//  DRAW DUEL (MERGED)
-// ════════════════════════════════════════════════════════
+// ═══════════ DRAW DUEL (MERGED) ═══════════
 function drawDuel(){
   const dc=document.getElementById('cv-duel');if(!dc._c)return;
   const ctx=dc.getContext('2d'),cell=dc._c,N=G.N,dN=G._duelW;
   ctx.fillStyle='#07111f';ctx.fillRect(0,0,dN*cell,N*cell);
-  drawGridOff(ctx,cell,N,N,G.terrain,0);
-  drawGridOff(ctx,cell,N,N,G.terrain,N);
+  // terrain both halves (no fog here — drawn after)
+  for(let y=0;y<N;y++)for(let x=0;x<dN;x++){const bx=x<N?x:x-N;const t=G.terrain[y]?.[bx]||0;if(t&&t!==4){ctx.fillStyle=TC[t];ctx.fillRect(x*cell,y*cell,cell,cell);}}
+  ctx.strokeStyle='rgba(201,168,76,.18)';ctx.lineWidth=.5;
+  for(let i=0;i<=dN;i++){ctx.beginPath();ctx.moveTo(i*cell,0);ctx.lineTo(i*cell,N*cell);ctx.stroke();}
+  for(let i=0;i<=N;i++){ctx.beginPath();ctx.moveTo(0,i*cell);ctx.lineTo(dN*cell,i*cell);ctx.stroke();}
   ctx.strokeStyle='rgba(201,168,76,.45)';ctx.lineWidth=2;ctx.setLineDash([5,4]);
   ctx.beginPath();ctx.moveTo(N*cell,.5);ctx.lineTo(N*cell,N*cell-.5);ctx.stroke();ctx.setLineDash([]);
   ctx.fillStyle='rgba(201,168,76,.38)';ctx.font=`${Math.max(8,cell*.5)}px 'Cinzel',serif`;ctx.textAlign='center';ctx.textBaseline='top';
   ctx.fillText('OYUNCU 1',N*cell/2,2);ctx.fillText(cfg.mode==='robot'?'ROBOT':'OYUNCU 2',N*cell+N*cell/2,2);
-  G.players.forEach((p,pi)=>{
-    p.ships.forEach((s,si)=>{
-      if(s.sunk)return;const isSel=G.duelSelShip&&G.duelSelShip.p===pi&&G.duelSelShip.s===si;
-      const localX=pi===1?s.x-N:s.x;const inFog=G.terrain[s.y]?.[localX]===4;
-      if(inFog&&!isSel)return;
-      drawShipOnCv(ctx,s,cell,isSel);
-      if(s.type==='trireme')drawRamZone(ctx,s,cell);
-    });
-    drawHits(ctx,p.hits,p.misses,p.chainHits,cell);
-  });
-  if(G.duelSelShip&&G.duelAtk){
-    const{p,s}=G.duelSelShip;
-    const targets=getDuelTargets(G.players[p].ships[s],1-p,N);
-    ctx.fillStyle='rgba(192,57,43,.2)';ctx.strokeStyle='rgba(192,57,43,.55)';ctx.lineWidth=1;
-    targets.forEach(t=>{const opp=1-p;const ah=[...G.players[opp].hits,...G.players[opp].chainHits].some(h=>h.x===t.x&&h.y===t.y);if(!ah){ctx.beginPath();ctx.roundRect(t.x*cell+1,t.y*cell+1,cell-2,cell-2,3);ctx.fill();ctx.stroke();}});
+  G.players.forEach((p,pi)=>{p.ships.forEach((s,si)=>{if(!s.sunk)drawShipOnCv(ctx,s,cell,false);});drawHits(ctx,p.hits,p.misses,p.chainHits,cell);});
+  // Weapon range hover preview (attack mode, hover over own ship)
+  if(G._hover&&G.action==='attack'&&!G._firing&&!G._chainMode){
+    const hx=G._hover.x,hy=G._hover.y,cp=G.cp;
+    const idx=G.players[cp].ships.findIndex(s=>!s.sunk&&sCells(s,s.x,s.y).some(c=>c.x===hx&&c.y===hy));
+    if(idx>=0){
+      const targets=getDuelTargets(G.players[cp].ships[idx],1-cp,N);
+      ctx.fillStyle='rgba(201,168,76,.18)';ctx.strokeStyle='rgba(201,168,76,.45)';ctx.lineWidth=1;
+      targets.forEach(t=>{if(t.x>=0&&t.y>=0&&t.x<dN&&t.y<N){ctx.beginPath();ctx.roundRect(t.x*cell+1,t.y*cell+1,cell-2,cell-2,3);ctx.fill();ctx.stroke();}});
+    }
   }
-  if(G._hover){const{x,y}=G._hover;ctx.fillStyle='rgba(201,168,76,.12)';ctx.strokeStyle='rgba(201,168,76,.38)';ctx.lineWidth=1;ctx.beginPath();ctx.roundRect(x*cell+1,y*cell+1,cell-2,cell-2,3);ctx.fill();ctx.stroke();}
-  drawWindOverlay(ctx,cell,dN);
+  // Chain phase: show range of selected ship
+  if(G._chainMode&&G.duelChainPhase&&G.duelChainShip!==null){
+    const targets=getDuelTargets(G.players[G.cp].ships[G.duelChainShip],1-G.cp,N);
+    ctx.fillStyle='rgba(245,158,11,.18)';ctx.strokeStyle='rgba(245,158,11,.45)';ctx.lineWidth=1;
+    targets.forEach(t=>{ctx.beginPath();ctx.roundRect(t.x*cell+1,t.y*cell+1,cell-2,cell-2,3);ctx.fill();ctx.stroke();});
+  }
+  drawWindOverlay(ctx,cell,N);drawWindOverlay(ctx,cell,N,N);
+  // Fog layer LAST — drawn on both halves separately
+  if(G.map==='foggy'){
+    ctx.fillStyle='rgba(72,72,135,0.93)';
+    for(let y=0;y<N;y++)for(let x=0;x<N;x++){
+      if(G.terrain[y]?.[x]===4){ctx.fillRect(x*cell,y*cell,cell,cell);ctx.fillRect((N+x)*cell,y*cell,cell,cell);}
+    }
+  }
+  if(G._hover&&!G._firing){const{x,y}=G._hover;ctx.fillStyle='rgba(201,168,76,.1)';ctx.strokeStyle='rgba(201,168,76,.35)';ctx.lineWidth=1;ctx.beginPath();ctx.roundRect(x*cell+1,y*cell+1,cell-2,cell-2,3);ctx.fill();ctx.stroke();}
 }
 
-// ════════════════════════════════════════════════════════
-//  DUEL ATTACK TARGETS
-// ════════════════════════════════════════════════════════
+// ═══════════ DUEL TARGETS ═══════════
 function getDuelTargets(ship,oppIdx,N){
-  const st=SHIPS[ship.type];const{w,h}=sDim(ship);
-  const sz=ship.size;const range=sz==='admiral'?3:sz==='mid'?2:1;
+  const st=SHIPS[ship.type];const{w,h}=sDim(ship);const sz=ship.size;const range=sz==='admiral'?3:sz==='mid'?2:1;
   const targets=[];
   if(st.atkType==='broadside'){
     const mcx=ship.x+Math.floor(w/2),mcy=ship.y+Math.floor(h/2);
@@ -892,369 +672,285 @@ function getDuelTargets(ship,oppIdx,N){
   }else if(st.atkType==='front'){
     const fv=fwdV(ship.dir);frontEdge(ship).forEach(fc=>{for(let r=1;r<=range;r++){const tx=fc.x+fv.dx*r,ty=fc.y+fv.dy*r;if(tx>=0&&tx<G._duelW&&ty>=0&&ty<N)targets.push({x:tx,y:ty});}});
   }else{
-    // Trireme ram: 1 cell forward
     const fv=fwdV(ship.dir);frontEdge(ship).forEach(fc=>{const tx=fc.x+fv.dx,ty=fc.y+fv.dy;if(tx>=0&&tx<G._duelW&&ty>=0&&ty<N)targets.push({x:tx,y:ty});});
   }
   const seen=new Set();return targets.filter(t=>{const k=t.x+','+t.y;if(seen.has(k))return false;seen.add(k);return true;});
 }
 
-// ════════════════════════════════════════════════════════
-//  CLICK HANDLERS
-// ════════════════════════════════════════════════════════
-function onMy(e){
-  if(cfg.mode==='robot'&&G.cp===1)return;
+// ═══════════ DUEL AUTO-FIRE ═══════════
+// Click own ship → fires weapon automatically (no cell selection needed)
+function duelFireShip(cp,si){
+  const opp=1-cp,N=G.N,ship=G.players[cp].ships[si];
+  const st=SHIPS[ship.type];const targets=getDuelTargets(ship,opp,N);
+  if(st.atkType==='ram'){
+    const bW=G._duelW;
+    if(canMoveStep(G.players,cp,si,true,bW,G.N)){
+      const fv=fwdV(ship.dir);moveHitsWithShip(cp,si,fv.dx,fv.dy);ship.x+=fv.dx;ship.y+=fv.dy;
+    }
+    checkRams();log(`🚤 ${SHIPS[ship.type].name} koçbaşıyla ilerledi!`,'info');
+  }else{
+    let anyHit=false;
+    targets.forEach(t=>{
+      // Remove old marker then apply fresh attack (allows re-targeting)
+      G.players[opp].hits=G.players[opp].hits.filter(h=>!(h.x===t.x&&h.y===t.y&&!h.rock&&!h.preDuel));
+      G.players[opp].misses=G.players[opp].misses.filter(m=>!(m.x===t.x&&m.y===t.y&&!m.preDuel));
+      const hitShip=G.players[opp].ships.find(s=>!s.sunk&&sCells(s,s.x,s.y).some(c=>c.x===t.x&&c.y===t.y));
+      if(hitShip){G.players[opp].hits.push({x:t.x,y:t.y,turn:G.turn});G.hits[cp]++;anyHit=true;midShrink(opp,hitShip,t.x,t.y);if(!hitShip.sunk&&sCells(hitShip,hitShip.x,hitShip.y).every(c=>G.players[opp].hits.some(h=>h.x===c.x&&h.y===c.y))){hitShip.sunk=true;log(`⚓ ${SHIPS[hitShip.type].name} BATTI!`,'sink');}}
+      else{G.players[opp].misses.push({x:t.x,y:t.y,turn:G.turn});}
+    });
+    log(`${SHIPS[ship.type].name} ateş etti!`,anyHit?'hit':'miss');
+  }
+  drawDuel();G._firing=true;
+  setTimeout(()=>{G._firing=false;if(checkWin())return;endTurn();},isHumanTurn()?1500:0);
+}
+
+// ═══════════ CLICK HANDLERS ═══════════
+function isHumanTurn(){return!(cfg.mode==='robot'&&G.cp===1);}
+function onMyXY(x,y){
   if(G.action!=='move'&&G.action!=='rotate')return;
-  const cv=document.getElementById(G.duel?'cv-duel':'cv0');const cell=cv._c;
-  const r=cv.getBoundingClientRect();
-  const x=Math.floor((e.clientX-r.left)/cell),y=Math.floor((e.clientY-r.top)/cell);
-  const idx=G.players[G.cp].ships.findIndex(s=>!s.sunk&&sCells(s,s.x,s.y).some(c=>c.x===x&&c.y===y));
+  const clickCp=(cfg.mode==='robot')?0:G.cp;
+  const idx=G.players[clickCp].ships.findIndex(s=>!s.sunk&&sCells(s,s.x,s.y).some(c=>c.x===x&&c.y===y));
   if(idx<0){setStatus('Bir gemi seçin.');return;}
-  G.selShip=idx;
-  if(G.action==='move')showMoveBtns();
-  else showRotateBtns();
-  drawBoards();
+  G.selShip=idx;if(G.action==='move')showMoveBtns();else showRotateBtns();drawBoards();
 }
-function onEnemy(e){
-  if(G.duel||cfg.mode==='robot'&&G.cp===1)return;
-  if(G.action!=='attack'&&!G._chainMode)return;
-  const cv=document.getElementById('cv1');const cell=cv._c;const r=cv.getBoundingClientRect();
-  const x=Math.floor((e.clientX-r.left)/cell),y=Math.floor((e.clientY-r.top)/cell);
-  if(G._chainMode)doChain(G.cp,1-G.cp,x,y);
-  else doAttack(G.cp,1-G.cp,x,y);
+function onEnemyXY(x,y){
+  const attkCp=(cfg.mode==='robot')?0:G.cp;
+  if(G._chainMode)doChain(attkCp,1-attkCp,x,y);
+  else if(G.action==='attack')doAttack(attkCp,1-attkCp,x,y);
 }
-function onDuel(e){
-  if(!G.duel||cfg.mode==='robot'&&G.cp===1)return;
-  const dc=document.getElementById('cv-duel');const cell=dc._c;
-  const r=dc.getBoundingClientRect();
-  const cx=Math.floor((e.clientX-r.left)/cell),cy=Math.floor((e.clientY-r.top)/cell);
+function onDuelXY(cx,cy){
   const cp=G.cp,opp=1-cp,N=G.N;
   if(G.action==='move'||G.action==='rotate'){
     const idx=G.players[cp].ships.findIndex(s=>!s.sunk&&sCells(s,s.x,s.y).some(c=>c.x===cx&&c.y===cy));
     if(idx<0){setStatus('Kendi gemilerinizden birini seçin.');return;}
-    G.selShip=idx;
-    if(G.action==='move')showMoveBtns();else showRotateBtns();
-    drawDuel();return;
+    G.selShip=idx;if(G.action==='move')showMoveBtns();else showRotateBtns();drawDuel();return;
   }
-  if(G.action==='attack'||G._chainMode){
-    if(!G.duelAtk){
+  if(G._chainMode){
+    if(!G.duelChainPhase){
       const idx=G.players[cp].ships.findIndex(s=>!s.sunk&&sCells(s,s.x,s.y).some(c=>c.x===cx&&c.y===cy));
       if(idx<0){setStatus('Kendi gemilerinizden birini seçin.');return;}
-      G.duelSelShip={p:cp,s:idx};G.duelAtk=true;
-      setStatus(`${SHIPS[G.players[cp].ships[idx].type].name} seçildi — hedef seçin.`);drawDuel();
+      G.duelChainShip=idx;G.duelChainPhase=true;setStatus('Hedef karoya tıklayın (menzili gösteren alanda).');drawDuel();
     }else{
-      const targets=getDuelTargets(G.players[cp].ships[G.duelSelShip.s],opp,N);
+      const targets=getDuelTargets(G.players[cp].ships[G.duelChainShip],opp,N);
       if(!targets.some(t=>t.x===cx&&t.y===cy)){setStatus('Menzil dışı!');return;}
-      if(G._chainMode){doChainDuel(cp,opp,cx,cy);}
-      else{duelAtk(cp,opp,cx,cy);}
+      doChainDuel(cp,opp,cx,cy);
     }
+    return;
+  }
+  if(G.action==='attack'){
+    const idx=G.players[cp].ships.findIndex(s=>!s.sunk&&sCells(s,s.x,s.y).some(c=>c.x===cx&&c.y===cy));
+    if(idx>=0)duelFireShip(cp,idx);
+    else setStatus('Kendi gemilerinizden birine tıklayın.');
   }
 }
 
-// ════════════════════════════════════════════════════════
-//  ATTACK
-// ════════════════════════════════════════════════════════
+// ═══════════ NORMAL ATTACK (re-targetable) ═══════════
 function doAttack(cp,opp,x,y){
-  const already=[...G.players[opp].hits,...G.players[opp].chainHits,...G.players[opp].misses].some(h=>h.x===x&&h.y===y);
-  if(already){setStatus('Bu karo zaten hedef alındı!');return;}
+  // Re-targeting: remove old markers at this position before firing
+  G.players[opp].hits=G.players[opp].hits.filter(h=>!(h.x===x&&h.y===y&&!h.rock));
+  G.players[opp].misses=G.players[opp].misses.filter(m=>!(m.x===x&&m.y===y));
+  G.players[opp].chainHits=G.players[opp].chainHits.filter(h=>!(h.x===x&&h.y===y));
   const hit=G.players[opp].ships.find(s=>!s.sunk&&sCells(s,s.x,s.y).some(c=>c.x===x&&c.y===y));
-  if(hit){
-    G.players[opp].hits.push({x,y,turn:G.turn});G.hits[cp]++;
-    log(`🎯 İsabet: (${x+1},${y+1})`,'hit');setStatus(`🎯 İSABET! (${x+1},${y+1})`);
-    checkMidShrink(opp,hit,x,y);
-    if(!hit.sunk&&sCells(hit,hit.x,hit.y).every(c=>G.players[opp].hits.some(h=>h.x===c.x&&h.y===c.y))){hit.sunk=true;log(`⚓ ${SHIPS[hit.type].name} BATTI!`,'sink');if(checkWin())return;}
-    checkDuel();
-  }else{G.players[opp].misses.push({x,y,turn:G.turn});log(`Iска: (${x+1},${y+1})`,'miss');setStatus('Iска!');}
-  G._chainMode=false;endTurn();
-}
-function duelAtk(cp,opp,x,y){
-  const already=[...G.players[opp].hits,...G.players[opp].chainHits,...G.players[opp].misses].some(h=>h.x===x&&h.y===y);
-  if(already){setStatus('Bu karo zaten hedef alındı!');return;}
-  const selShip=G.players[cp].ships[G.duelSelShip.s];
-  const hit=G.players[opp].ships.find(s=>!s.sunk&&sCells(s,s.x,s.y).some(c=>c.x===x&&c.y===y));
-  // Trireme: move forward 1 cell on attack
-  if(selShip.type==='trireme'){
-    const fv=fwdV(selShip.dir);const bW=G._duelW;
-    if(canMoveStep(G.players,cp,G.duelSelShip.s,true,bW,G.N)){selShip.x+=fv.dx;selShip.y+=fv.dy;checkRams();}
-  }
-  if(hit){
-    G.players[opp].hits.push({x,y,turn:G.turn});G.hits[cp]++;
-    log(`⚔ İsabet! (${x+1},${y+1})`,'hit');setStatus('🎯 İSABET!');
-    checkMidShrink(opp,hit,x,y);
-    if(!hit.sunk&&sCells(hit,hit.x,hit.y).every(c=>G.players[opp].hits.some(h=>h.x===c.x&&h.y===c.y))){hit.sunk=true;log(`⚓ ${SHIPS[hit.type].name} BATTI!`,'sink');if(checkWin())return;}
-  }else{G.players[opp].misses.push({x,y,turn:G.turn});log(`Iска (${x+1},${y+1})`,'miss');setStatus('Iска!');}
-  G.duelSelShip=null;G.duelAtk=false;endTurn();
+  if(hit){G.players[opp].hits.push({x,y,turn:G.turn});G.hits[cp]++;log(`🎯 İsabet: (${x+1},${y+1})`,'hit');setStatus(`🎯 İSABET! (${x+1},${y+1})`);midShrink(opp,hit,x,y);if(!hit.sunk&&sCells(hit,hit.x,hit.y).every(c=>G.players[opp].hits.some(h=>h.x===c.x&&h.y===c.y))){hit.sunk=true;log(`⚓ ${SHIPS[hit.type].name} BATTI!`,'sink');}checkDuel();}
+  else{G.players[opp].misses.push({x,y,turn:G.turn});log(`Iска: (${x+1},${y+1})`,'miss');setStatus('Iска!');}
+  drawBoards();G._firing=true;
+  setTimeout(()=>{G._chainMode=false;G._firing=false;if(checkWin())return;endTurn();},isHumanTurn()?1500:0);
 }
 
-// ════════════════════════════════════════════════════════
-//  CHAIN SHOT (no sink, sail damage)
-// ════════════════════════════════════════════════════════
+// ═══════════ CHAIN SHOT ═══════════
 function doChain(cp,opp,x,y){
-  const already=[...G.players[opp].hits,...G.players[opp].chainHits,...G.players[opp].misses].some(h=>h.x===x&&h.y===y);
-  if(already){setStatus('Bu karo zaten hedef alındı!');return;}
-  const hit=G.players[opp].ships.find(s=>!s.sunk&&sCells(s,s.x,s.y).some(c=>c.x===x&&c.y===y));
-  if(hit){
-    G.players[opp].chainHits.push({x,y,turn:G.turn});
-    applySailDmg(hit);
-  }else{G.players[opp].misses.push({x,y,turn:G.turn});log('⛓ Zincir Gülle — Iска!','miss');}
-  G._chainMode=false;endTurn();
-}
-function doChainDuel(cp,opp,x,y){
-  const already=[...G.players[opp].hits,...G.players[opp].chainHits,...G.players[opp].misses].some(h=>h.x===x&&h.y===y);
-  if(already){setStatus('Bu karo zaten hedef alındı!');return;}
+  G.players[opp].hits=G.players[opp].hits.filter(h=>!(h.x===x&&h.y===y&&!h.rock));
+  G.players[opp].misses=G.players[opp].misses.filter(m=>!(m.x===x&&m.y===y));
+  G.players[opp].chainHits=G.players[opp].chainHits.filter(h=>!(h.x===x&&h.y===y));
   const hit=G.players[opp].ships.find(s=>!s.sunk&&sCells(s,s.x,s.y).some(c=>c.x===x&&c.y===y));
   if(hit){G.players[opp].chainHits.push({x,y,turn:G.turn});applySailDmg(hit);}
   else{G.players[opp].misses.push({x,y,turn:G.turn});log('⛓ Zincir Gülle — Iска!','miss');}
-  G._chainMode=false;G.duelSelShip=null;G.duelAtk=false;endTurn();
+  drawBoards();G._firing=true;
+  setTimeout(()=>{G._chainMode=false;G._firing=false;endTurn();},isHumanTurn()?1500:0);
+}
+function doChainDuel(cp,opp,x,y){
+  G.players[opp].hits=G.players[opp].hits.filter(h=>!(h.x===x&&h.y===y&&!h.rock&&!h.preDuel));
+  G.players[opp].chainHits=G.players[opp].chainHits.filter(h=>!(h.x===x&&h.y===y&&!h.preDuel));
+  const hit=G.players[opp].ships.find(s=>!s.sunk&&sCells(s,s.x,s.y).some(c=>c.x===x&&c.y===y));
+  if(hit){G.players[opp].chainHits.push({x,y,turn:G.turn});applySailDmg(hit);}
+  else{G.players[opp].misses.push({x,y,turn:G.turn});log('⛓ Zincir Gülle — Iска!','miss');}
+  G.duelChainPhase=false;G.duelChainShip=null;drawDuel();G._firing=true;
+  setTimeout(()=>{G._chainMode=false;G._firing=false;endTurn();},isHumanTurn()?1500:0);
 }
 function applySailDmg(ship){
-  if(SHIPS[ship.type].hasOars){
-    ship.sailDamaged=true;
-    log(`⛓ ${SHIPS[ship.type].name} yelkeni hasar gördü — rüzgar etkisi iptal! (Kürekle hareket edebilir)`,'chain');
-  }else{
-    ship.brokenSails=(ship.brokenSails||0)+1;
-    const total=sailCount(ship),rem=sailsRemaining(ship);
-    if(rem<=0){log(`⛓ ${SHIPS[ship.type].name} tüm yelkenleri kırıldı — hareket edemiyor!`,'chain');}
-    else{log(`⛓ ${SHIPS[ship.type].name} yelken hasar (${rem}/${total} yelken kaldı) — yavaşladı!`,'chain');}
-  }
+  if(SHIPS[ship.type].hasOars){ship.sailDamaged=true;log(`⛓ ${SHIPS[ship.type].name} yelkeni hasar — rüzgar etkisi iptal (kürekle hareket eder)`,'chain');}
+  else{ship.brokenSails=(ship.brokenSails||0)+1;const rem=sailsRem(ship);if(rem<=0)log(`⛓ ${SHIPS[ship.type].name} tüm yelkenleri kırıldı — hareket edemiyor!`,'chain');else log(`⛓ ${SHIPS[ship.type].name} yelken hasar (${rem}/${sailCount(ship)}) — yavaşladı!`,'chain');}
 }
 
-// ════════════════════════════════════════════════════════
-//  MOVE / ROTATE
-// ════════════════════════════════════════════════════════
+// ═══════════ MOVE / ROTATE ═══════════
 function showMoveBtns(){
-  const cp=G.cp,idx=G.selShip;
-  const ship=G.players[cp].ships[idx];
+  const cp=G.cp,idx=G.selShip;const ship=G.players[cp].ships[idx];
+  if(!canSailMove(ship)){setStatus('Yelkenler kırık — hareket edemiyor!');G.selShip=null;renderAbar();return;}
   const bW=G.duel?G._duelW:G.N;
-  if(!canSailMove(ship)){setStatus('Yelkenler kırık — gemi hareket edemiyor!');G.selShip=null;renderAbar();return;}
-  const canF=canMoveStep(G.players,cp,idx,true,bW,G.N);
-  const canB=SHIPS[ship.type].canRev&&canMoveStep(G.players,cp,idx,false,bW,G.N);
-  document.getElementById('abar').innerHTML=`<button class="ab"${canF?'':' disabled'} onclick="execMove(true)">▲ İleri</button><button class="ab"${canB?'':' disabled'} onclick="execMove(false)">▼ Geri</button><button class="ab" onclick="cancelSub()">✕ İptal</button>`;
+  const canF=canMoveStep(G.players,cp,idx,true,bW,G.N);const canB=SHIPS[ship.type].canRev&&canMoveStep(G.players,cp,idx,false,bW,G.N);
+  const ws=windSpd(ship,true);const label=ws>1?`▲ İleri (💨×${ws})`:' ▲ İleri';
+  document.getElementById('abar').innerHTML=`<button class="ab"${canF?'':' disabled'} onclick="execMove(true)">${label}</button><button class="ab"${canB?'':' disabled'} onclick="execMove(false)">▼ Geri</button><button class="ab" onclick="cancelSub()">✕ İptal</button>`;
 }
 function showRotateBtns(){
-  const cp=G.cp,idx=G.selShip;
-  const ship=G.players[cp].ships[idx];
+  const cp=G.cp,idx=G.selShip;const ship=G.players[cp].ships[idx];
   if(ship.rotCool>0){setStatus(`${ship.rotCool} tur daha dönemez!`);G.selShip=null;renderAbar();return;}
   const bW=G.duel?G._duelW:G.N;
-  const cwDir=(ship.dir+1)%4,ccwDir=(ship.dir+3)%4;
-  const canCW=canRot(G.players,cp,idx,cwDir,bW,G.N);
-  const canCCW=canRot(G.players,cp,idx,ccwDir,bW,G.N);
-  document.getElementById('abar').innerHTML=`<button class="ab"${canCCW?'':' disabled'} onclick="execRot(${ccwDir})">↺ İskele (Sol)</button><button class="ab"${canCW?'':' disabled'} onclick="execRot(${cwDir})">↻ Sancak (Sağ)</button><button class="ab" onclick="cancelSub()">✕ İptal</button>`;
+  const cw=(ship.dir+1)%4,ccw=(ship.dir+3)%4;
+  const okCW=canRot(G.players,cp,idx,cw,bW,G.N),okCCW=canRot(G.players,cp,idx,ccw,bW,G.N);
+  document.getElementById('abar').innerHTML=`<button class="ab"${okCCW?'':' disabled'} onclick="execRot(${ccw})">↺ İskele (Sol)</button><button class="ab"${okCW?'':' disabled'} onclick="execRot(${cw})">↻ Sancak (Sağ)</button><button class="ab" onclick="cancelSub()">✕ İptal</button>`;
 }
 function execMove(fwd){
   const cp=G.cp,idx=G.selShip;if(idx===null)return;
-  const ship=G.players[cp].ships[idx];
-  if(!fwd&&!SHIPS[ship.type].canRev){setStatus('Bu gemi geri gidemez!');return;}
+  const ship=G.players[cp].ships[idx];if(!fwd&&!SHIPS[ship.type].canRev){setStatus('Bu gemi geri gidemez!');return;}
   if(!canSailMove(ship)){setStatus('Yelkenler kırık!');G.selShip=null;renderAbar();return;}
-  const bW=G.duel?G._duelW:G.N;
-  const v=fwd?fwdV(ship.dir):bkV(ship.dir);
-  const maxSteps=fwd?windSpeed(ship,true):1;
-  let moved=0;
+  const bW=G.duel?G._duelW:G.N;const v=fwd?fwdV(ship.dir):bkV(ship.dir);
+  const maxSteps=fwd?windSpd(ship,true):1;let moved=0;
   for(let i=0;i<maxSteps;i++){
     if(!canMoveStep(G.players,cp,idx,fwd,bW,G.N))break;
+    moveHitsWithShip(cp,idx,v.dx,v.dy); // move hit markers with ship
     ship.x+=v.dx;ship.y+=v.dy;moved++;
     if(!G.duel)applyRockDmg(cp,idx);
     checkRams();
   }
   if(moved===0){setStatus('Hareket edilemiyor!');return;}
-  log(`⛵ ${SHIPS[ship.type].name} ${moved} karo ${fwd?'ileri':'geri'}.`,'info');
+  log(`⛵ ${SHIPS[ship.type].name} ${moved} karo ${fwd?'ileri':'geri'}${moved>1?' (rüzgar)':''}.`,'info');
   G.selShip=null;renderAbar();endTurn();
 }
-function execRot(newDir){
-  const cp=G.cp,idx=G.selShip;if(idx===null)return;
-  const ship=G.players[cp].ships[idx];const bW=G.duel?G._duelW:G.N;
-  if(!canRot(G.players,cp,idx,newDir,bW,G.N)){setStatus('Dönülemiyor — yol tıkalı veya alan yok!');G.selShip=null;renderAbar();return;}
-  ship.dir=newDir;ship.rotCool=2;
-  log(`↻ ${SHIPS[ship.type].name} döndürüldü.`,'info');G.selShip=null;renderAbar();endTurn();
+function execRot(nd){
+  const cp=G.cp,idx=G.selShip;if(idx===null)return;const ship=G.players[cp].ships[idx];const bW=G.duel?G._duelW:G.N;
+  if(!canRot(G.players,cp,idx,nd,bW,G.N)){setStatus('Dönülemiyor!');G.selShip=null;renderAbar();return;}
+  ship.dir=nd;ship.rotCool=2;log(`↻ ${SHIPS[ship.type].name} döndürüldü.`,'info');G.selShip=null;renderAbar();endTurn();
 }
 function cancelSub(){G.selShip=null;renderAbar();setStatus('İptal.');}
 
-// ════════════════════════════════════════════════════════
-//  WIND DIRECTION PICKER
-// ════════════════════════════════════════════════════════
+// ═══════════ WIND DIRECTION PICKER ═══════════
 function showWindPicker(){
-  document.getElementById('abar').innerHTML=`
-    <div class="wind-picker-area">
-      <span style="font-family:'Cinzel',serif;font-size:.75rem;color:var(--gd)">Rüzgar Yönünü Seç:</span>
-      <div class="wind-dir-grid">
-        <div></div><button class="ab wind-pick" onclick="pickWind(0)">▲ Kuzey</button><div></div>
-        <button class="ab wind-pick" onclick="pickWind(3)">◀ Batı</button>
-        <button class="ab" onclick="cancelSub()" style="font-size:.65rem">✕</button>
-        <button class="ab wind-pick" onclick="pickWind(1)">▶ Doğu</button>
-        <div></div><button class="ab wind-pick" onclick="pickWind(2)">▼ Güney</button><div></div>
-      </div>
-    </div>`;
+  document.getElementById('abar').innerHTML=`<div class="wind-area"><span style="font-family:'Cinzel',serif;font-size:.75rem;color:var(--gd)">Rüzgar Yönünü Seç:</span><div class="wind-grid"><div></div><button class="ab wp" onclick="pickWind(0)">▲ Kuzey</button><div></div><button class="ab wp" onclick="pickWind(3)">◀ Batı</button><button class="ab" onclick="cancelSub()" style="font-size:.62rem">✕</button><button class="ab wp" onclick="pickWind(1)">▶ Doğu</button><div></div><button class="ab wp" onclick="pickWind(2)">▼ Güney</button><div></div></div></div>`;
 }
 function pickWind(dir){
-  const cp=G.cp;G.windUsed[cp]=true;G.windDir=dir;G.windTurns=3;
-  const dirNames=['Kuzey','Doğu','Güney','Batı'];
-  log(`💨 RÜZGAR — ${dirNames[dir]} yönünde 3 tur etkili!`,'info');
-  setStatus(`💨 Rüzgar aktif (${dirNames[dir]})!`);
-  startWA();renderAbar();endTurn();
+  const cp=G.cp;G.windDir=dir;G.windTurns=5;G.windCooldown[cp]=8;
+  const dn=['Kuzey','Doğu','Güney','Batı'];log(`💨 RÜZGAR — ${dn[dir]} yönünde 5 tur etkili!`,'info');setStatus(`💨 Rüzgar aktif (${dn[dir]})!`);
+  G._pickWind=false;startWA();renderAbar();endTurn();
 }
 
-// ════════════════════════════════════════════════════════
-//  POWERS
-// ════════════════════════════════════════════════════════
-function useWind(){
-  const cp=G.cp;
-  if(G.windUsed[cp]){setStatus('Rüzgar hakkınız bitti!');return;}
-  if(G.hits[cp]<2){setStatus(`Rüzgar için 2 isabet gerekli (şu an: ${G.hits[cp]})`);return;}
-  G._pickWind=true;showWindPicker();
-}
-function useChain(){
-  const cp=G.cp;
-  if(G.chainUsed[cp]>=2){setStatus('Zincir Gülle hakkınız bitti!');return;}
-  if(G.hits[cp]<4){setStatus(`Zincir Gülle için 4 isabet gerekli (şu an: ${G.hits[cp]})`);return;}
-  G.chainUsed[cp]++;G._chainMode=true;G.action='attack';G.duelAtk=false;G.duelSelShip=null;
-  log('⛓ Zincir Gülle hazır!','info');
-  setStatus(G.duel?'⛓ Düello — gemi seç, sonra hedef seç.':'⛓ Düşman tahtasında bir karo seçin.');
-  renderAbar();
-}
-function setAction(a){
-  G.action=a;G.selShip=null;G._chainMode=false;G._pickWind=false;G.duelSelShip=null;G.duelAtk=false;
-  renderAbar();
-  const msgs={attack:'Düşman tahtasında bir karo seçin.',move:'Hareket ettirmek istediğiniz gemiyi seçin.',rotate:'Döndürmek istediğiniz gemiyi seçin.'};
-  setStatus(msgs[a]||'');
-  drawBoards();
-}
+// ═══════════ POWERS ═══════════
+function useWind(){const cp=G.cp;if(G.windCooldown[cp]>0){setStatus(`Rüzgar: ${G.windCooldown[cp]} tur sonra kullanılabilir.`);return;}if(G.hits[cp]<2){setStatus(`Rüzgar için 2 isabet gerekli (${G.hits[cp]}/2)`);return;}G._pickWind=true;showWindPicker();}
+function useChain(){const cp=G.cp;if(G._chainMode){setStatus('Zincir Gülle zaten hazır — hedef seçin!');return;}if(G.chainUsed[cp]>=2){setStatus('Zincir Gülle hakkınız bitti!');return;}if(G.hits[cp]<4){setStatus(`Zincir Gülle için 4 isabet gerekli (${G.hits[cp]}/4)`);return;}G.chainUsed[cp]++;G._chainMode=true;G.action='attack';G.duelChainPhase=false;G.duelChainShip=null;log('⛓ Zincir Gülle hazır!','info');setStatus(G.duel?'⛓ Düello — önce kendi gemini seç, sonra hedefi.':'⛓ Düşman tahtasında bir karo seçin.');renderAbar();}
+function setAction(a){G.action=a;G.selShip=null;G._chainMode=false;G._pickWind=false;G.duelChainPhase=false;G.duelChainShip=null;renderAbar();const msgs={attack:'Düşman tahtasında bir karo seçin.',move:'Hareket ettirmek istediğiniz gemiyi seçin.',rotate:'Döndürmek istediğiniz gemiyi seçin.'};setStatus(msgs[a]||'');drawBoards();}
 function renderAbar(){
   const abar=document.getElementById('abar');const cp=G.cp;
   if(G._pickWind){showWindPicker();return;}
-  const wOk=!G.windUsed[cp]&&G.hits[cp]>=2;const cOk=G.chainUsed[cp]<2&&G.hits[cp]>=4;
-  abar.innerHTML=`
-    <button class="ab${G.action==='attack'?' act':''}" onclick="setAction('attack')">🎯 Saldır</button>
-    <button class="ab${G.action==='move'?' act':''}" onclick="setAction('move')">⛵ Hareket</button>
-    <button class="ab${G.action==='rotate'?' act':''}" onclick="setAction('rotate')">↻ Döndür</button>
-    <button class="ab sp" onclick="useWind()" ${!wOk?'disabled':''}>${G.windUsed[cp]?'💨✓':G.hits[cp]<2?`💨(${G.hits[cp]}/2)`:'💨 Rüzgar'}</button>
-    <button class="ab sp" onclick="useChain()" ${!cOk?'disabled':''}>${G.chainUsed[cp]>=2?'⛓✓':G.hits[cp]<4?`⛓(${G.hits[cp]}/4)`:`⛓(${G.chainUsed[cp]}/2)`}</button>`;
+  const wCD=G.windCooldown[cp];const wOk=wCD===0&&G.hits[cp]>=2;const cOk=G.chainUsed[cp]<2&&G.hits[cp]>=4;
+  const wLabel=wCD>3?`💨(${wCD-3}T✓)`:wCD>0?`⏳(${wCD}T)`:G.hits[cp]<2?`💨(${G.hits[cp]}/2)`:'💨 Rüzgar';
+  abar.innerHTML=`<button class="ab${G.action==='attack'?' act':''}" onclick="setAction('attack')">🎯 Saldır</button><button class="ab${G.action==='move'?' act':''}" onclick="setAction('move')">⛵ Hareket</button><button class="ab${G.action==='rotate'?' act':''}" onclick="setAction('rotate')">↻ Döndür</button><button class="ab sp" onclick="useWind()" ${!wOk?'disabled':''}>${wLabel}</button><button class="ab sp" onclick="useChain()" ${!cOk?'disabled':''}>${G.chainUsed[cp]>=2?'⛓✓':G.hits[cp]<4?`⛓(${G.hits[cp]}/4)`:`⛓(${G.chainUsed[cp]}/2)`}</button>`;
 }
 
-// ════════════════════════════════════════════════════════
-//  DUEL MODE CHECK
-// ════════════════════════════════════════════════════════
-function livingCaros(pi){return G.players[pi].ships.filter(s=>!s.sunk).reduce((acc,s)=>{const{w,h}=sDim(s);const hitC=G.players[pi].hits.filter(h=>!h.rock&&sCells(s,s.x,s.y).some(c=>c.x===h.x&&c.y===h.y)).length;return acc+Math.max(0,w*h-hitC);},0);}
+// ═══════════ DUEL MODE CHECK ═══════════
+function livingCaros(pi){return G.players[pi].ships.filter(s=>!s.sunk).reduce((acc,s)=>{const{w,h}=sDim(s);const hC=G.players[pi].hits.filter(h=>!h.rock&&!h.preDuel&&sCells(s,s.x,s.y).some(c=>c.x===h.x&&c.y===h.y)).length;return acc+Math.max(0,w*h-hC);},0);}
 function checkDuel(){
   if(G.duel)return;const c0=livingCaros(0),c1=livingCaros(1);
   if(c0===c1&&c0>=1&&c0<=3){
-    G.duel=true;const N=G.N;
+    G.duel=true;
+    // Mark all existing markers as preDuel (hidden but positions preserved for sinking logic)
+    G.players.forEach(p=>{p.hits.forEach(h=>h.preDuel=true);p.misses.forEach(m=>m.preDuel=true);p.chainHits.forEach(h=>h.preDuel=true);});
+    const N=G.N;
     G.players[1].ships.forEach(s=>{if(!s.sunk)s.x+=N;});
     G.players[1].hits.forEach(h=>h.x+=N);G.players[1].misses.forEach(m=>m.x+=N);G.players[1].chainHits.forEach(h=>h.x+=N);
     G._duelW=N*2;resizeGame();
     document.getElementById('normal-area').style.display='none';
     document.getElementById('duel-area').style.display='flex';
     document.getElementById('dban').className='dban on';
-    log(`⚔ DÜELLO MODU! ${c0}er canlı karo — tahtalar birleşti!`,'sink');setStatus('⚔ Düello Modu!');
+    log(`⚔ DÜELLO MODU! ${c0}er canlı karo — tahtalar birleşti! Kendi gemini tıkla!`,'sink');setStatus('⚔ Düello Modu — kendi gemini tıkla, silahını ateşle!');
   }
 }
 
-// ════════════════════════════════════════════════════════
-//  END TURN  (pass screen fix: include showScreen)
-// ════════════════════════════════════════════════════════
+// ═══════════ END TURN ═══════════
 function endTurn(){
   G.turn++;
   if(G.windTurns>0){G.windTurns--;if(G.windTurns===0){log('💨 Rüzgar dindi.','info');stopWA();}}
+  for(let i=0;i<2;i++)if(G.windCooldown[i]>0)G.windCooldown[i]--;
   G.players[G.cp].ships.forEach(s=>{if(s.rotCool>0)s.rotCool--;});
-  G.cp=1-G.cp;
-  G.action='attack';G.selShip=null;G._chainMode=false;G.duelSelShip=null;G.duelAtk=false;G._hover=null;G._pickWind=false;
+  G.cp=1-G.cp;G.action='attack';G.selShip=null;G._chainMode=false;G.duelChainPhase=false;G.duelChainShip=null;G._hover=null;G._pickWind=false;
   if(cfg.mode==='2player'){
-    const names=['Oyuncu 1','Oyuncu 2'];
-    // Pass screen must show screen-game on continue
     G._passNext=()=>{showScreen('screen-game');updateUI();};
-    showPass(names[G.cp],`${names[1-G.cp]}'in turu bitti. ${names[G.cp]} hazır olunca devam edin.`);
+    const names=['Oyuncu 1','Oyuncu 2'];showPass(names[G.cp],`${names[1-G.cp]}'in turu bitti. ${names[G.cp]} hazır olunca devam edin.`);
   }else{updateUI();if(G.cp===1)setTimeout(robotTurn,PERSONAS[cfg.persona].thinkMs);}
 }
 function updateUI(){
+  G._firing=false;
   const names=['Oyuncu 1',cfg.mode==='robot'?'Robot':'Oyuncu 2'];
   document.getElementById('tind').textContent=`${names[G.cp]}'in Turu`;
   document.getElementById('sc0').textContent=G.hits[0];document.getElementById('sc1').textContent=G.hits[1];
-  setStatus(''); // clear status on new turn
-  renderAbar();
-  if(G.duel)setStatus(G.duelAtk?'Saldırı hedefini seçin.':'Eylem ve gemi seçin.');
-  else setStatus('Bir eylem seçin.');
+  document.getElementById('blbl0').textContent=cfg.mode==='robot'?'SİZİN SULARINIZ':(G.cp===0?'OYUNCU 1 SULARI':'OYUNCU 2 SULARI');
+  document.getElementById('blbl1').textContent=cfg.mode==='robot'?'DÜŞMAN SULARI':(G.cp===0?'OYUNCU 2 SULARI':'OYUNCU 1 SULARI');
+  document.getElementById('blog').innerHTML=''; // clear previous turn messages
+  setStatus('');renderAbar();
+  if(G.duel)setStatus('Eylem seç → kendi gemini tıkla.');else setStatus('Bir eylem seçin.');
   drawBoards();
 }
 
-// ════════════════════════════════════════════════════════
-//  WIN CHECK
-// ════════════════════════════════════════════════════════
+// ═══════════ WIN CHECK ═══════════
 function checkWin(){
   const a0=G.players[0].ships.filter(s=>!s.sunk).length,a1=G.players[1].ships.filter(s=>!s.sunk).length;
-  if(a0===0||a1===0){
-    const w=a1===0?0:1;const names=['Oyuncu 1',cfg.mode==='robot'?'Robot':'Oyuncu 2'];
-    document.getElementById('wttl').textContent=`${names[w]} Kazandı! 🏆`;
-    document.getElementById('wquote').textContent='"'+WIN_Q[Math.floor(Math.random()*WIN_Q.length)]+'"';
-    drawBoards();setTimeout(()=>{stopMusic();stopWA();showScreen('screen-win');},700);return true;
-  }
-  return false;
+  if(a0===0||a1===0){const w=a1===0?0:1;const names=['Oyuncu 1',cfg.mode==='robot'?'Robot':'Oyuncu 2'];document.getElementById('wttl').textContent=`${names[w]} Kazandı! 🏆`;document.getElementById('wquote').textContent='"'+WIN_Q[Math.floor(Math.random()*WIN_Q.length)]+'"';drawBoards();setTimeout(()=>{stopMusic();stopWA();showScreen('screen-win');},700);return true;}return false;
 }
 
-// ════════════════════════════════════════════════════════
-//  PLACEMENT DRAW
-// ════════════════════════════════════════════════════════
+// ═══════════ PLACEMENT DRAW ═══════════
 function drawPl(){
-  const cv=document.getElementById('cv-place');if(!cv._c)return;
-  const ctx=cv.getContext('2d'),cell=cv._c;
+  const cv=document.getElementById('cv-place');if(!cv._c)return;const ctx=cv.getContext('2d'),cell=cv._c;
   drawGrid(ctx,cell,G.N,G.N,G.terrain);
   PL.ships.forEach((s,i)=>{if(s.placed)drawShipOnCv(ctx,s,cell,PL.selIdx===i);});
-  if(PL.selIdx!==null&&PL.hover){
-    const s=PL.ships[PL.selIdx];const{w,h}=sDim(s,PL.rot);const{x,y}=PL.hover;
-    const blocked=terrBlocked(s,x,y);const ok=!blocked&&canPlace(PL.ships,PL.selIdx,x,y,PL.rot,G.N,G.N);
-    ctx.fillStyle=ok?'rgba(39,174,96,.3)':blocked?'rgba(120,60,20,.4)':'rgba(192,57,43,.3)';
-    ctx.strokeStyle=ok?'#27ae60':blocked?'#8a4a14':'#c0392b';ctx.lineWidth=2;
-    ctx.beginPath();ctx.roundRect(x*cell+2,y*cell+2,w*cell-4,h*cell-4,4);ctx.fill();ctx.stroke();
-  }
+  if(PL.selIdx!==null&&PL.hover){const s=PL.ships[PL.selIdx];const{w,h}=sDim(s,PL.rot);const{x,y}=PL.hover;const blocked=terrBlocked(s,x,y,true);const ok=!blocked&&canPlace(PL.ships,PL.selIdx,x,y,PL.rot,G.N,G.N);ctx.fillStyle=ok?'rgba(39,174,96,.3)':blocked?'rgba(120,60,20,.4)':'rgba(192,57,43,.3)';ctx.strokeStyle=ok?'#27ae60':blocked?'#8a4a14':'#c0392b';ctx.lineWidth=2;ctx.beginPath();ctx.roundRect(x*cell+2,y*cell+2,w*cell-4,h*cell-4,4);ctx.fill();ctx.stroke();}
+  drawFogLayer(ctx,cell,G.N);
 }
 
-// ════════════════════════════════════════════════════════
-//  ROBOT AI
-// ════════════════════════════════════════════════════════
+// ═══════════ ROBOT AI ═══════════
 let _rq=[];
-function robotSay(type){
-  const p=PERSONAS[cfg.persona];if(Math.random()>p.lineFreq)return;
-  const ls=p.lines[type]||p.lines.attack;log(`${p.icon} Robot: "${ls[Math.floor(Math.random()*ls.length)]}"`,'info');
-}
+function robotSay(type){const p=PERSONAS[cfg.persona];if(Math.random()>p.lineFreq)return;const ls=p.lines[type]||p.lines.attack;log(`${p.icon} Robot: "${ls[Math.floor(Math.random()*ls.length)]}"`,'info');}
 function robotTurn(){
   if(G.cp!==1||cfg.mode!=='robot')return;
   if(G.duel){robotDuel();return;}
   const opp=0;const p=PERSONAS[cfg.persona];
-  const occ=new Set([...G.players[opp].hits,...G.players[opp].misses,...G.players[opp].chainHits].map(c=>c.x+','+c.y));
+  const occ=new Set([...G.players[opp].hits,...G.players[opp].misses,...G.players[opp].chainHits].filter(h=>!h.rock&&(G.turn-(h.turn||0))<3).map(c=>c.x+','+c.y)); // only avoid very recent markers
   let tx,ty;
   if(p.style==='crazy'){const avail=[];for(let y=0;y<G.N;y++)for(let x=0;x<G.N;x++)avail.push({x,y});const pick=avail[Math.floor(Math.random()*avail.length)];tx=pick.x;ty=pick.y;}
-  else{
-    if(_rq.length>0){let t=_rq.shift();while(_rq.length>0&&occ.has(t.x+','+t.y))t=_rq.shift();if(!occ.has(t.x+','+t.y)){tx=t.x;ty=t.y;}}
-    if(tx===undefined){
-      const avail=[];for(let y=0;y<G.N;y++)for(let x=0;x<G.N;x++)if(!occ.has(x+','+y))avail.push({x,y});
-      if(!avail.length){endTurn();return;}
-      if(p.style==='tactical'){const chk=avail.filter(c=>(c.x+c.y)%2===0);const pool=chk.length?chk:avail;let best=pool[0],bScore=0;pool.forEach(c=>{let sc=0;[{dx:1,dy:0},{dx:-1,dy:0},{dx:0,dy:1},{dx:0,dy:-1}].forEach(d=>{if(!occ.has((c.x+d.dx)+','+(c.y+d.dy)))sc++;});if(sc>bScore){best=c;bScore=sc;}});tx=best.x;ty=best.y;}
-      else{const pick=avail[Math.floor(Math.random()*avail.length)];tx=pick.x;ty=pick.y;}
-    }
-  }
+  else{if(_rq.length>0){let t=_rq.shift();while(_rq.length>0&&occ.has(t.x+','+t.y))t=_rq.shift();if(!occ.has(t.x+','+t.y)){tx=t.x;ty=t.y;}}
+    if(tx===undefined){const avail=[];for(let y=0;y<G.N;y++)for(let x=0;x<G.N;x++)if(!occ.has(x+','+y))avail.push({x,y});if(!avail.length){endTurn();return;}
+      if(p.style==='tactical'){const chk=avail.filter(c=>(c.x+c.y)%2===0);const pool=chk.length?chk:avail;let best=pool[0],bS=0;pool.forEach(c=>{let sc=0;[{dx:1,dy:0},{dx:-1,dy:0},{dx:0,dy:1},{dx:0,dy:-1}].forEach(d=>{if(!occ.has((c.x+d.dx)+','+(c.y+d.dy)))sc++;});if(sc>bS){best=c;bS=sc;}});tx=best.x;ty=best.y;}
+      else{const pk=avail[Math.floor(Math.random()*avail.length)];tx=pk.x;ty=pk.y;}}}
   const hs=G.players[opp].ships.find(s=>!s.sunk&&sCells(s,s.x,s.y).some(c=>c.x===tx&&c.y===ty));
   if(hs&&p.style!=='crazy'){[{dx:1,dy:0},{dx:-1,dy:0},{dx:0,dy:1},{dx:0,dy:-1}].forEach(d=>{const nx=tx+d.dx,ny=ty+d.dy;if(nx>=0&&ny>=0&&nx<G.N&&ny<G.N&&!occ.has(nx+','+ny))_rq.push({x:nx,y:ny});});}
   robotSay(hs?'hit':'miss');
-  const already=[...G.players[opp].hits,...G.players[opp].misses,...G.players[opp].chainHits].some(h=>h.x===tx&&h.y===ty);
-  if(already&&p.style!=='crazy'){endTurn();return;}
-  if(already){const avail2=[];for(let y=0;y<G.N;y++)for(let x=0;x<G.N;x++)if(!occ.has(x+','+y))avail2.push({x,y});if(!avail2.length){endTurn();return;}const pk=avail2[Math.floor(Math.random()*avail2.length)];tx=pk.x;ty=pk.y;}
   doAttack(1,0,tx,ty);
 }
 function robotDuel(){
   const cp=1,opp=0,N=G.N;const p=PERSONAS[cfg.persona];
-  const myShips=G.players[cp].ships.filter(s=>!s.sunk);if(!myShips.length)return;
-  let ship;
-  if(p.duelStyle==='rush')ship=myShips.reduce((b,s)=>{const d=Math.abs(s.x-(G.players[opp].ships.find(s=>!s.sunk)||{x:0}).x);return d<Math.abs(b.x-(G.players[opp].ships.find(s=>!s.sunk)||{x:0}).x)?s:b;});
-  else if(p.duelStyle==='strategic')ship=myShips.find(s=>s.type==='kalyon')||myShips[0];
-  else ship=myShips[Math.floor(Math.random()*myShips.length)];
-  const targets=getDuelTargets(ship,opp,N);
-  const occ=new Set([...G.players[opp].hits,...G.players[opp].misses,...G.players[opp].chainHits].map(c=>c.x+','+c.y));
-  const free=targets.filter(t=>!occ.has(t.x+','+t.y));if(!free.length){endTurn();return;}
-  const pick=p.duelStyle==='strategic'?(free.find(t=>G.players[opp].ships.some(s=>!s.sunk&&sCells(s,s.x,s.y).some(c=>c.x===t.x&&c.y===t.y)))||free[Math.floor(Math.random()*free.length)]):free[Math.floor(Math.random()*free.length)];
-  G.duelSelShip={p:cp,s:G.players[cp].ships.indexOf(ship)};G.duelAtk=true;
-  duelAtk(cp,opp,pick.x,pick.y);
+  const myShips=G.players[cp].ships.filter(s=>!s.sunk);if(!myShips.length){endTurn();return;}
+  const oppShips=G.players[opp].ships.filter(s=>!s.sunk);if(!oppShips.length){endTurn();return;}
+  const oppCells=new Set(oppShips.flatMap(s=>sCells(s,s.x,s.y)).map(c=>c.x+','+c.y));
+  // Score each ship by how many enemy cells it can hit
+  const scored=myShips.map(ship=>{const si=G.players[cp].ships.indexOf(ship);const targets=getDuelTargets(ship,opp,N);const score=targets.filter(t=>oppCells.has(t.x+','+t.y)).length;return{ship,si,score};});
+  scored.sort((a,b)=>b.score-a.score);
+  if(scored[0].score>0){robotSay('attack');duelFireShip(cp,scored[0].si);return;}
+  // No ship in range: move toward enemy or rotate
+  const bW=G._duelW;let acted=false;
+  for(const{ship,si}of scored){
+    if(canMoveStep(G.players,cp,si,true,bW,G.N)){
+      const fv=fwdV(ship.dir);moveHitsWithShip(cp,si,fv.dx,fv.dy);ship.x+=fv.dx;ship.y+=fv.dy;checkRams();acted=true;
+      setTimeout(()=>{G._firing=false;if(checkWin())return;endTurn();},300);break;
+    }
+    // Try rotating toward nearest enemy
+    const ec=oppShips[0];const dx=ec.x-ship.x,dy2=ec.y-ship.y;
+    let tDir=ship.dir;if(Math.abs(dx)>Math.abs(dy2))tDir=dx>0?1:3;else tDir=dy2>0?2:0;
+    if(tDir!==ship.dir&&ship.rotCool===0){
+      const nd=(ship.dir+1)%4===tDir?(ship.dir+1)%4:(ship.dir+3)%4;
+      if(canRot(G.players,cp,si,nd,bW,G.N)){ship.dir=nd;ship.rotCool=2;acted=true;endTurn();break;}
+    }
+  }
+  if(!acted)duelFireShip(cp,scored[0].si);
 }
 
-// ════════════════════════════════════════════════════════
-//  KEYBOARD
-// ════════════════════════════════════════════════════════
+// ═══════════ KEYBOARD ═══════════
 document.addEventListener('keydown',e=>{
   if(document.getElementById('screen-placement').classList.contains('active')&&(e.key==='r'||e.key==='R'))rotatePl();
   if(e.key==='Escape'){document.getElementById('gpanel').classList.remove('open');document.getElementById('mpanel').classList.remove('open');}
