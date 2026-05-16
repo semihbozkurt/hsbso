@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>——————————</title>
+    <style>
+        body{background-color: black; box-sizing: border-box;justify-content: center; align-items: center; display: flex; color: whitesmoke;}
+        img{height: 250px; width: 250px;}
+        .srcc{
+            background-image: url('favicon-removebg-preview.png');
+            color: blue;
+            background-size: cover;
+            background-position: center;
+            display: block;
+            }
+        #modeBtn{background-position: center; background-size: cover; background-image: url('dark-mode.svg');border: none; border-radius: 50%; width: 30px; height: 30px;position: absolute;top: 20px; right: 20px;}
+        .Lmd{background-image: url('light-mode.svg') !important;}
+    </style>
+</head>
+<body>
+    <button id="modeBtn"></button>
+    <a style="position: absolute; top: 20px; left: 20px; border: none; border-radius: 50%; height: 35px; width: 35px; color: blue;" href="index.html" class="srcc"></a>
+    <div style="margin: 150px; display: flex; flex-direction: column; height: 350px;width: 350px; justify-content: center; align-items: center;">
+        <img src="komikaİmna..jpeg" alt="Liman yerine iman yazmışım.">
+        <p>Düzeltirken fark ettim, liman yerine iman yazmışım:)</p>
+        <p><small><small>sonrasında resme bakıyordum ki 'yatağına' yerine 'yatağınca' yazmışım:)</small></small></p>
+    </div>
+    <script>
+            document.getElementById('modeBtn').addEventListener('click',function(){this.classList.toggle('Lmd'); if(this.classList.contains('Lmd')){document.body.style.background='#FDF6E3'; document.body.style.color='#1E1E1E'} else{document.body.style.background=''; document.body.style.color=''} });
+    </script>
+</body>
+</html>
