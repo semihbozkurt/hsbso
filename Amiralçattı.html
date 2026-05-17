@@ -56,7 +56,7 @@ select{background:var(--om);border:1px solid var(--gdark);color:var(--pa);paddin
 .tcgc::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.08) 0%,transparent 50%,rgba(0,0,0,.2) 100%);pointer-events:none;}
 .tcg-hdr{display:flex;justify-content:space-between;align-items:center;padding:6px 8px 3px;font-family:'Cinzel',serif;font-size:.68rem;color:var(--gl);}
 .tcg-hp{background:rgba(0,0,0,.3);padding:1px 5px;border-radius:10px;font-size:.6rem;}
-.tcg-art{width:100%;height:105px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.tcg-art{width:100%;height:145px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
 .tcg-art-k{background:radial-gradient(ellipse at 50% 70%,#1a4a30 0%,#0a2010 100%);}
 .tcg-art-kad{background:radial-gradient(ellipse at 50% 70%,#0a2060 0%,#050f30 100%);}
 .tcg-art-t{background:radial-gradient(ellipse at 50% 70%,#3a1a08 0%,#1a0800 100%);}
@@ -348,14 +348,45 @@ function canRot(players,pi,si,nd,bW,bH){const sh=players[pi].ships[si];if(sh.rot
 function genTerrain(N,mode){
   const T=Array.from({length:N},()=>new Array(N).fill(0));if(mode==='classic')return T;
   const r=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
-  if(mode==='rocky'){for(let k=0;k<r(3,5);k++){const cx=r(1,N-2),cy=r(1,N-2);T[cy][cx]=1;if(Math.random()<.6&&cx+1<N)T[cy][cx+1]=1;if(Math.random()<.6&&cy+1<N)T[cy+1][cx]=1;}}
+  if(mode==='rocky'){
+    // Scale clusters to board size: small boards need very few rocks
+    const minC=N<=5?1:N<=6?1:N<=8?2:3;
+    const maxC=N<=5?1:N<=6?2:N<=8?3:4;
+    for(let k=0;k<r(minC,maxC);k++){
+      if(N<=2)break;
+      const cx=r(1,N-2),cy=r(1,N-2);T[cy][cx]=1;
+      if(Math.random()<.45&&cx+1<N-1)T[cy][cx+1]=1;
+      if(Math.random()<.45&&cy+1<N-1)T[cy+1][cx]=1;
+    }
+  }
   else if(mode==='shallow'){for(let k=0;k<r(2,4);k++){const cx=r(0,N-1),cy=r(0,N-1),t=Math.random()<.3?3:2;T[cy][cx]=t;if(cx+1<N&&Math.random()<.5)T[cy][cx+1]=t;if(cy+1<N&&Math.random()<.5)T[cy+1][cx]=t;}}
   else if(mode==='foggy'){for(let k=0;k<r(2,4);k++){const cx=r(0,N-3),cy=r(0,N-3),rw=r(2,4),rh=r(2,4);for(let dy=0;dy<rh;dy++)for(let dx=0;dx<rw;dx++)if(cy+dy<N&&cx+dx<N)T[cy+dy][cx+dx]=4;}}
   return T;
 }
 function applyRockDmg(pi,si){
   const sh=G.players[pi].ships[si];
-  sCells(sh,sh.x,sh.y).forEach(c=>{const t=G.terrain[c.y]?.[c.x]||0;if(t===1){const already=G.players[pi].hits.some(h=>h.x===c.x&&h.y===c.y&&h.rock);if(!already){G.players[pi].hits.push({x:c.x,y:c.y,turn:G.turn,rock:true});log(`⛰ ${SHIPS[sh.type].name} kayalığa çarptı! (${c.x+1},${c.y+1})`,'info');}}});
+  let damaged=false;
+  sCells(sh,sh.x,sh.y).forEach(c=>{
+    // In duel mode player 1's ships are offset by N; terrain uses local coords
+    const terrX=G.duel&&c.x>=G.N?c.x-G.N:c.x;
+    const t=G.terrain[c.y]?.[terrX]||0;
+    if(t===1){
+      const already=G.players[pi].hits.some(h=>h.x===c.x&&h.y===c.y&&h.rock);
+      if(!already){
+        G.players[pi].hits.push({x:c.x,y:c.y,turn:G.turn,rock:true});
+        log(`⛰ ${SHIPS[sh.type].name} kayalığa çarptı! (${terrX+1},${c.y+1})`,'info');
+        damaged=true;
+        midShrink(pi,sh,c.x,c.y);
+      }
+    }
+  });
+  if(damaged&&!sh.sunk){
+    const opp=1-pi;
+    if(sCells(sh,sh.x,sh.y).every(c=>
+      G.players[pi].hits.some(h=>h.x===c.x&&h.y===c.y)
+      ||G.players[opp].hits.some(h=>h.x===c.x&&h.y===c.y)
+    )){sh.sunk=true;log(`⚓ ${SHIPS[sh.type].name} kayalıklarda battı!`,'sink');}
+  }
 }
 
 // ═══════════ SAIL / WIND ═══════════
@@ -512,6 +543,8 @@ function startGame(){
   document.getElementById('btn-shr').textContent=G.showR?'Görünür':'Gizli';
   document.getElementById('scl0').textContent='OYUNCU 1';
   document.getElementById('scl1').textContent=cfg.mode==='robot'?'ROBOT':'OYUNCU 2';
+  document.getElementById('blog').innerHTML='';
+  _rq=[];
   stopWA();resizeGame();renderTleg();
   showScreen('screen-game');updateUI();
   log('⚓ Savaş başladı!','info');
@@ -663,13 +696,37 @@ function drawDuel(){
 
 // ═══════════ DUEL TARGETS ═══════════
 function getDuelTargets(ship,oppIdx,N){
-  const st=SHIPS[ship.type];const{w,h}=sDim(ship);const sz=ship.size;const range=sz==='admiral'?3:sz==='mid'?2:1;
+  const st=SHIPS[ship.type];const{w,h}=sDim(ship);const sz=ship.size;
   const targets=[];
   if(st.atkType==='broadside'){
-    const mcx=ship.x+Math.floor(w/2),mcy=ship.y+Math.floor(h/2);
-    const perps=ship.dir%2===0?[{dx:-1,dy:0},{dx:1,dy:0}]:[{dx:0,dy:-1},{dx:0,dy:1}];
-    perps.forEach(pv=>{for(let r=1;r<=range;r++){const tx=mcx+pv.dx*r,ty=mcy+pv.dy*r;if(tx>=0&&tx<G._duelW&&ty>=0&&ty<N)targets.push({x:tx,y:ty});}});
+    // Every cell of the ship fires sideways, range=2, never own cells
+    const shipSet=new Set(sCells(ship,ship.x,ship.y).map(c=>c.x+','+c.y));
+    const range=2;
+    const isVert=ship.dir%2===0;
+    if(isVert){
+      for(let row=0;row<h;row++){
+        const cy=ship.y+row;
+        for(let r=1;r<=range;r++){
+          const lx=ship.x-r;
+          if(lx>=0&&lx<G._duelW&&cy>=0&&cy<N&&!shipSet.has(lx+','+cy))targets.push({x:lx,y:cy});
+          const rx=ship.x+w-1+r;
+          if(rx>=0&&rx<G._duelW&&cy>=0&&cy<N&&!shipSet.has(rx+','+cy))targets.push({x:rx,y:cy});
+        }
+      }
+    }else{
+      for(let col=0;col<w;col++){
+        const cx=ship.x+col;
+        for(let r=1;r<=range;r++){
+          const uy=ship.y-r;
+          if(cx>=0&&cx<G._duelW&&uy>=0&&uy<N&&!shipSet.has(cx+','+uy))targets.push({x:cx,y:uy});
+          const dy2=ship.y+h-1+r;
+          if(cx>=0&&cx<G._duelW&&dy2>=0&&dy2<N&&!shipSet.has(cx+','+dy2))targets.push({x:cx,y:dy2});
+        }
+      }
+    }
   }else if(st.atkType==='front'){
+    // Admiral Kadırga range=2, others: mid=2 small=1
+    const range=sz==='small'?1:2;
     const fv=fwdV(ship.dir);frontEdge(ship).forEach(fc=>{for(let r=1;r<=range;r++){const tx=fc.x+fv.dx*r,ty=fc.y+fv.dy*r;if(tx>=0&&tx<G._duelW&&ty>=0&&ty<N)targets.push({x:tx,y:ty});}});
   }else{
     const fv=fwdV(ship.dir);frontEdge(ship).forEach(fc=>{const tx=fc.x+fv.dx,ty=fc.y+fv.dy;if(tx>=0&&tx<G._duelW&&ty>=0&&ty<N)targets.push({x:tx,y:ty});});
@@ -809,7 +866,7 @@ function execMove(fwd){
     if(!canMoveStep(G.players,cp,idx,fwd,bW,G.N))break;
     moveHitsWithShip(cp,idx,v.dx,v.dy); // move hit markers with ship
     ship.x+=v.dx;ship.y+=v.dy;moved++;
-    if(!G.duel)applyRockDmg(cp,idx);
+    if(!G.duel)applyRockDmg(cp,idx); else applyRockDmg(cp,idx);
     checkRams();
   }
   if(moved===0){setStatus('Hareket edilemiyor!');return;}
@@ -883,7 +940,6 @@ function updateUI(){
   document.getElementById('sc0').textContent=G.hits[0];document.getElementById('sc1').textContent=G.hits[1];
   document.getElementById('blbl0').textContent=cfg.mode==='robot'?'SİZİN SULARINIZ':(G.cp===0?'OYUNCU 1 SULARI':'OYUNCU 2 SULARI');
   document.getElementById('blbl1').textContent=cfg.mode==='robot'?'DÜŞMAN SULARI':(G.cp===0?'OYUNCU 2 SULARI':'OYUNCU 1 SULARI');
-  document.getElementById('blog').innerHTML=''; // clear previous turn messages
   setStatus('');renderAbar();
   if(G.duel)setStatus('Eylem seç → kendi gemini tıkla.');else setStatus('Bir eylem seçin.');
   drawBoards();
