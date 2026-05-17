@@ -6,15 +6,109 @@
     <title>İkinci Sayfa</title>
     <link rel="stylesheet" href="hamburger.css">
     <style>
-        body { background: #121212; color: white; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
-        a { color: #3498db; text-decoration: none; margin-top: 20px; }
+        body{box-sizing: border-box;}
+
+        #ld-mode{background-position: center; background-size: cover; background-image: url('dark-mode.svg');}
+        .Lmd{background-image: url('light-mode.svg') !important;}
+
+        .cardd{
+            height: 300px;
+            width: 200px;
+            background-color: blue;
+            border-radius: 10px;
+            box-shadow: 5px 5px 5px rgb(216, 77, 216);
+            object-fit: contain;
+        }
+        #cardConte{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            flex-direction: column;
+            gap: 20px;
+            justify-content: space-evenly;
+            margin: 20px;
+            justify-items: center;
+        }
+
+
     </style>
 </head>
 <body>
-    <h1>Tebrikler! İkinci Sayfaya Geldin.</h1>
-    <p>Burası senin yeni tasarım alanın.</p>
-    <a href="index.html">← Ana Sayfa</a>
+    <header class="header-footer" id="headrr">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <a href="index.html">
+                    <img src="favicon-removebg-preview.png" alt="Logo" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; " >
+                </a>
+                <div class="logo">HSB Seyr Okyanusu</div>
+            </div>
+            
+            <div style="display: flex; gap: 25px; align-items: center;">
 
+                <button id="ld-mode" style="border: none; border-radius: 50%; width: 20px; height: 20px;"></button>
+
+                <!-- Hamburger Simgesi -->
+                <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+                </div>
+            </div>
+
+            <!-- Menü Linkleri -->
+            <nav class="nav-menu" id="nav-menu">
+                <a href="index.html">Ana Sayfa</a>
+                <a href="kumyeli_baskını.html">Kumyeli baskını</a>
+                <a href="ele-gem-hi.html" style="display: none;">Gemilerin hikayesi</a>
+                <div style="display: flex; justify-content: center; align-items: center;"><input type="text" id="innMenü" style="justify-items: center; height: 20px; width: 80px; color: green; padding: 2px; border-radius: 10px; border: 1px solid red; background: transparent;outline: none; margin-top: 20px;"></div>
+                
+            </nav>
+    </header>
+
+    <div id="cardConte">
+        <div class="cardd">
+            <img src="" alt="">
+            <div>
+                <p style="justify-content: space-between; padding: 5px;">
+                </p>
+            </div>
+        </div>
+        <div class="cardd">
+            <img src="" alt="">
+            <div>
+                <p style="justify-content: space-between; padding: 5px;">
+                </p>
+            </div>
+        </div>
+        <div class="cardd">
+            <img src="" alt="">
+            <div>
+                <p style="justify-content: space-between; padding: 5px;">
+                </p>
+            </div></div>
+        <div class="cardd">
+            <img src="" alt="">
+            <div>
+                <p style="justify-content: space-between; padding: 5px;">
+                </p>
+            </div></div>
+        <div class="cardd">
+            <img src="" alt="">
+            <div>
+                <p style="justify-content: space-between; padding: 5px;">
+                </p>
+            </div></div>
+        <div class="cardd">
+            <img src="" alt="">
+            <div>
+                <p style="justify-content: space-between; padding: 5px;">
+                </p>
+            </div></div>
+    </div>
+
+    <!--hamburger-->
     <script src="hamburg.js"></script>
+    <!--light mode-->
+    <script>
+            document.getElementById('ld-mode').addEventListener('click',function(){this.classList.toggle('Lmd'); if(this.classList.contains('Lmd')){document.body.style.background='#FDF6E3'; document.body.style.color='#1E1E1E'; document.getElementById('headrr').style.backgroundColor='#d5dae0';} else{document.body.style.background=''; document.body.style.color=''; document.getElementById('headrr').style.backgroundColor='';} });
+    </script>
 </body>
 </html>
