@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="240.12711mm"
+   viewBox="0 0 210 240.12711"
+   version="1.1"
+   id="svg1"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="layer1"
+     transform="translate(0.23845478,0.14526429)">
+    <g
+       id="g15"
+       transform="matrix(0.99029659,0,0,1.0000582,2.7361657e-4,-0.00259171)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:47.5225px;font-family:sans-serif;-inkscape-font-specification:sans-serif;writing-mode:lr-tb;direction:ltr;fill:#000000;stroke:#000000;stroke-width:1.06286;stroke-linecap:round;stroke-linejoin:round"
+         x="-1.2915452"
+         y="25.029617"
+         id="text1"
+         transform="scale(0.946441,1.0565899)"><tspan
+           id="tspan1"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:47.5225px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';stroke-width:1.06286"
+           x="-1.2915452"
+           y="25.029617">φ<tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:47.5225px;font-family:try1;-inkscape-font-specification:try1;stroke-width:1.06286"
+   id="tspan3">I<tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'ilkokuma ZeD 1';-inkscape-font-specification:'ilkokuma ZeD 1, ';stroke-width:1.06286"
+   id="tspan4">r</tspan></tspan><tspan
+   style="font-size:33.2658px;stroke-width:1.06286"
+   id="tspan6">U</tspan><tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:52.2748px;font-family:'High Tower Text';-inkscape-font-specification:'High Tower Text';stroke-width:1.06286"
+   id="tspan7">μ <tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:34.058px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';stroke-width:1.06286"
+   id="tspan15">(firum)</tspan></tspan></tspan></text>
+      <g
+         id="g14"
+         transform="matrix(1.1179387,0,0,1.0482672,-15.014372,-47.078998)">
+        <ellipse
+           style="fill:none;stroke:#000000;stroke-width:4.43385;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+           id="path7"
+           cx="107.40221"
+           cy="183.20479"
+           rx="91.5158"
+           ry="88.410637" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:4.078;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+           d="m 105.57564,95.346863 c 0,0 -31.620063,30.159737 -35.070105,87.675277 -0.162219,57.15023 36.531365,88.04059 36.531365,88.04059"
+           id="path8" />
+        <use
+           x="0"
+           y="0"
+           xlink:href="#path8"
+           id="use8"
+           transform="rotate(180,107.76729,183.02214)" />
+        <ellipse
+           style="fill:none;stroke:#000000;stroke-width:4.22302;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+           id="path9"
+           cx="108.3155"
+           cy="186.30995"
+           rx="35.54557"
+           ry="33.171032" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:4.078;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+           d="m 139.91513,143.56826 c 0,0 5.69354,-4.02811 8.0369,-6.57564 3.20135,-3.48028 8.0369,-11.69004 8.0369,-11.69004"
+           id="path10" />
+        <use
+           x="0"
+           y="0"
+           xlink:href="#path10"
+           id="use10"
+           transform="translate(4.7625002,43.391688)" />
+        <use
+           x="0"
+           y="0"
+           xlink:href="#use10"
+           id="use11"
+           transform="translate(-6.879167,39.687519)" />
+        <use
+           x="0"
+           y="0"
+           xlink:href="#use11"
+           id="use12"
+           transform="rotate(90,106.67705,178.88547)" />
+        <use
+           x="0"
+           y="0"
+           xlink:href="#use12"
+           id="use13"
+           transform="translate(-6.3500006,-40.216686)" />
+        <use
+           x="0"
+           y="0"
+           xlink:href="#use13"
+           id="use14"
+           transform="translate(7.9375002,-43.920855)" />
+      </g>
+    </g>
+  </g>
+</svg>
