@@ -14,11 +14,12 @@
         .cardd{
             height: 300px;
             width: 200px;
-            background-color: blue;
             border-radius: 10px;
-            box-shadow: 5px 5px 5px rgb(216, 77, 216);
             object-fit: contain;
+            transition: all 0.3s ease;
         }
+        .cardd:hover{
+            box-shadow: 5px 5px 5px rgb(216, 77, 216);}
         #cardConte{
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -64,7 +65,7 @@
     </header>
 
     <div id="cardConte">
-<!--R-->        <div class="cardd">
+<!--R-->        <div style="background-color: cyan; color: blue;" class="cardd">
             <div style="object-fit: contain; height: 250px; width: 200px;">
                 
 <svg
@@ -179,7 +180,7 @@
                 </p>
             </div>
         </div>
-<!--A-->        <div class="cardd">
+<!--A-->        <div style="background-color: red; color: yellow;" class="cardd">
            <div> 
             <svg
    width="210mm"
