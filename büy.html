@@ -13,14 +13,18 @@
         .Lmd{background-image: url('light-mode.svg') !important;}
 
         .cardd{
-            height: 300px;
-            width: 200px;
+            height: 310px;
+            width: 210px;
+            justify-items: center;
             border-radius: 10px;
             object-fit: contain;
             transition: all 0.3s ease;
+            border: 3px solid rgb(81, 59, 126);
         }
         .cardd:hover{
-            box-shadow: 5px 5px 5px rgb(216, 77, 216);}
+            box-shadow: 5px 5px 5px rgb(216, 77, 216);
+            transform: translate(0px, -3px);
+        }
         #cardConte{
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -72,7 +76,7 @@
                 
 
             </div>
-            <div style="margin-top: 20px;">
+            <div style="margin-top: 40px;">
                 <p style="justify-content: space-between; padding: 5px;">
                     Rüzgar büyüsü: rüzgar ve rüzgar türleri oluşturabilir.
                 </p>
@@ -82,7 +86,7 @@
            <div class="büyçizimm" style="background-image: url('atbü.svg');"> 
            </div>
 
-            <div>
+            <div style="margin-top: 15px;">
                 <p style="justify-content: space-between; padding: 5px;">
                     Ateş büyüsü:
                     Bir şeyleri yakmayı/ tutuşturmayı sağlar.
@@ -98,19 +102,24 @@
                     birden fazla kişi beraber yaparsa 
                     büyük dalgalar oluşturulabilir.
                 </p>
-            </div></div>
+            </div>
+        </div>
         <div class="cardd">
             <img src="" alt="">
             <div>
                 <p style="justify-content: space-between; padding: 5px;">
                 </p>
             </div></div>
-        <div class="cardd">
-            <img src="" alt="">
+<!--D-->        <div style="background-color: orangered; color: rgb(252, 252, 106);" class="cardd">
+            <div class="büyçizimm" style="background-image: url('dolbü.svg');"></div>
             <div>
                 <p style="justify-content: space-between; padding: 5px;">
+                    Eşyalarınızı içine koyabileceğiniz 
+                    ve sonra geri alabileceğiniz 
+                    görünmez dolap
                 </p>
-            </div></div>
+            </div>
+        </div>
         <div class="cardd">
             <img src="" alt="">
             <div>
