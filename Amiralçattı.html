@@ -46,7 +46,7 @@ select{background:var(--om);border:1px solid var(--gdark);color:var(--pa);paddin
 .tcg-section{width:100%;max-width:760px;}
 .tcg-rl{font-family:'Cinzel',serif;font-size:.92rem;color:var(--gd);margin-bottom:.65rem;padding-bottom:.32rem;border-bottom:1px solid var(--grid);letter-spacing:.08em;}
 .tcg-row{display:flex;gap:.85rem;flex-wrap:wrap;margin-bottom:.9rem;}
-.tcgc{width:162px;min-height:248px;border-radius:14px;border:3px solid;position:relative;overflow:hidden;cursor:pointer;transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s;flex-shrink:0;display:flex;flex-direction:column;}
+.tcgc{width:162px;min-height:320px;border-radius:14px;border:3px solid;position:relative;overflow:hidden;cursor:pointer;transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s;flex-shrink:0;display:flex;flex-direction:column;}
 .tcgc:hover{transform:translateY(-10px) rotate(-1.5deg);box-shadow:0 20px 60px rgba(0,0,0,.6);}
 .tcgc.sel{transform:translateY(-8px);box-shadow:0 0 0 3px var(--gl),0 16px 50px rgba(201,168,76,.4);}
 .tcgc.off{opacity:.35;cursor:not-allowed;pointer-events:none;}
@@ -56,7 +56,7 @@ select{background:var(--om);border:1px solid var(--gdark);color:var(--pa);paddin
 .tcgc::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.08) 0%,transparent 50%,rgba(0,0,0,.2) 100%);pointer-events:none;}
 .tcg-hdr{display:flex;justify-content:space-between;align-items:center;padding:6px 8px 3px;font-family:'Cinzel',serif;font-size:.68rem;color:var(--gl);}
 .tcg-hp{background:rgba(0,0,0,.3);padding:1px 5px;border-radius:10px;font-size:.6rem;}
-.tcg-art{width:100%;height:145px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.tcg-art{width:100%;height:200px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
 .tcg-art-k{background:radial-gradient(ellipse at 50% 70%,#1a4a30 0%,#0a2010 100%);}
 .tcg-art-kad{background:radial-gradient(ellipse at 50% 70%,#0a2060 0%,#050f30 100%);}
 .tcg-art-t{background:radial-gradient(ellipse at 50% 70%,#3a1a08 0%,#1a0800 100%);}
@@ -123,7 +123,7 @@ canvas.board.cl{cursor:crosshair;}canvas.board.pk{cursor:pointer;}
 .wind-area{display:flex;flex-direction:column;align-items:center;gap:.35rem;}
 .wind-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.28rem;}
 .duel-scroll{max-width:100%;overflow-x:auto;padding-bottom:4px;}
-@media(max-width:600px){canvas.board{max-width:44vw;max-height:44vw;}.tcgc{width:138px;min-height:215px;}.tcg-art{height:85px;}}
+@media(max-width:600px){canvas.board{max-width:44vw;max-height:44vw;}.tcgc{width:138px;min-height:260px;}.tcg-art{height:155px;}}
 </style>
 </head>
 <body>
@@ -265,7 +265,7 @@ const SHIP_IMGS={
   kalyon_card:'kalyonKart.png',   // <-- KALYON KART RESMİ URL
   kadirga_card:'kadırgaKart.png',  // <-- KADIRGA KART RESMİ URL
   trireme_card:'triremeKart.png',  // <-- TRİREME KART RESMİ URL
-  kalyon_board:'',  // <-- KALYON TAHTA RESMİ URL
+  kalyon_board:'',  // <-- KALYON TAHTA RtESMİ URL
   kadirga_board:'', // <-- KADIRGA TAHTA RESMİ URL
   trireme_board:'', // <-- TRİREME TAHTA RESMİ URL
 };
@@ -341,7 +341,20 @@ function frontEdge(ship){const{w,h}=sDim(ship);const a=[];if(ship.dir===0){for(l
 function occSet(players,exPi,exSi){const s=new Set();players.forEach((p,pi)=>p.ships.forEach((sh,si)=>{if(pi===exPi&&si===exSi||sh.sunk)return;sCells(sh,sh.x,sh.y).forEach(c=>s.add(c.x+','+c.y));}));return s;}
 function canPlace(ships,idx,x,y,dir,bW,bH){const s=ships[idx];const{w,h}=sDim(s,dir);if(x<0||y<0||x+w>bW||y+h>bH)return false;const occ=new Set();ships.forEach((o,i)=>{if(i!==idx&&o.placed)sCells(o,o.x,o.y).forEach(c=>occ.add(c.x+','+c.y));});return sCells(s,x,y,dir).every(c=>!occ.has(c.x+','+c.y));}
 function terrBlocked(ship,x,y,forPlace=false){return sCells(ship,x,y).some(c=>{const t=G.terrain[c.y]?.[c.x]||0;if(forPlace&&t===1)return true;if(t===3)return true;if(t===2&&ship.type==='kalyon')return true;return false;});}
-function canMoveStep(players,pi,si,fwd,bW,bH){const sh=players[pi].ships[si];if(!fwd&&!SHIPS[sh.type].canRev)return false;const v=fwd?fwdV(sh.dir):bkV(sh.dir);const{w,h}=sDim(sh);const nx=sh.x+v.dx,ny=sh.y+v.dy;if(nx<0||ny<0||nx+w>bW||ny+h>bH)return false;if(!G.duel&&terrBlocked(sh,nx,ny,false))return false;const occ=occSet(players,pi,si);return sCells(sh,nx,ny).every(c=>!occ.has(c.x+','+c.y));}
+function canMoveStep(players,pi,si,fwd,bW,bH){
+  const sh=players[pi].ships[si];
+  if(!fwd&&!SHIPS[sh.type].canRev){
+    // Kalyon exception: can go backward if wind blows in backward direction
+    if(sh.type!=='kalyon'||!G||!G.windTurns||G.windDir===null)return false;
+    const backDir=(sh.dir+2)%4;
+    if(G.windDir!==backDir||sailsRem(sh)<=0)return false;
+  }
+  const v=fwd?fwdV(sh.dir):bkV(sh.dir);const{w,h}=sDim(sh);
+  const nx=sh.x+v.dx,ny=sh.y+v.dy;
+  if(nx<0||ny<0||nx+w>bW||ny+h>bH)return false;
+  if(!G.duel&&terrBlocked(sh,nx,ny,false))return false;
+  const occ=occSet(players,pi,si);return sCells(sh,nx,ny).every(c=>!occ.has(c.x+','+c.y));
+}
 function canRot(players,pi,si,nd,bW,bH){const sh=players[pi].ships[si];if(sh.rotCool>0)return false;const{w,h}=sDim(sh,nd);if(sh.x+w>bW||sh.y+h>bH)return false;const occ=occSet(players,pi,si);return sCells(sh,sh.x,sh.y,nd).every(c=>!occ.has(c.x+','+c.y));}
 
 // ═══════════ TERRAIN ═══════════
@@ -393,9 +406,12 @@ function applyRockDmg(pi,si){
 function sailCount(ship){return{admiral:3,mid:2,small:1}[ship.size];}
 function sailsRem(ship){return Math.max(0,sailCount(ship)-(ship.brokenSails||0));}
 function canSailMove(ship){if(!SHIPS[ship.type].hasOars)return sailsRem(ship)>0;return true;}
-// Wind speed: Kalyon=3 cells, Kadırga/Trireme=2 cells when moving in wind direction
+// Wind speed: also handles Kalyon going backward in opposite wind direction
 function windSpd(ship,fwd){
-  if(!fwd||!G.windTurns||G.windDir===null||ship.dir!==G.windDir)return 1;
+  if(!G.windTurns||G.windDir===null)return 1;
+  // What direction will the ship actually move?
+  const moveDir=fwd?ship.dir:(ship.dir+2)%4;
+  if(moveDir!==G.windDir)return 1; // wind doesn't help this direction
   if(SHIPS[ship.type].hasOars){if(ship.sailDamaged)return 1;return 2;}
   const r=sailsRem(ship);if(r<=0)return 0;return Math.min(r,3);
 }
@@ -428,8 +444,10 @@ function midShrink(pi,ship,hx,hy){
     const cells=sCells(ship,ship.x,ship.y);
     const surv=cells.find(c=>!(c.x===hx&&c.y===hy));
     ship.damaged=true;ship.size='small';ship.w=1;ship.h=1;
+    // Small ship gets small stats: range drops to 1
+    // (getDuelTargets uses ship.size to determine range, which is now 'small')
     if(surv){ship.x=surv.x;ship.y=surv.y;}
-    log(`💥 ${SHIPS[ship.type].name} küçüldü!`,'info');
+    log(`💥 ${SHIPS[ship.type].name} küçüldü! (küçük gemi özellikleri)`,'info');
   }
 }
 
@@ -844,9 +862,13 @@ function showMoveBtns(){
   const cp=G.cp,idx=G.selShip;const ship=G.players[cp].ships[idx];
   if(!canSailMove(ship)){setStatus('Yelkenler kırık — hareket edemiyor!');G.selShip=null;renderAbar();return;}
   const bW=G.duel?G._duelW:G.N;
-  const canF=canMoveStep(G.players,cp,idx,true,bW,G.N);const canB=SHIPS[ship.type].canRev&&canMoveStep(G.players,cp,idx,false,bW,G.N);
-  const ws=windSpd(ship,true);const label=ws>1?`▲ İleri (💨×${ws})`:' ▲ İleri';
-  document.getElementById('abar').innerHTML=`<button class="ab"${canF?'':' disabled'} onclick="execMove(true)">${label}</button><button class="ab"${canB?'':' disabled'} onclick="execMove(false)">▼ Geri</button><button class="ab" onclick="cancelSub()">✕ İptal</button>`;
+  const kalyonWindBack=ship.type==='kalyon'&&G.windTurns>0&&G.windDir!=null&&G.windDir===(ship.dir+2)%4&&sailsRem(ship)>0;
+  const canF=canMoveStep(G.players,cp,idx,true,bW,G.N);
+  const canB=(SHIPS[ship.type].canRev||kalyonWindBack)&&canMoveStep(G.players,cp,idx,false,bW,G.N);
+  const wsF=windSpd(ship,true),wsB=windSpd(ship,false);
+  const labelF=wsF>1?`▲ İleri (💨×${wsF})`:'▲ İleri';
+  const labelB=wsB>1?`▼ Geri (💨×${wsB})`:'▼ Geri';
+  document.getElementById('abar').innerHTML=`<button class="ab"${canF?'':' disabled'} onclick="execMove(true)">${labelF}</button><button class="ab"${canB?'':' disabled'} onclick="execMove(false)">${labelB}</button><button class="ab" onclick="cancelSub()">✕ İptal</button>`;
 }
 function showRotateBtns(){
   const cp=G.cp,idx=G.selShip;const ship=G.players[cp].ships[idx];
@@ -908,9 +930,17 @@ function checkDuel(){
   if(G.duel)return;const c0=livingCaros(0),c1=livingCaros(1);
   if(c0===c1&&c0>=1&&c0<=3){
     G.duel=true;
-    // Mark all existing markers as preDuel (hidden but positions preserved for sinking logic)
-    G.players.forEach(p=>{p.hits.forEach(h=>h.preDuel=true);p.misses.forEach(m=>m.preDuel=true);p.chainHits.forEach(h=>h.preDuel=true);});
     const N=G.N;
+    // Before translating coords: mark only hits NOT on current ship cells as preDuel
+    G.players.forEach((p,pi)=>{
+      p.hits.forEach(h=>{
+        if(h.preDuel||h.rock)return;
+        const onShip=p.ships.some(s=>!s.sunk&&sCells(s,s.x,s.y).some(c=>c.x===h.x&&c.y===h.y));
+        if(!onShip)h.preDuel=true; // hide hits not on ships; hits on ships remain visible
+      });
+      p.misses.forEach(m=>{m.preDuel=true;}); // all misses hidden
+      p.chainHits.forEach(h=>{if(!h.preDuel)h.preDuel=true;});
+    });
     G.players[1].ships.forEach(s=>{if(!s.sunk)s.x+=N;});
     G.players[1].hits.forEach(h=>h.x+=N);G.players[1].misses.forEach(m=>m.x+=N);G.players[1].chainHits.forEach(h=>h.x+=N);
     G._duelW=N*2;resizeGame();

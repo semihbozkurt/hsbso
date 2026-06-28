@@ -2,6 +2,8 @@
 <html>
     <head>
         <link rel="icon" type="image/png" href="favicon-removebg-preview.png">
+        <!--crousel lib--> <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+        <!--crousel css--> <link rel="stylesheet"  href="kaydırgaç.css">
         <link rel="stylesheet" href="har.css">
         <meta charset="UTF-8">
         <meta name="robots" content="noindex">
@@ -146,6 +148,13 @@
                 border-color: #3498db; /* Kenarlık parlaması */
 }
 
+    /* harita üst ve alt <hr>  */
+            .harhr{
+                border: none;
+                height: 3px;
+                background-image: linear-gradient(to right,  rgb(151, 231, 151),green,rgb(151, 231, 151));
+            }
+
 
             /* Resim Yolları (Buraya kendi resim linklerini koyabilirsin) */
             .btn-1 { background-image: url('büy-şap.png'); }
@@ -199,6 +208,8 @@
                 
             </nav>
         </header>
+
+    <hr class="harhr">
 
     <!--Harita dünya-->
     
@@ -354,8 +365,10 @@
 
     </div>
 
+    <hr class="harhr">
 
-    <div class="section dark" style="min-height: 70vh; padding: 10px; display: flex; justify-content: space-evenly;" id="kapaklık">
+    <!--kitaplar-->
+    <div class="section" style="min-height: 70vh; padding: 10px; display: flex; justify-content: space-evenly;" id="kapaklık">
         <div>
             <button class="kapaklık-button" style="flex:1; background-image: url('SOkap.png'); border-radius: 0; "></button>
         </div>
@@ -379,13 +392,102 @@
     </div>
 
     
-    
-    <div class="section gray">Sihirli eşyalar</div>
-    <div class="section dark">Binalar</div>
+<!--sihirli eşyalar-->
+    <div class="section" style="min-height: 60vh !important;">
+    <section class="eşyalar">
+
+    <h2>Sihirli eşyalar</h2>
+
+    <div class="swiper theswiper">
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <img src="">
+                <h3>E1</h3>
+            </div>
+
+            <div class="swiper-slide">
+                <img src="">
+                <h3>E2</h3>
+            </div>
+
+            <div class="swiper-slide">
+                <img src="">
+                <h3>E3</h3>
+            </div>
+
+            <div class="swiper-slide">
+                <img src="">
+                <h3>E4</h3>
+            </div>
+
+            <div class="swiper-slide">
+                <img src="">
+                <h3>E5</h3>
+            </div>
+
+            <div class="swiper-slide">
+                <img src="">
+                <h3>E6</h3>
+            </div>
+
+            <div class="swiper-slide">
+                <img src="">
+                <h3>E7</h3>
+            </div>
+
+        </div>
+
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+    </div>
+
+</section>
+    </div>
+
+
+    <div class="section">Binalar</div>
 
     <!-- Alt Yazı -->
     <footer class="header-footer">Alt Yazı / İletişim</footer>
     </div>
+
+    <!--crousel lib-->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!--crousel script-->
+    <script>
+        new Swiper(".theswiper",{
+
+    slidesPerView:3,
+
+    centeredSlides:true,
+
+    loop:true,
+
+    spaceBetween:70,
+
+    navigation:{
+        nextEl:".swiper-button-next",
+        prevEl:".swiper-button-prev",
+    },
+
+
+    breakpoints:{
+
+        768:{
+            slidesPerView:3
+        },
+
+        0:{
+            slidesPerView:1.2
+        }
+
+    }
+
+});
+    </script>
     <!--light mode script-->
         <script>
             document.getElementById('ld-mode').addEventListener('click',function(){this.classList.toggle('Lmd'); if(this.classList.contains('Lmd')){document.body.style.background='#FDF6E3'; document.body.style.color='#1E1E1E'} else{document.body.style.background=''; document.body.style.color=''} });
