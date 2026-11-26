@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="hamburger.css">
     <style>
         body { 
+            box-sizing: border-box;
             background: #121212; 
             color: white; 
             font-family: sans-serif; 
@@ -15,9 +16,7 @@
             overflow-x: hidden;
 
         }
-        #ld-mode{background-position: center; background-size: cover; background-image: url('dark-mode.svg');}
-        .Lmd{background-image: url('light-mode.svg') !important;}
-
+ 
         .container {
             max-width: 1000px;
             margin: 0 auto; /* Sayfayı ortalar */
@@ -99,7 +98,7 @@
     <header class="header-footer" id="headrr">
             <div style="display: flex; align-items: center; gap: 10px;">
                 <a href="index.html">
-                    <img src="favicon-removebg-preview.png" alt="Logo" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; " >
+                    <img src="favicon-removebg-preview.png" alt="Logo" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; position: absolute; top: 10px; left: 20px;" >
                 </a>
                 <div class="logo">HSB Seyr Okyanusu</div>
             </div>
@@ -171,10 +170,7 @@
 
 
     <script src="hamburg.js"></script>
-    <!--light mode-->
-    <script>
-            document.getElementById('ld-mode').addEventListener('click',function(){this.classList.toggle('Lmd'); if(this.classList.contains('Lmd')){document.body.style.background='#FDF6E3'; document.body.style.color='#1E1E1E'; document.getElementById('headrr').style.backgroundColor='#d5dae0';} else{document.body.style.background=''; document.body.style.color=''; document.getElementById('headrr').style.backgroundColor='';} });
-    </script>
+
 
     <script>
 
